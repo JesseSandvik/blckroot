@@ -6,6 +6,13 @@ describe("US-01. Create A New User", () => {
     const username="eforeman70";
     const password="ILoveDonn@4ever";
 
+    test("Returns 404 status for page not found", async () => {
+        const response = await request(app).get("/abrakadabra");
+
+        expect(response.status).toEqual(404);
+        expect(response.body.error).toBeDefined();
+    });
+
     test("Returns 400 status if data is missing", async () => {
         const response = await request(app).post("/register").send({});
 

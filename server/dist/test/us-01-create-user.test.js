@@ -18,6 +18,11 @@ const app_1 = __importDefault(require("../app"));
 (0, globals_1.describe)("US-01. Create A New User", () => {
     const username = "eforeman70";
     const password = "ILoveDonn@4ever";
+    (0, globals_1.test)("Returns 404 status for page not found", () => __awaiter(void 0, void 0, void 0, function* () {
+        const response = yield (0, supertest_1.default)(app_1.default).get("/abrakadabra");
+        (0, globals_1.expect)(response.status).toEqual(404);
+        (0, globals_1.expect)(response.body.error).toBeDefined();
+    }));
     (0, globals_1.test)("Returns 400 status if data is missing", () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield (0, supertest_1.default)(app_1.default).post("/register").send({});
         (0, globals_1.expect)(response.status).toEqual(400);
