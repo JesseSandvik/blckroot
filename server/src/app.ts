@@ -1,13 +1,11 @@
-import { Express, Request, Response } from "express";
-const express = require("express");
-import dotenv from 'dotenv';
-
-dotenv.config();
-
-const app: Express = express();
+import express, { Request, Response } from "express";
+const app = express()
+const port = 3000
 
 app.get('/', (req: Request, res: Response) => {
-  res.send(`Express + TypeScript Server is running!`);
-});
+  res.send('Hello World!')
+})
 
-export default app;
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+});
