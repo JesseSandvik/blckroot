@@ -1,11 +1,12 @@
 import express, { Request, Response } from "express";
-const app = express()
-const port = 3000
+import * as dotenv from "dotenv";
+
+dotenv.config();
+
+const app = express();
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!')
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-});
+export default app;
