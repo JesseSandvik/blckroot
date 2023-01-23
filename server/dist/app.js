@@ -33,4 +33,15 @@ const app = (0, express_1.default)();
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
+app.use((req, res, next) => {
+    next({
+        status: 404,
+        message: `Path not found: ${req.originalUrl}`,
+    });
+});
+const handleError = (err, req, res, next) => {
+    const { status = 500, message = "Something went wrong!" } = err;
+    res.status(status).json({ error: message });
+};
+app.use(handleError);
 module.exports = app;

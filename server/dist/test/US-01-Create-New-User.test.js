@@ -14,7 +14,7 @@ describe("US-01: Create A New User", () => {
     test("Return 404 For Invalid Path", () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield request(server).get("/badroute");
         expect(response.status).toEqual(404);
-        expect(response.error).toBeDefined();
+        expect(response.body.error).toContain("/badroute");
     }));
     test("Return 400 For Missing Username", () => __awaiter(void 0, void 0, void 0, function* () {
         const user = {
@@ -22,7 +22,7 @@ describe("US-01: Create A New User", () => {
         };
         const response = yield request(server).post("/register").send({ data: user });
         expect(response.status).toEqual(400);
-        expect(response.error).toBeDefined();
+        expect(response.body.error).toContain("username");
     }));
     test("Return 400 For Empty Username", () => __awaiter(void 0, void 0, void 0, function* () {
         const user = {
@@ -31,7 +31,7 @@ describe("US-01: Create A New User", () => {
         };
         const response = yield request(server).post("/register").send({ data: user });
         expect(response.status).toEqual(400);
-        expect(response.error).toBeDefined();
+        expect(response.body.error).toContain("username");
     }));
     test("Return 400 For Missing Password", () => __awaiter(void 0, void 0, void 0, function* () {
         const user = {
@@ -39,7 +39,7 @@ describe("US-01: Create A New User", () => {
         };
         const response = yield request(server).post("/register").send({ data: user });
         expect(response.status).toEqual(400);
-        expect(response.error).toBeDefined();
+        expect(response.body.error).toContain("password");
     }));
     test("Return 400 For Empty Password", () => __awaiter(void 0, void 0, void 0, function* () {
         const user = {
@@ -48,7 +48,7 @@ describe("US-01: Create A New User", () => {
         };
         const response = yield request(server).post("/register").send({ data: user });
         expect(response.status).toEqual(400);
-        expect(response.error).toBeDefined();
+        expect(response.body.error).toContain("password");
     }));
     test("Return 201 For Successful User Creation", () => __awaiter(void 0, void 0, void 0, function* () {
         const user = {

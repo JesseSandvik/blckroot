@@ -6,7 +6,7 @@ describe("US-01: Create A New User", () => {
         const response = await request(server).get("/badroute");
 
         expect(response.status).toEqual(404);
-        expect(response.error).toBeDefined();
+        expect(response.body.error).toContain("/badroute");
     });
     test("Return 400 For Missing Username", async () => {
         const user={
@@ -15,7 +15,7 @@ describe("US-01: Create A New User", () => {
         const response = await request(server).post("/register").send({ data: user });
 
         expect(response.status).toEqual(400);
-        expect(response.error).toBeDefined();
+        expect(response.body.error).toContain("username");
     });
     test("Return 400 For Empty Username", async () => {
         const user={
@@ -25,7 +25,7 @@ describe("US-01: Create A New User", () => {
         const response = await request(server).post("/register").send({ data: user });
 
         expect(response.status).toEqual(400);
-        expect(response.error).toBeDefined();
+        expect(response.body.error).toContain("username");
     });
     test("Return 400 For Missing Password", async () => {
         const user={
@@ -34,7 +34,7 @@ describe("US-01: Create A New User", () => {
         const response = await request(server).post("/register").send({ data: user });
 
         expect(response.status).toEqual(400);
-        expect(response.error).toBeDefined();
+        expect(response.body.error).toContain("password");
     });
     test("Return 400 For Empty Password", async () => {
         const user={
@@ -44,7 +44,7 @@ describe("US-01: Create A New User", () => {
         const response = await request(server).post("/register").send({ data: user });
 
         expect(response.status).toEqual(400);
-        expect(response.error).toBeDefined();
+        expect(response.body.error).toContain("password");
     });
     test("Return 201 For Successful User Creation", async () => {
         const user={
