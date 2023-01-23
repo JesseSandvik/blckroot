@@ -1,7 +1,11 @@
 const request = require("supertest");
 const server = require("../app");
+const users = require("../../data/users");
 
 describe("US-01: Create A New User", () => {
+    beforeEach(() => {
+        users.splice(0, users.length);
+    });
     test("Return 404 For Invalid Path", async () => {
         const response = await request(server).get("/badroute");
 
@@ -53,11 +57,10 @@ describe("US-01: Create A New User", () => {
         };
         const response = await request(server).post("/register").send({ data: user });
 
+        console.log("USER:", response.body.data);
+
         expect(response.status).toEqual(201);
-        expect(response.error).toBeUndefined();
-        expect(response.body.data).toContain(expect.objectContaining({
-            username: "TestUsername123",
-            password: "test@password123",
-        }));
+        expect(response.body.error).toBeUndefined();
+        expect(response.body.data).toEqual(user);
     });
 });

@@ -30,9 +30,11 @@ const express_1 = __importDefault(require("express"));
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 const app = (0, express_1.default)();
+app.use(express_1.default.json());
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
+app.use("/register", require("./user/user.router"));
 app.use((req, res, next) => {
     next({
         status: 404,

@@ -10,7 +10,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 const request = require("supertest");
 const server = require("../app");
+const users = require("../../data/users");
 describe("US-01: Create A New User", () => {
+    beforeEach(() => {
+        users.splice(0, users.length);
+    });
     test("Return 404 For Invalid Path", () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield request(server).get("/badroute");
         expect(response.status).toEqual(404);
@@ -56,11 +60,9 @@ describe("US-01: Create A New User", () => {
             password: "test@password123",
         };
         const response = yield request(server).post("/register").send({ data: user });
+        console.log("USER:", response.body.data);
         expect(response.status).toEqual(201);
-        expect(response.error).toBeUndefined();
-        expect(response.body.data).toContain(expect.objectContaining({
-            username: "TestUsername123",
-            password: "test@password123",
-        }));
+        expect(response.body.error).toBeUndefined();
+        expect(response.body.data).toEqual(user);
     }));
 });

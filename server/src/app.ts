@@ -5,9 +5,13 @@ dotenv.config();
 
 const app = express();
 
+app.use(express.json());
+
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!')
 });
+
+app.use("/register", require("./user/user.router"));
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   next({
