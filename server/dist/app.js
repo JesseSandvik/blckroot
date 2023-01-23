@@ -33,4 +33,4 @@ const app = (0, express_1.default)();
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
-exports.default = app;
+module.exports = app;
