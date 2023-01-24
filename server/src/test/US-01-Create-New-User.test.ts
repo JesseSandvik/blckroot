@@ -64,3 +64,5 @@ describe("US-01: Create A New User", () => {
         expect(response.body.data).toEqual(user);
     });
 });
+
+export {};
