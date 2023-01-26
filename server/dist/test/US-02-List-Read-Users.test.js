@@ -33,7 +33,7 @@ describe("US-02: List / Read Users", () => {
         expect(response.body.error).toBeDefined();
     }));
     test("Return 200 For Found User", () => __awaiter(void 0, void 0, void 0, function* () {
-        const response = yield request(server).get("/users?id=1");
+        const response = yield request(server).get("/users/1");
         expect(response.status).toEqual(200);
         expect(response.body.data).toHaveLength(1);
         expect(response.body.data).toEqual(expect.objectContaining({

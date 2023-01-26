@@ -25,7 +25,7 @@ describe("US-02: List / Read Users", () => {
         expect(response.body.error).toBeDefined();
     });
     test("Return 200 For Found User", async () => {
-        const response = await request(server).get("/users?id=1");
+        const response = await request(server).get("/users/1");
 
         expect(response.status).toEqual(200);
         expect(response.body.data).toHaveLength(1);

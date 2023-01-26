@@ -1,37 +1,31 @@
 import { Request, Response, NextFunction } from "express";
-const path = require("path");
 const users = require("../../data/users");
 
-const validProperties = ["username", "password"];
-
-function allPropertiesAreValid(arr: Array<string>) {
-  return (req: Request, res: Response, next: NextFunction) => {
-    const { data } = req.body;
-
-    arr.forEach((element) => {
-      if (!data[element]) {
-        next({
-          status: 400,
-          message: `${element} is required.`,
-        });
-      }
-    });
-    next();
-  }
+interface User {
+  id: string;
+  username: string;
+  password: string;
 }
 
-const hasValidProperties = allPropertiesAreValid(validProperties);
+function userExists(req: Request, res: Response, next: NextFunction) {
+  const { userId } = req.params;
+  const matchingUser = users.find((user: User) => user.id = userId);
 
-function createUser (req: Request, res: Response) {
-    const { username, password } = req.body.data;
-    const newUser = {
-      username,
-      password,
-    };
-    users.push(newUser);
-    res.status(201).json({ data: newUser });
+  if (matchingUser) {
+    res.locals.user = matchingUser;
+    next();
   }
+  next({
+    status: 404,
+    message: `User with Id ${userId} does not exist.`,
+  });
+}
+
+function readUser (req: Request, res: Response) {
+  const { data } = res.locals.user;
+  res.json({ data });
+}
 
   module.exports = {
-    create: [hasValidProperties, createUser],
+    read: [userExists, readUser],
   }

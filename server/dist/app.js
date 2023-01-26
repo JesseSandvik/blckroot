@@ -34,7 +34,8 @@ app.use(express_1.default.json());
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
-app.use("/register", require("./user/user.router"));
+app.use("/register", require("./register/register.router"));
+app.use("/users", require("./user/user.router"));
 app.use((req, res, next) => {
     next({
         status: 404,

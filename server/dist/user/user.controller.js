@@ -1,32 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const path = require("path");
 const users = require("../../data/users");
-const validProperties = ["username", "password"];
-function allPropertiesAreValid(arr) {
-    return (req, res, next) => {
-        const { data } = req.body;
-        arr.forEach((element) => {
-            if (!data[element]) {
-                next({
-                    status: 400,
-                    message: `${element} is required.`,
-                });
-            }
-        });
+function userExists(req, res, next) {
+    const { userId } = req.params;
+    const matchingUser = users.find((user) => user.id = userId);
+    if (matchingUser) {
+        res.locals.user = matchingUser;
         next();
-    };
+    }
+    next({
+        status: 404,
+        message: `User with Id ${userId} does not exist.`,
+    });
 }
-const hasValidProperties = allPropertiesAreValid(validProperties);
-function createUser(req, res) {
-    const { username, password } = req.body.data;
-    const newUser = {
-        username,
-        password,
-    };
-    users.push(newUser);
-    res.status(201).json({ data: newUser });
+function readUser(req, res) {
+    const { data } = res.locals.user;
+    res.json({ data });
 }
 module.exports = {
-    create: [hasValidProperties, createUser],
+    read: [userExists, readUser],
 };

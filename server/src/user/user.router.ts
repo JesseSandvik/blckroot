@@ -1,8 +1,8 @@
-const router = require("express").Router();
-const controller = require("./user.controller");
+const userRouter = require("express").Router();
+const userController = require("./user.controller");
 
-router
-    .route("/")
-    .post(controller.create);
+userRouter
+    .route("/:id")
+    .get(userController.read);
 
-module.exports = router;
+module.exports = userRouter;

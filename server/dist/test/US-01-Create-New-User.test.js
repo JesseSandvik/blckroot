@@ -61,7 +61,6 @@ describe("US-01: Create A New User", () => {
             password: "test@password123",
         };
         const response = yield request(server).post("/register").send({ data: user });
-        console.log("USER:", response.body.data);
         expect(response.status).toEqual(201);
         expect(response.body.error).toBeUndefined();
         expect(response.body.data).toEqual(user);
