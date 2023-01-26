@@ -5,12 +5,12 @@ const users = require("../../data/users");
 describe("US-02: List / Read Users", () => {
     beforeAll(() => {
         const user1 = {
-            id: "1",
+            id: 1,
             username: "RSanchez",
             password: "get@schwifty"
         };
         const user2 = {
-            id: "2",
+            id: 2,
             username: "JSmith",
             password: "!loveBeth"
         };
@@ -28,7 +28,6 @@ describe("US-02: List / Read Users", () => {
         const response = await request(server).get("/users/1");
 
         expect(response.status).toEqual(200);
-        expect(response.body.data).toHaveLength(1);
         expect(response.body.data).toEqual(expect.objectContaining({
             username: "RSanchez",
             password: "get@schwifty"

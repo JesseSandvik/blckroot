@@ -2,14 +2,14 @@ import { Request, Response, NextFunction } from "express";
 const users = require("../../data/users");
 
 interface User {
-  id: string;
+  id: number;
   username: string;
   password: string;
 }
 
 function userExists(req: Request, res: Response, next: NextFunction) {
   const { userId } = req.params;
-  const matchingUser = users.find((user: User) => user.id = userId);
+  const matchingUser = users.find((user: User) => user.id === parseInt(userId));
 
   if (matchingUser) {
     res.locals.user = matchingUser;
@@ -22,7 +22,7 @@ function userExists(req: Request, res: Response, next: NextFunction) {
 }
 
 function readUser (req: Request, res: Response) {
-  const { data } = res.locals.user;
+  const data = res.locals.user;
   res.json({ data });
 }
 

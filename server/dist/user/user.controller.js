@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const users = require("../../data/users");
 function userExists(req, res, next) {
     const { userId } = req.params;
-    const matchingUser = users.find((user) => user.id = userId);
+    const matchingUser = users.find((user) => user.id === parseInt(userId));
     if (matchingUser) {
         res.locals.user = matchingUser;
         next();
@@ -14,7 +14,7 @@ function userExists(req, res, next) {
     });
 }
 function readUser(req, res) {
-    const { data } = res.locals.user;
+    const data = res.locals.user;
     res.json({ data });
 }
 module.exports = {
