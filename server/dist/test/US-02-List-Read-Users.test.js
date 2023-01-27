@@ -44,5 +44,7 @@ describe("US-02: List / Read Users", () => {
         const response = yield request(server).get("/users");
         expect(response.status).toEqual(200);
         expect(response.body.data).toHaveLength(2);
+        expect(response.body.data[0].username).toEqual("RSanchez");
+        expect(response.body.data[1].username).toEqual("JSmith");
     }));
 });

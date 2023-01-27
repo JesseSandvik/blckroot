@@ -17,6 +17,10 @@ function readUser(req, res) {
     const data = res.locals.user;
     res.json({ data });
 }
+function listUsers(req, res) {
+    res.json({ data: users });
+}
 module.exports = {
     read: [userExists, readUser],
+    list: [listUsers],
 };

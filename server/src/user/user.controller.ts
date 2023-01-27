@@ -7,7 +7,7 @@ interface User {
   password: string;
 }
 
-function userExists(req: Request, res: Response, next: NextFunction) {
+function userExists (req: Request, res: Response, next: NextFunction) {
   const { userId } = req.params;
   const matchingUser = users.find((user: User) => user.id === parseInt(userId));
 
@@ -26,6 +26,11 @@ function readUser (req: Request, res: Response) {
   res.json({ data });
 }
 
+function listUsers (req: Request, res: Response) {
+  res.json({ data: users });
+}
+
   module.exports = {
     read: [userExists, readUser],
+    list: [listUsers],
   }
