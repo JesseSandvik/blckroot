@@ -13,9 +13,27 @@
 header {
     background-color: var(--secondary-color);
     color: var(--primary-color);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     grid-row: 1 / 1;
     position: sticky;
     top: 0;
+}
+
+header .navbar-left-outer {
+    align-items: center;
+    display: flex;
+    grid-column: 1 / 1;
+}
+
+header .navbar .brand {
+    align-items: center;
+    color: var(--accent-color);
+    display: flex;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    gap: 8px;
+    padding: 0 16px;
 }
 
 main {

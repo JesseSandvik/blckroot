@@ -6,7 +6,9 @@ function App() {
     <div className="App">
       <header>
         <nav className='navbar'>
-          <NavLink className="navbar brand" to="/">akago</NavLink>
+          <div className='navbar-left-outer'>
+            <NavLink className="navbar brand" to="/"><i className="fa-solid fa-robot"></i>akago</NavLink>
+          </div>
         </nav>
       </header>
       <main>main</main>
