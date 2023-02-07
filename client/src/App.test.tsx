@@ -10,11 +10,11 @@ describe("US-01: Create A New User", () => {
 
     userEvent.click(await screen.findByRole("button", { name: /sign up/i }));
 
-    userEvent.type(await screen.findByLabelText(/username/i), "test_username123");
-    userEvent.type(await screen.findByLabelText(/password/i), "psswrd123@");
-    userEvent.type(await screen.findByLabelText(/password match/i), "psswrd123@");
+    userEvent.type(await screen.findByLabelText("username:"), "test_username123");
+    userEvent.type(await screen.findByLabelText("password:"), "psswrd123@");
+    userEvent.type(await screen.findByLabelText("password match:"), "psswrd123@");
 
-    userEvent.click(await screen.findByRole("button", { name: /sign up/i }));
+    userEvent.click(await screen.findByRole("button", { name: /create account/i }));
 
     const currentPageHeading = await screen.findByRole("heading", { name: /dashboard/i });
 
