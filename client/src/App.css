@@ -34,6 +34,7 @@ header .navbar .brand {
     font-size: 2rem;
     gap: 8px;
     padding: 0 16px;
+    text-transform: capitalize;
 }
 
 main {
