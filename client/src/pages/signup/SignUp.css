@@ -1,0 +1,35 @@
+.SignUp {
+    background-color: var(--secondary-color);
+    border: 4px solid var(--primary-color);
+    color: var(--primary-color);
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+}
+
+.SignUp-header {
+    align-items: center;
+    display: flex;
+    grid-column: 4 / span 4;
+    grid-row: 2 / 2;
+    justify-content: center;
+}
+
+.SignUp-header h1 {
+    letter-spacing: 0.05rem;
+}
+
+.SignUp-header h1 .accent-text {
+    color: var(--accent-color);
+}
+
+.SignUp-form {
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    color: var(--secondary-color);
+    display: grid;
+    gap: 1rem;
+    grid-column: 4 / span 4;
+    grid-row: 4 / span 6;
+    padding: 1rem;
+}

@@ -2,9 +2,9 @@ import React from 'react';
 
 function Dashboard() {
     return (
-        <div className='Dashboard'>
+        <main className='Dashboard'>
             <h1>DASHBOARD</h1>
-        </div>
+        </main>
     );
 }
 

@@ -20,6 +20,10 @@ header {
     top: 0;
 }
 
+header i {
+    transform: rotate(90deg);
+}
+
 header .navbar-left-outer {
     align-items: center;
     display: flex;
@@ -28,9 +32,8 @@ header .navbar-left-outer {
 
 header .navbar .brand {
     align-items: center;
-    color: var(--accent-color);
+    color: var(--primary-color);
     display: flex;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 2rem;
     gap: 8px;
     padding: 0 16px;
@@ -38,7 +41,6 @@ header .navbar .brand {
 }
 
 main {
-    border: 1px solid fuchsia;
     grid-row: 2 / 2;
 }
 

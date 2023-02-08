@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import "./SignUp.css";
+
 function SignUpPage() {
     const navigate = useNavigate();
 
@@ -24,9 +26,11 @@ function SignUpPage() {
         navigate("/dashboard");
     }
     return (
-        <div className='SignUp'>
-            <h1>sign up</h1>
-            <form onSubmit={handleOnSubmit}>
+        <main className='SignUp'>
+            <div className='SignUp-header'>
+                <h1>Minimalistic time managment<br/><span className='accent-text'>made simple</span>.</h1>
+            </div>
+            <form className='SignUp-form' onSubmit={handleOnSubmit}>
                 <label htmlFor="username">username:</label>
                 <input
                     id="username"
@@ -36,7 +40,6 @@ function SignUpPage() {
                     type="text"
                     value={username || ""}
                 />
-                
                 <label htmlFor="password">password:</label>
                 <input
                     id="password"
@@ -57,7 +60,7 @@ function SignUpPage() {
                 />
                 <button type="submit">create account</button>
             </form>
-        </div>
+        </main>
     );
 }
 
