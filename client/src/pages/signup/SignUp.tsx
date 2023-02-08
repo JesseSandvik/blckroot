@@ -8,7 +8,7 @@ function SignUpPage() {
 
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-    const [passwordMatch, setPasswordMatch] = useState<string>("");
+    const [confirmPassword, setConfirmPassword] = useState<string>("");
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>, setState: React.Dispatch<React.SetStateAction<string>>) => {
         event.preventDefault();
@@ -19,10 +19,10 @@ function SignUpPage() {
         event.preventDefault();
         console.log(`USERNAME:  ${username}`);
         console.log(`PASSWORD:  ${password}`);
-        console.log(`PASSWORD MATCH:  ${passwordMatch}`);
+        console.log(`PASSWORD MATCH:  ${confirmPassword}`);
         setUsername("");
         setPassword("");
-        setPasswordMatch("");
+        setConfirmPassword("");
         navigate("/dashboard");
     }
     return (
@@ -31,33 +31,39 @@ function SignUpPage() {
                 <h1>Minimalistic time managment<br/><span className='accent-text'>made simple</span>.</h1>
             </div>
             <form className='SignUp-form' onSubmit={handleOnSubmit}>
-                <label htmlFor="username">username:</label>
-                <input
-                    id="username"
-                    name="username"
-                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChange(event, setUsername)}
-                    required
-                    type="text"
-                    value={username || ""}
-                />
-                <label htmlFor="password">password:</label>
-                <input
-                    id="password"
-                    name="password"
-                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChange(event, setPassword)}
-                    required
-                    type="password"
-                    value={password || ""}
-                />
-                <label htmlFor="passwordMatch">password match:</label>
-                <input
-                    id="passwordMatch"
-                    name="passwordMatch"
-                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChange(event, setPasswordMatch)}
-                    required
-                    type="password"
-                    value={passwordMatch || ""}
-                />
+                <div className='input-container'>
+                    <label htmlFor="username">username:</label>
+                    <input
+                        id="username"
+                        name="username"
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChange(event, setUsername)}
+                        required
+                        type="text"
+                        value={username || ""}
+                    />
+                </div>
+                <div className='input-container'>
+                    <label htmlFor="password">password:</label>
+                    <input
+                        id="password"
+                        name="password"
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChange(event, setPassword)}
+                        required
+                        type="password"
+                        value={password || ""}
+                    />
+                </div>
+                <div className='input-container'>
+                    <label htmlFor="confirmPassword">confirm password:</label>
+                    <input
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChange(event, setConfirmPassword)}
+                        required
+                        type="password"
+                        value={confirmPassword || ""}
+                    />
+                </div>
                 <button type="submit">create account</button>
             </form>
         </main>

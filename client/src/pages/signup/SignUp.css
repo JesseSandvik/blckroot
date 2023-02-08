@@ -33,3 +33,10 @@
     grid-row: 4 / span 6;
     padding: 1rem;
 }
+
+.SignUp-form .input-container {
+    align-items: center;
+    border: 1px solid orange;
+    display: flex;
+    justify-content: center;
+}

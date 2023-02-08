@@ -12,7 +12,7 @@ describe("US-01: Create A New User", () => {
 
     userEvent.type(await screen.findByLabelText("username:"), "test_username123");
     userEvent.type(await screen.findByLabelText("password:"), "psswrd123@");
-    userEvent.type(await screen.findByLabelText("password match:"), "psswrd123@");
+    userEvent.type(await screen.findByLabelText("confirm password:"), "psswrd123@");
 
     userEvent.click(await screen.findByRole("button", { name: /create account/i }));
 
