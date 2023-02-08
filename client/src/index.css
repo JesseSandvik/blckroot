@@ -1,12 +1,11 @@
 * {
     box-sizing: border-box;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     --primary-color: #f0f7f4;
-    /* --secondary-color: #0f0c0c; */
     --secondary-color: #292f36;
-    --accent-color: #99e1d9;
+    --accent-color: #fb5012;
 }
 
 a {

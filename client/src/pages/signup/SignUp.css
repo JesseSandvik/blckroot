@@ -3,15 +3,15 @@
     border: 4px solid var(--primary-color);
     color: var(--primary-color);
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
 }
 
 .SignUp-header {
     align-items: center;
     display: flex;
-    grid-column: 4 / span 4;
-    grid-row: 2 / 2;
+    grid-column: 1 / -1;
+    grid-row: 1 / 1;
     justify-content: center;
 }
 
@@ -20,23 +20,86 @@
 }
 
 .SignUp-header h1 .accent-text {
+    align-items: center;
     color: var(--accent-color);
+    display: flex;
+    justify-content: center;
+    scale: 1.1;
 }
 
 .SignUp-form {
+    align-items: center;
     background-color: var(--primary-color);
     border-radius: 4px;
+    box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.66);
     color: var(--secondary-color);
-    display: grid;
-    gap: 1rem;
-    grid-column: 4 / span 4;
-    grid-row: 4 / span 6;
+    display: flex;
+    flex-direction: column;
+    grid-column: 5 / span 4;
+    grid-row: 2 / 4;
+    justify-content: center;
     padding: 1rem;
 }
 
 .SignUp-form .input-container {
-    align-items: center;
-    border: 1px solid orange;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    padding: 12px;
+}
+
+.SignUp-form .input-container label {
+    align-items: center;
+    display: flex;
+    font-weight: bold;
+    letter-spacing: 0.033rem;
+    padding-bottom: 8px;
+    text-transform: capitalize;
+}
+
+.SignUp-form .input-container input {
+    font-size: 1.2rem;
+    letter-spacing: 0.033rem;
+    padding: 0.5rem;
+}
+
+.SignUp-form button {
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 4px;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    height: 40px;
+    text-transform: capitalize;
+    transition: 0.5s ease-in-out;
+    width: 160px;
+}
+
+.SignUp-form .btn-group {
+    padding: 1rem;
+}
+
+.SignUp-form button:hover {
+    box-shadow: 0 7px 12px -5px rgba(0, 0, 0, 0.66);
+}
+
+.SignUp-alt-login-options {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1;
+    grid-row: 4 / -1;
+    justify-content: center;
+}
+
+.SignUp-alt-login-options a {
+    color: var(--accent-color);
+    margin: 4px;
+    text-transform: capitalize;
+}
+
+.SignUp-alt-login-options a:hover {
+    text-decoration: underline;
 }
