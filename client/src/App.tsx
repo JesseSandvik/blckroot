@@ -24,7 +24,11 @@ function App() {
         <Route path='/signup' element={<SignUpPage />}  />
         <Route path='/dashboard' element={<Dashboard />}  />
       </Routes>
-      <footer>footer</footer>
+      <footer>
+        <div className='copyright'>
+          <small>Copyright &copy; {new Date().getFullYear()} Jesse Sandvik. All rights reserved.</small>
+        </div>
+      </footer>
     </div>
   );
 }
