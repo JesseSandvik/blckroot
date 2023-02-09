@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { createUser } from '../../api';
 
 import "./SignUp.css";
 
@@ -17,13 +18,16 @@ function SignUpPage() {
 
     const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(`USERNAME:  ${username}`);
-        console.log(`PASSWORD:  ${password}`);
-        console.log(`PASSWORD MATCH:  ${confirmPassword}`);
+        const { signal } = new AbortController();
+        const response = createUser({
+            username,
+            password,
+            confirmPassword,
+        }, signal);
+        console.log(response);
         setUsername("");
         setPassword("");
         setConfirmPassword("");
-        navigate("/dashboard");
     }
     return (
         <main className='SignUp'>
