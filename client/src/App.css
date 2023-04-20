@@ -1,59 +1,59 @@
 .App {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    min-height: 100vh;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }
 
 .App > * {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 header {
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-row: 1 / 1;
-    position: sticky;
-    top: 0;
-    z-index: 1;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row: 1 / 1;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 header i {
-    transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 header .navbar-left-outer {
-    align-items: center;
-    display: flex;
-    grid-column: 1 / 1;
+  align-items: center;
+  display: flex;
+  grid-column: 1 / 1;
 }
 
 header .navbar .brand {
-    align-items: center;
-    color: var(--primary-color);
-    display: flex;
-    font-size: 2rem;
-    gap: 8px;
-    padding: 0 16px;
-    text-transform: capitalize;
+  align-items: center;
+  color: var(--primary-color);
+  display: flex;
+  font-size: 2rem;
+  gap: 8px;
+  padding: 0 16px;
+  text-transform: capitalize;
 }
 
 main {
-    grid-row: 2 / 2;
+  grid-row: 2 / 2;
 }
 
 footer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-row: 3 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row: 3 / -1;
 }
 
 footer .copyright {
-    align-items: center;
-    grid-column: 2 / 2;
-    display: flex;
-    justify-content: center;
+  align-items: center;
+  grid-column: 2 / 2;
+  display: flex;
+  justify-content: center;
 }
