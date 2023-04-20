@@ -1,13 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { createUser } from "../../api";
 
 import "./SignUp.css";
 
 function SignUpPage() {
-  const USERNAME_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{6,23}$/;
-  const PASSWORD_REGEX =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+  const USERNAME_REGEX = useMemo(() => /^[a-zA-Z][a-zA-Z0-9-_]{6,23}$/, []);
+  const PASSWORD_REGEX = useMemo(
+    () => /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/,
+    []
+  );
 
   const navigate = useNavigate();
   const usernameRef = useRef<HTMLInputElement>(null);
@@ -29,33 +31,28 @@ function SignUpPage() {
 
   const [errorMessage, setErrorMessage] = useState<string>("");
 
+  const usernameValidationTestPasses = USERNAME_REGEX.test(username);
+  const passwordValidationTestPasses = PASSWORD_REGEX.test(password);
+
   useEffect(() => {
-    if (usernameRef?.current) {
-      usernameRef.current.focus();
-    }
+    usernameRef?.current && usernameRef.current.focus();
   }, []);
 
   useEffect(() => {
-    const result = USERNAME_REGEX.test(username);
-    console.log(result);
-    console.log(username);
-    setUsernameIsValid(result);
-  }, [USERNAME_REGEX, username]);
+    setUsernameIsValid(usernameValidationTestPasses);
+  }, [usernameValidationTestPasses]);
 
   useEffect(() => {
-    const result = PASSWORD_REGEX.test(password);
-    console.log(result);
-    console.log(password);
-    setPasswordIsValid(result);
+    setPasswordIsValid(passwordValidationTestPasses);
     const passwordIsConfirmed = password === confirmPassword;
     setConfirmPasswordIsValid(passwordIsConfirmed);
-  }, [PASSWORD_REGEX, password, confirmPassword]);
+  }, [password, passwordValidationTestPasses, confirmPassword]);
 
   useEffect(() => {
     setErrorMessage("");
   }, [username, password, confirmPassword]);
 
-  const handleChange = (
+  const handleOnChange = (
     event: React.ChangeEvent<HTMLInputElement>,
     setState: React.Dispatch<React.SetStateAction<string>>
   ) => {
@@ -65,19 +62,25 @@ function SignUpPage() {
 
   const handleOnSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const { signal } = new AbortController();
-    const response = await createUser(
-      {
-        username,
-        password,
-        confirmPassword,
-      },
-      signal
-    );
-    console.log(response);
-    setUsername("");
-    setPassword("");
-    setConfirmPassword("");
+
+    if (usernameValidationTestPasses && passwordValidationTestPasses) {
+      const { signal } = new AbortController();
+      const response = await createUser(
+        {
+          username,
+          password,
+        },
+        signal
+      );
+      console.log(response);
+      setUsername("");
+      setPassword("");
+      setConfirmPassword("");
+      navigate("/dashboard");
+    } else {
+      setErrorMessage("Invalid Entry");
+      return;
+    }
   };
 
   return (
@@ -96,7 +99,7 @@ function SignUpPage() {
             id="username"
             name="username"
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              handleChange(event, setUsername)
+              handleOnChange(event, setUsername)
             }
             required
             type="text"
@@ -109,7 +112,7 @@ function SignUpPage() {
             id="password"
             name="password"
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              handleChange(event, setPassword)
+              handleOnChange(event, setPassword)
             }
             required
             type="password"
@@ -122,7 +125,7 @@ function SignUpPage() {
             id="confirmPassword"
             name="confirmPassword"
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              handleChange(event, setConfirmPassword)
+              handleOnChange(event, setConfirmPassword)
             }
             required
             type="password"

@@ -1,10 +1,9 @@
-
 interface Options {
-    method: string;
-    headers: Headers;
-    body: string;
-    signal: AbortSignal;
-  };
+  method: string;
+  headers: Headers;
+  body: string;
+  signal: AbortSignal;
+}
 
 /**
  * Defines the base URL for the API.
@@ -34,7 +33,7 @@ headers.append("Content-Type", "application/json");
  *  a promise that resolves to the `json` data or an error.
  *  If the response is not in the 200 - 399 range the promise is rejected.
  */
-async function fetchJson(url: string, options: Options) {
+async function fetchJson(url: string, options: Options): Promise<Error | any> {
   try {
     const response = await fetch(url, options);
 
@@ -50,33 +49,35 @@ async function fetchJson(url: string, options: Options) {
     return payload.data;
   } catch (error) {
     if (error instanceof Error) {
-        console.log(error.message);
+      console.log(error.message);
     }
   }
 }
 
 interface User {
-    username: string;
-    password: string;
-    confirmPassword: string;
+  username: string;
+  password: string;
 }
 
- /** POST a new reservation to the database
-  *
-  * @param user
-  *  the new user data
-  * @param signal
-  *  optional AbortController.signal
-  * @returns {Promise<user>}
-  *  a promise that resolves the saved user
-  */
- export async function createUser(data: User, signal: AbortSignal) {
-    const url = `${API_BASE_URL}/register`;
-    const options = {
-      method: "POST",
-      headers,
-      body: JSON.stringify({ data }),
-      signal,
-    };
-    return await fetchJson(url, options);
-  }
+/** POST a new reservation to the database
+ *
+ * @param user
+ *  the new user data
+ * @param signal
+ *  optional AbortController.signal
+ * @returns {Promise<User>}
+ *  a promise that resolves the saved user
+ */
+export async function createUser(
+  data: User,
+  signal: AbortSignal
+): Promise<User> {
+  const url = `${API_BASE_URL}/register`;
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ data }),
+    signal,
+  };
+  return await fetchJson(url, options);
+}
