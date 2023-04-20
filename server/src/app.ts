@@ -1,14 +1,21 @@
-import express, { ErrorRequestHandler, Request, Response, NextFunction } from "express";
+import express, {
+  ErrorRequestHandler,
+  Request,
+  Response,
+  NextFunction,
+} from "express";
 import * as dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello World!')
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello World!");
 });
 
 app.use("/register", require("./register/register.router"));

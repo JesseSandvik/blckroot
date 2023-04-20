@@ -28,11 +28,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv = __importStar(require("dotenv"));
+const cors_1 = __importDefault(require("cors"));
 dotenv.config();
 const app = (0, express_1.default)();
+app.use((0, cors_1.default)());
 app.use(express_1.default.json());
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+app.get("/", (req, res) => {
+    res.send("Hello World!");
 });
 app.use("/register", require("./register/register.router"));
 app.use("/users", require("./user/user.router"));
