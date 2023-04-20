@@ -1,15 +1,59 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { createUser } from "../../api";
 
 import "./SignUp.css";
 
 function SignUpPage() {
+  const USERNAME_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{6,23}$/;
+  const PASSWORD_REGEX =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+
   const navigate = useNavigate();
+  const usernameRef = useRef<HTMLInputElement>(null);
+  const errorRef = useRef();
 
   const [username, setUsername] = useState<string>("");
+  const [usernameIsValid, setUsernameIsValid] = useState<boolean>(false);
+  const [usernameIsFocus, setUsernameIsFocus] = useState<boolean>(false);
+
   const [password, setPassword] = useState<string>("");
+  const [passwordIsValid, setPasswordIsValid] = useState<boolean>(false);
+  const [passwordIsFocus, setPasswordIsFocus] = useState<boolean>(false);
+
   const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [confirmPasswordIsValid, setConfirmPasswordIsValid] =
+    useState<boolean>(false);
+  const [confirmPasswordIsFocus, setConfirmPasswordIsFocus] =
+    useState<boolean>(false);
+
+  const [errorMessage, setErrorMessage] = useState<string>("");
+
+  useEffect(() => {
+    if (usernameRef?.current) {
+      usernameRef.current.focus();
+    }
+  }, []);
+
+  useEffect(() => {
+    const result = USERNAME_REGEX.test(username);
+    console.log(result);
+    console.log(username);
+    setUsernameIsValid(result);
+  }, [USERNAME_REGEX, username]);
+
+  useEffect(() => {
+    const result = PASSWORD_REGEX.test(password);
+    console.log(result);
+    console.log(password);
+    setPasswordIsValid(result);
+    const passwordIsConfirmed = password === confirmPassword;
+    setConfirmPasswordIsValid(passwordIsConfirmed);
+  }, [PASSWORD_REGEX, password, confirmPassword]);
+
+  useEffect(() => {
+    setErrorMessage("");
+  }, [username, password, confirmPassword]);
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -35,6 +79,7 @@ function SignUpPage() {
     setPassword("");
     setConfirmPassword("");
   };
+
   return (
     <main className="SignUp">
       <div className="SignUp-header">
