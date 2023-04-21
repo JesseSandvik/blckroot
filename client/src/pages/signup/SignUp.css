@@ -33,6 +33,7 @@
   background-color: var(--primary-color);
   border-radius: 4px;
   box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.66);
+  display: grid;
   color: var(--secondary-color);
   grid-column: 5 / span 4;
   grid-row: 2 / 4;
@@ -40,30 +41,40 @@
 }
 
 .SignUp-form > * {
-  background-color: bisque;
   padding: 0.5rem;
 }
 
 .SignUp-form .input-container {
-  border: 2px solid blue;
   display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
 }
 
 .SignUp-form .input-container-upper {
-  border: 1px solid violet;
   display: flex;
+  grid-column: 2 / 2;
   justify-content: space-between;
 }
 
 .SignUp-form .input-container label {
-  border: 1px solid aqua;
   font-weight: bold;
   text-transform: capitalize;
 }
 
+.SignUp-form .input-container-lower {
+  grid-column: 2 / 2;
+}
+
 .SignUp-form .input-container input {
   font-size: 1.2rem;
-  grid-column: 1 / -1;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.SignUp-form .btn-group {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
 }
 
 .SignUp-form button {
@@ -80,9 +91,8 @@
   width: 160px;
 }
 
-.SignUp-form .btn-group {
-  grid-column: 2 / 2;
-  padding: 0.5rem;
+.SignUp-form button:disabled:hover {
+  box-shadow: unset;
 }
 
 .SignUp-form button:hover {

@@ -105,39 +105,41 @@ function SignUpPage() {
               >
                 <i className="fa-solid fa-xmark"></i>
               </span>
-              <p
-                id="uidnote"
-                className={
-                  usernameIsFocus && username && !usernameIsValid
-                    ? "instructions"
-                    : "offscreen"
-                }
-              >
-                <i className="fa-solid fa-info-circle"></i>
-                4 to 24 characters.
-                <br />
-                Must begin with a letter.
-                <br />
-                Letters, numbers, underscores, & hyphens are allowed.
-              </p>
             </div>
           </div>
-          <input
-            aria-describedby="uidnote"
-            aria-invalid={usernameIsValid ? "false" : "true"}
-            autoComplete="off"
-            id="username"
-            name="username"
-            onBlur={() => setUsernameIsFocus(false)}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              handleOnChange(event, setUsername)
-            }
-            onFocus={() => setUsernameIsFocus(true)}
-            ref={usernameRef}
-            required
-            type="text"
-            value={username || ""}
-          />
+          <div className="input-container-lower">
+            <input
+              aria-describedby="uidnote"
+              aria-invalid={usernameIsValid ? "false" : "true"}
+              autoComplete="off"
+              id="username"
+              name="username"
+              onBlur={() => setUsernameIsFocus(false)}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                handleOnChange(event, setUsername)
+              }
+              onFocus={() => setUsernameIsFocus(true)}
+              ref={usernameRef}
+              required
+              type="text"
+              value={username || ""}
+            />
+            <p
+              id="uidnote"
+              className={
+                usernameIsFocus && username && !usernameIsValid
+                  ? "instructions"
+                  : "offscreen"
+              }
+            >
+              <i className="fa-solid fa-info-circle"></i>
+              4 to 24 characters.
+              <br />
+              Must begin with a letter.
+              <br />
+              Letters, numbers, underscores, & hyphens are allowed.
+            </p>
+          </div>
         </div>
         <div className="input-container">
           <div className="input-container-upper">
@@ -151,60 +153,108 @@ function SignUpPage() {
               >
                 <i className="fa-solid fa-xmark"></i>
               </span>
-              <p
-                id="passwordnote"
-                className={
-                  passwordIsFocus && !passwordIsValid
-                    ? "instructions"
-                    : "offscreen"
-                }
-              >
-                <i className="fa-solid fa-info-circle"></i>
-                8 to 24 characters.
-                <br />
-                Must include uppercase & lowercase letters, a number, & a
-                special character.
-                <br />
-                Allowed special characters:{" "}
-                <span aria-label="exclamation mark">!</span>
-                <span aria-label="at symbol">@</span>
-                <span aria-label="hashtag">#</span>
-                <span aria-label="dollar sign">$</span>
-                <span aria-label="percent">%</span>
-              </p>
             </div>
           </div>
-          <input
-            aria-describedby="passwordnote"
-            aria-invalid={passwordIsValid ? "false" : "true"}
-            id="password"
-            name="password"
-            onBlur={() => setPasswordIsFocus(false)}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              handleOnChange(event, setPassword)
-            }
-            onFocus={() => setPasswordIsFocus(true)}
-            required
-            type="password"
-            value={password || ""}
-          />
+          <div className="input-container-lower">
+            <input
+              aria-describedby="passwordnote"
+              aria-invalid={passwordIsValid ? "false" : "true"}
+              id="password"
+              name="password"
+              onBlur={() => setPasswordIsFocus(false)}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                handleOnChange(event, setPassword)
+              }
+              onFocus={() => setPasswordIsFocus(true)}
+              required
+              type="password"
+              value={password || ""}
+            />
+            <p
+              id="passwordnote"
+              className={
+                passwordIsFocus && !passwordIsValid
+                  ? "instructions"
+                  : "offscreen"
+              }
+            >
+              <i className="fa-solid fa-info-circle"></i>
+              8 to 24 characters.
+              <br />
+              Must include uppercase & lowercase letters, a number, & a special
+              character.
+              <br />
+              Allowed special characters:{" "}
+              <span aria-label="exclamation mark">!</span>
+              <span aria-label="at symbol">@</span>
+              <span aria-label="hashtag">#</span>
+              <span aria-label="dollar sign">$</span>
+              <span aria-label="percent">%</span>
+            </p>
+          </div>
         </div>
-        {/* <div className="input-container">
-          <label htmlFor="confirmPassword">confirm password:</label>
-          <input
-            id="confirmPassword"
-            name="confirmPassword"
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              handleOnChange(event, setConfirmPassword)
-            }
-            required
-            type="password"
-            value={confirmPassword || ""}
-          />
+        <div className="input-container">
+          <div className="input-container-upper">
+            <label htmlFor="confirm_password">confirm password:</label>
+            <div className="input-status">
+              <span
+                className={
+                  confirmPasswordIsValid && confirmPassword ? "valid" : "hide"
+                }
+              >
+                <i className="fa-solid fa-check"></i>
+              </span>
+              <span
+                className={
+                  confirmPasswordIsValid || !confirmPassword
+                    ? "hide"
+                    : "invalid"
+                }
+              >
+                <i className="fa-solid fa-xmark"></i>
+              </span>
+            </div>
+          </div>
+          <div className="input-container-lower">
+            <input
+              aria-describedby="confirmpasswordnote"
+              aria-invalid={confirmPasswordIsValid ? "false" : "true"}
+              id="confirm_password"
+              name="confirm_password"
+              onBlur={() => setConfirmPasswordIsFocus(false)}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                handleOnChange(event, setConfirmPassword)
+              }
+              onFocus={() => setConfirmPasswordIsFocus(true)}
+              required
+              type="password"
+              value={confirmPassword || ""}
+            />
+            <p
+              id="confirmpasswordnote"
+              className={
+                confirmPasswordIsFocus && !confirmPasswordIsValid
+                  ? "instructions"
+                  : "offscreen"
+              }
+            >
+              <i className="fa-solid fa-info-circle"></i>
+              Must match the password from the above input field.
+            </p>
+          </div>
         </div>
         <div className="btn-group">
-          <button type="submit">create account</button>
-        </div> */}
+          <button
+            disabled={
+              !usernameIsValid || !passwordIsValid || !confirmPasswordIsValid
+                ? true
+                : false
+            }
+            type="submit"
+          >
+            create account
+          </button>
+        </div>
       </form>
       <div className="SignUp-alt-login-options">
         <p>Already a member?</p>

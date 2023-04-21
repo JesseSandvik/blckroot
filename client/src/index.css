@@ -38,10 +38,16 @@ a {
 }
 
 .instructions {
-  background-color: var(--secondary-color);
+  background-color: #f0f0f0;
+  border: 1px solid var(--secondary-color);
   border-radius: 4px;
   box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.66);
-  color: var(--primary-color);
+  color: var(--secondary-color);
+  margin: 1rem;
   padding: 1rem;
   position: fixed;
+}
+
+.instructions i {
+  padding-right: 0.5rem;
 }
