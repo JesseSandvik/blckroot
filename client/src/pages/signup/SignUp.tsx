@@ -94,32 +94,102 @@ function SignUpPage() {
       </div>
       <form className="SignUp-form" onSubmit={handleOnSubmit}>
         <div className="input-container">
-          <label htmlFor="username">username:</label>
+          <div className="input-container-upper">
+            <label htmlFor="username">username:</label>
+            <div className="input-status">
+              <span className={usernameIsValid ? "valid" : "hide"}>
+                <i className="fa-solid fa-check"></i>
+              </span>
+              <span
+                className={usernameIsValid || !username ? "hide" : "invalid"}
+              >
+                <i className="fa-solid fa-xmark"></i>
+              </span>
+              <p
+                id="uidnote"
+                className={
+                  usernameIsFocus && username && !usernameIsValid
+                    ? "instructions"
+                    : "offscreen"
+                }
+              >
+                <i className="fa-solid fa-info-circle"></i>
+                4 to 24 characters.
+                <br />
+                Must begin with a letter.
+                <br />
+                Letters, numbers, underscores, & hyphens are allowed.
+              </p>
+            </div>
+          </div>
           <input
+            aria-describedby="uidnote"
+            aria-invalid={usernameIsValid ? "false" : "true"}
+            autoComplete="off"
             id="username"
             name="username"
+            onBlur={() => setUsernameIsFocus(false)}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               handleOnChange(event, setUsername)
             }
+            onFocus={() => setUsernameIsFocus(true)}
+            ref={usernameRef}
             required
             type="text"
             value={username || ""}
           />
         </div>
         <div className="input-container">
-          <label htmlFor="password">password:</label>
+          <div className="input-container-upper">
+            <label htmlFor="password">password:</label>
+            <div className="input-status">
+              <span className={passwordIsValid ? "valid" : "hide"}>
+                <i className="fa-solid fa-check"></i>
+              </span>
+              <span
+                className={passwordIsValid || !password ? "hide" : "invalid"}
+              >
+                <i className="fa-solid fa-xmark"></i>
+              </span>
+              <p
+                id="passwordnote"
+                className={
+                  passwordIsFocus && !passwordIsValid
+                    ? "instructions"
+                    : "offscreen"
+                }
+              >
+                <i className="fa-solid fa-info-circle"></i>
+                8 to 24 characters.
+                <br />
+                Must include uppercase & lowercase letters, a number, & a
+                special character.
+                <br />
+                Allowed special characters:{" "}
+                <span aria-label="exclamation mark">!</span>
+                <span aria-label="at symbol">@</span>
+                <span aria-label="hashtag">#</span>
+                <span aria-label="dollar sign">$</span>
+                <span aria-label="percent">%</span>
+              </p>
+            </div>
+          </div>
           <input
+            aria-describedby="passwordnote"
+            aria-invalid={passwordIsValid ? "false" : "true"}
             id="password"
             name="password"
+            onBlur={() => setPasswordIsFocus(false)}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               handleOnChange(event, setPassword)
             }
+            onFocus={() => setPasswordIsFocus(true)}
             required
             type="password"
             value={password || ""}
           />
         </div>
-        <div className="input-container">
+        {/* <div className="input-container">
           <label htmlFor="confirmPassword">confirm password:</label>
           <input
             id="confirmPassword"
@@ -134,7 +204,7 @@ function SignUpPage() {
         </div>
         <div className="btn-group">
           <button type="submit">create account</button>
-        </div>
+        </div> */}
       </form>
       <div className="SignUp-alt-login-options">
         <p>Already a member?</p>

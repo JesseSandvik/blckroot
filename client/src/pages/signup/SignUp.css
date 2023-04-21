@@ -30,39 +30,40 @@
 }
 
 .SignUp-form {
-  align-items: center;
   background-color: var(--primary-color);
   border-radius: 4px;
   box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.66);
   color: var(--secondary-color);
-  display: flex;
-  flex-direction: column;
   grid-column: 5 / span 4;
   grid-row: 2 / 4;
-  justify-content: center;
   padding: 1rem;
 }
 
-.SignUp-form .input-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.SignUp-form > * {
+  background-color: bisque;
   padding: 0.5rem;
 }
 
-.SignUp-form .input-container label {
-  align-items: center;
+.SignUp-form .input-container {
+  border: 2px solid blue;
+  display: grid;
+}
+
+.SignUp-form .input-container-upper {
+  border: 1px solid violet;
   display: flex;
+  justify-content: space-between;
+}
+
+.SignUp-form .input-container label {
+  border: 1px solid aqua;
   font-weight: bold;
-  letter-spacing: 0.033rem;
-  padding: 0.5rem;
   text-transform: capitalize;
 }
 
 .SignUp-form .input-container input {
   font-size: 1.2rem;
-  letter-spacing: 0.033rem;
-  padding: 0.5rem;
+  grid-column: 1 / -1;
 }
 
 .SignUp-form button {
@@ -80,6 +81,7 @@
 }
 
 .SignUp-form .btn-group {
+  grid-column: 2 / 2;
   padding: 0.5rem;
 }
 
