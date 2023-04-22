@@ -89,7 +89,7 @@ function SignUpPage() {
         <h1>
           Minimalistic time managment
           <br />
-          <span className="accent-text">made simple</span>
+          <span className="accent-text">made simple.</span>
         </h1>
       </div>
       <form className="SignUp-form" onSubmit={handleOnSubmit}>
@@ -258,7 +258,7 @@ function SignUpPage() {
       </form>
       <div className="SignUp-alt-login-options">
         <p>Already a member?</p>
-        <NavLink to="/">Login to your account</NavLink>
+        <NavLink to="/login">Login to your account</NavLink>
         <p>or</p>
         <NavLink to="/dashboard">Continue as guest</NavLink>
       </div>

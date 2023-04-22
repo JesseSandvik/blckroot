@@ -10,12 +10,6 @@
   padding: 1rem;
 }
 
-button:disabled {
-  background-color: #808080;
-  color: #cecece;
-  cursor: unset;
-}
-
 header {
   background-color: var(--secondary-color);
   color: var(--primary-color);

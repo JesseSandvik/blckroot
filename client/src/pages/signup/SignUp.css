@@ -37,6 +37,7 @@
   color: var(--secondary-color);
   grid-column: 5 / span 4;
   grid-row: 2 / 4;
+  grid-template-rows: repeat(4, 1fr);
   padding: 1rem;
 }
 
@@ -87,6 +88,12 @@
   height: 40px;
   transition: 0.5s ease-in-out;
   width: 160px;
+}
+
+.SignUp-form button:disabled {
+  background-color: #808080;
+  color: #cecece;
+  cursor: unset;
 }
 
 .SignUp-form button:disabled:hover {

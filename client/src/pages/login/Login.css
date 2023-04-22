@@ -1,0 +1,124 @@
+.Login {
+  background-color: var(--secondary-color);
+  border: 4px solid var(--primary-color);
+  color: var(--primary-color);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.Login-header {
+  align-items: center;
+  display: flex;
+  grid-column: 1 / -1;
+  grid-row: 1 / 1;
+  justify-content: center;
+}
+
+.Login-header h1 {
+  letter-spacing: 0.05rem;
+  text-transform: capitalize;
+}
+
+.Login-header h1 .accent-text {
+  align-items: center;
+  color: var(--accent-color);
+  display: flex;
+  justify-content: center;
+  padding: 0.25rem;
+  scale: 1.1;
+}
+
+.Login-form {
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.66);
+  display: grid;
+  color: var(--secondary-color);
+  grid-column: 5 / span 4;
+  grid-row: 2 / 4;
+  grid-template-rows: repeat(4, 1fr);
+  padding: 1rem;
+}
+
+.Login-form > * {
+  padding: 0.5rem;
+}
+
+.Login-form .input-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.Login-form .input-container-upper {
+  display: flex;
+  grid-column: 2 / 2;
+  justify-content: space-between;
+}
+
+.Login-form .input-container label {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.Login-form .input-container-lower {
+  grid-column: 2 / 2;
+}
+
+.Login-form .input-container input {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.Login-form .btn-group {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.Login-form button {
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 4px;
+  color: var(--primary-color);
+  font-size: 1rem;
+  font-weight: bold;
+  height: 40px;
+  transition: 0.5s ease-in-out;
+  width: 160px;
+}
+
+.Login-form button:disabled {
+  background-color: #808080;
+  color: #cecece;
+  cursor: unset;
+}
+
+.Login-form button:disabled:hover {
+  box-shadow: unset;
+}
+
+.Login-form button:hover {
+  box-shadow: 0 7px 12px -5px rgba(0, 0, 0, 0.66);
+}
+
+.Login-alt-login-options {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / -1;
+  grid-row: 4 / -1;
+  justify-content: center;
+}
+
+.Login-alt-login-options a {
+  color: var(--accent-color);
+  margin: 4px;
+  text-transform: capitalize;
+}
+
+.Login-alt-login-options a:hover {
+  text-decoration: underline;
+}

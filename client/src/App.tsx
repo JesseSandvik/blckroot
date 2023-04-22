@@ -1,7 +1,8 @@
 import { NavLink, Routes, Route, useLocation } from "react-router-dom";
 
-import HomePage from "./pages/Home";
 import Dashboard from "./pages/dashboard/Dashboard";
+import HomePage from "./pages/Home";
+import LoginPage from "./pages/login/Login";
 import SignUpPage from "./pages/signup/SignUp";
 
 import "./App.css";
@@ -31,6 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       <footer>
