@@ -47,6 +47,39 @@ header .navbar .brand {
   text-transform: capitalize;
 }
 
+header .navbar-right-outer {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  grid-column: 3 / -1;
+  justify-content: flex-end;
+  padding: 0 1rem;
+}
+
+header .navbar-right-outer a {
+  align-items: center;
+  background-color: var(--primary-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 4px;
+  color: var(--secondary-color);
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  text-align: center;
+  text-transform: capitalize;
+  width: 80px;
+}
+
+header .navbar-right-outer a:active {
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+}
+
+header .navbar-right-outer a:hover {
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+}
+
 main {
   grid-row: 2 / 2;
 }

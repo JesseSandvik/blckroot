@@ -13,6 +13,11 @@ a {
   text-decoration: none;
 }
 
+button {
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
 .hide {
   font-size: 0;
   height: 0;
