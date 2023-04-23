@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 const users = require("../../data/users");
-const validProperties = ["username", "password"];
+const validProperties = ["email", "password"];
 
 function allPropertiesAreValid(arr: Array<string>) {
   return (req: Request, res: Response, next: NextFunction) => {
@@ -18,12 +18,26 @@ function allPropertiesAreValid(arr: Array<string>) {
   };
 }
 
+function validateEmailAddress(req: Request, res: Response, next: NextFunction) {
+  const { email } = req.body.data;
+  const EMAIL_REGEX = /^\S+@\S+\.\S+$/;
+
+  if (EMAIL_REGEX.test(email)) {
+    next();
+  } else {
+    next({
+      status: 400,
+      message: "A valid email is required.",
+    });
+  }
+}
+
 const hasValidProperties = allPropertiesAreValid(validProperties);
 
 function createUser(req: Request, res: Response) {
-  const { username, password } = req.body.data;
+  const { email, password } = req.body.data;
   const newUser = {
-    username,
+    email,
     password,
   };
   users.push(newUser);
@@ -31,5 +45,5 @@ function createUser(req: Request, res: Response) {
 }
 
 module.exports = {
-  create: [hasValidProperties, createUser],
+  create: [hasValidProperties, validateEmailAddress, createUser],
 };

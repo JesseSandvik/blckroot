@@ -3,11 +3,11 @@ const users = require("../../data/users");
 
 interface User {
   id: number;
-  username: string;
+  email: string;
   password: string;
 }
 
-function userExists (req: Request, res: Response, next: NextFunction) {
+function userExists(req: Request, res: Response, next: NextFunction) {
   const { userId } = req.params;
   const matchingUser = users.find((user: User) => user.id === parseInt(userId));
 
@@ -21,16 +21,16 @@ function userExists (req: Request, res: Response, next: NextFunction) {
   });
 }
 
-function readUser (req: Request, res: Response) {
+function readUser(req: Request, res: Response) {
   const data = res.locals.user;
   res.json({ data });
 }
 
-function listUsers (req: Request, res: Response) {
+function listUsers(req: Request, res: Response) {
   res.json({ data: users });
 }
 
-  module.exports = {
-    read: [userExists, readUser],
-    list: [listUsers],
-  }
+module.exports = {
+  read: [userExists, readUser],
+  list: [listUsers],
+};
