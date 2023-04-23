@@ -78,32 +78,6 @@
   padding: 0.5rem;
 }
 
-.SignUp-form button {
-  background-color: var(--accent-color);
-  border: none;
-  border-radius: 4px;
-  color: var(--primary-color);
-  font-size: 1rem;
-  font-weight: bold;
-  height: 40px;
-  transition: 0.5s ease-in-out;
-  width: 160px;
-}
-
-.SignUp-form button:disabled {
-  background-color: #808080;
-  color: #cecece;
-  cursor: unset;
-}
-
-.SignUp-form button:disabled:hover {
-  box-shadow: unset;
-}
-
-.SignUp-form button:hover {
-  box-shadow: 0 7px 12px -5px rgba(0, 0, 0, 0.66);
-}
-
 .SignUp-alt-login-options {
   align-items: center;
   display: flex;

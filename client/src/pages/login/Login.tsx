@@ -184,8 +184,12 @@ function LoginPage() {
             </p>
           </div>
         </div>
+        <div className="support-container">
+          <NavLink to="/forgot_password">Forgot password?</NavLink>
+        </div>
         <div className="btn-group">
           <button
+            className="form-submit-btn"
             disabled={!usernameIsValid || !passwordIsValid ? true : false}
             type="submit"
           >

@@ -5,6 +5,9 @@ import { createUser } from "../../api";
 import "./SignUp.css";
 
 function SignUpPage() {
+  /**
+   * TODO: change USERNAME/username to email. Preferred method for password recovery, simplifies the process.
+   */
   const USERNAME_REGEX = useMemo(() => /^[a-zA-Z][a-zA-Z0-9-_]{6,23}$/, []);
   const PASSWORD_REGEX = useMemo(
     () => /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/,
@@ -245,6 +248,7 @@ function SignUpPage() {
         </div>
         <div className="btn-group">
           <button
+            className="form-submit-btn"
             disabled={
               !usernameIsValid || !passwordIsValid || !confirmPasswordIsValid
                 ? true

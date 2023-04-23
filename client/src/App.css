@@ -52,10 +52,10 @@ header .navbar-right-outer {
 
 header .navbar-right-outer a {
   align-items: center;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   border: 1px solid var(--secondary-color);
   border-radius: 4px;
-  color: var(--secondary-color);
+  color: var(--primary-color);
   display: flex;
   justify-content: center;
   padding: 0.5rem;
@@ -64,9 +64,13 @@ header .navbar-right-outer a {
   width: 80px;
 }
 
-header .navbar-right-outer a:active {
-  border: 1px solid var(--accent-color);
-  color: var(--accent-color);
+header .navbar-right-outer a:last-child {
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+}
+
+header .navbar-right-outer a:last-child:hover {
+  color: var(--secondary-color);
 }
 
 header .navbar-right-outer a:hover {
@@ -76,6 +80,33 @@ header .navbar-right-outer a:hover {
 
 main {
   grid-row: 2 / 2;
+}
+
+.form-submit-btn {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  border-radius: 4px;
+  color: var(--secondary-color);
+  font-size: 1rem;
+  font-weight: bold;
+  height: 40px;
+  transition: 0.5s ease-in-out;
+  width: 160px;
+}
+
+.form-submit-btn:hover {
+  box-shadow: 0 7px 12px -5px rgba(0, 0, 0, 0.66);
+}
+
+.form-submit-btn:disabled {
+  background-color: #808080;
+  border: 3px solid #808080;
+  color: #cecece;
+  cursor: unset;
+}
+
+.form-submit-btn:disabled:hover {
+  box-shadow: unset;
 }
 
 footer {
