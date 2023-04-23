@@ -15,8 +15,8 @@ const validProperties = ["email", "password"];
 const hasValidProperties = allPropertiesAreValid(validProperties);
 
 function userExists(req: Request, res: Response, next: NextFunction) {
-  const { userId } = req.params;
-  const matchingUser = users.find((user: User) => user.id === parseInt(userId));
+  const { email } = req.body.data;
+  const matchingUser = users.find((user: User) => user.email === email);
 
   if (matchingUser) {
     res.locals.user = matchingUser;
@@ -29,7 +29,7 @@ function userExists(req: Request, res: Response, next: NextFunction) {
 }
 
 function handleLogin(req: Request, res: Response) {
-  const { email, password } = res.locals.user.data;
+  const { email, password } = res.locals.user;
   res.json({ data: { email, password } });
 }
 

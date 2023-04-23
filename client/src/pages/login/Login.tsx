@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { createUser } from "../../api";
+import { login } from "../../api";
 
 import "./Login.css";
 
@@ -57,7 +57,7 @@ function LoginPage() {
 
     if (emailValidationTestPasses && passwordValidationTestPasses) {
       const { signal } = new AbortController();
-      const response = await createUser(
+      const response = await login(
         {
           email,
           password,

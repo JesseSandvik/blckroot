@@ -5,8 +5,8 @@ const users = require("../../data/users");
 const validProperties = ["email", "password"];
 const hasValidProperties = (0, validation_1.allPropertiesAreValid)(validProperties);
 function userExists(req, res, next) {
-    const { userId } = req.params;
-    const matchingUser = users.find((user) => user.id === parseInt(userId));
+    const { email } = req.body.data;
+    const matchingUser = users.find((user) => user.email === email);
     if (matchingUser) {
         res.locals.user = matchingUser;
         next();
@@ -17,7 +17,7 @@ function userExists(req, res, next) {
     });
 }
 function handleLogin(req, res) {
-    const { email, password } = res.locals.user.data;
+    const { email, password } = res.locals.user;
     res.json({ data: { email, password } });
 }
 module.exports = {
