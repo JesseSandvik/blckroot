@@ -37,6 +37,7 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 app.use("/register", require("./register/register.router"));
+app.use("/auth", require("./auth/auth.router"));
 app.use("/users", require("./user/user.router"));
 app.use((req, res, next) => {
     next({

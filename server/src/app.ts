@@ -19,6 +19,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/register", require("./register/register.router"));
+app.use("/auth", require("./auth/auth.router"));
 app.use("/users", require("./user/user.router"));
 
 app.use((req: Request, res: Response, next: NextFunction) => {
