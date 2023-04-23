@@ -57,6 +57,10 @@
   text-align: center;
 }
 
+.Login-form .support-container a {
+  font-size: 1.1rem;
+}
+
 .Login-form .support-container a:hover {
   text-decoration: underline;
 }

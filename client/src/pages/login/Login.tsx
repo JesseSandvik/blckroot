@@ -5,19 +5,19 @@ import { createUser } from "../../api";
 import "./Login.css";
 
 function LoginPage() {
-  const USERNAME_REGEX = useMemo(() => /^[a-zA-Z][a-zA-Z0-9-_]{6,23}$/, []);
+  const EMAIL_REGEX = useMemo(() => /^\S+@\S+\.\S+$/, []);
   const PASSWORD_REGEX = useMemo(
     () => /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/,
     []
   );
 
   const navigate = useNavigate();
-  const usernameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
   const errorRef = useRef();
 
-  const [username, setUsername] = useState<string>("");
-  const [usernameIsValid, setUsernameIsValid] = useState<boolean>(false);
-  const [usernameIsFocus, setUsernameIsFocus] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>("");
+  const [emailIsValid, setEmailIsValid] = useState<boolean>(false);
+  const [emailIsFocus, setEmailIsFocus] = useState<boolean>(false);
 
   const [password, setPassword] = useState<string>("");
   const [passwordIsValid, setPasswordIsValid] = useState<boolean>(false);
@@ -25,16 +25,16 @@ function LoginPage() {
 
   const [errorMessage, setErrorMessage] = useState<string>("");
 
-  const usernameValidationTestPasses = USERNAME_REGEX.test(username);
+  const emailValidationTestPasses = EMAIL_REGEX.test(email);
   const passwordValidationTestPasses = PASSWORD_REGEX.test(password);
 
   useEffect(() => {
-    usernameRef?.current && usernameRef.current.focus();
+    emailRef?.current && emailRef.current.focus();
   }, []);
 
   useEffect(() => {
-    setUsernameIsValid(usernameValidationTestPasses);
-  }, [usernameValidationTestPasses]);
+    setEmailIsValid(emailValidationTestPasses);
+  }, [emailValidationTestPasses]);
 
   useEffect(() => {
     setPasswordIsValid(passwordValidationTestPasses);
@@ -42,7 +42,7 @@ function LoginPage() {
 
   useEffect(() => {
     setErrorMessage("");
-  }, [username, password]);
+  }, [email, password]);
 
   const handleOnChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -55,17 +55,17 @@ function LoginPage() {
   const handleOnSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (usernameValidationTestPasses && passwordValidationTestPasses) {
+    if (emailValidationTestPasses && passwordValidationTestPasses) {
       const { signal } = new AbortController();
       const response = await createUser(
         {
-          username,
+          email,
           password,
         },
         signal
       );
       console.log(response);
-      setUsername("");
+      setEmail("");
       setPassword("");
       navigate("/dashboard");
     } else {
@@ -86,49 +86,43 @@ function LoginPage() {
       <form className="Login-form" onSubmit={handleOnSubmit}>
         <div className="input-container">
           <div className="input-container-upper">
-            <label htmlFor="username">username:</label>
+            <label htmlFor="email">email:</label>
             <div className="input-status">
-              <span className={usernameIsValid ? "valid" : "hide"}>
+              <span className={emailIsValid ? "valid" : "hide"}>
                 <i className="fa-solid fa-check"></i>
               </span>
-              <span
-                className={usernameIsValid || !username ? "hide" : "invalid"}
-              >
+              <span className={emailIsValid || !email ? "hide" : "invalid"}>
                 <i className="fa-solid fa-xmark"></i>
               </span>
             </div>
           </div>
           <div className="input-container-lower">
             <input
-              aria-describedby="uidnote"
-              aria-invalid={usernameIsValid ? "false" : "true"}
+              aria-describedby="emailnote"
+              aria-invalid={emailIsValid ? "false" : "true"}
               autoComplete="off"
-              id="username"
-              name="username"
-              onBlur={() => setUsernameIsFocus(false)}
+              id="email"
+              name="email"
+              onBlur={() => setEmailIsFocus(false)}
               onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                handleOnChange(event, setUsername)
+                handleOnChange(event, setEmail)
               }
-              onFocus={() => setUsernameIsFocus(true)}
-              ref={usernameRef}
+              onFocus={() => setEmailIsFocus(true)}
+              ref={emailRef}
               required
-              type="text"
-              value={username || ""}
+              type="email"
+              value={email || ""}
             />
             <p
-              id="uidnote"
+              id="emailnote"
               className={
-                usernameIsFocus && username && !usernameIsValid
+                emailIsFocus && email && !emailIsValid
                   ? "instructions"
                   : "offscreen"
               }
             >
               <i className="fa-solid fa-info-circle"></i>
-              4 to 24 characters.
-              <br />
-              Must begin with a letter.
-              <br />
-              Letters, numbers, underscores, & hyphens are allowed.
+              Please enter an email address with a valid format.
             </p>
           </div>
         </div>
@@ -190,7 +184,7 @@ function LoginPage() {
         <div className="btn-group">
           <button
             className="form-submit-btn"
-            disabled={!usernameIsValid || !passwordIsValid ? true : false}
+            disabled={!emailIsValid || !passwordIsValid ? true : false}
             type="submit"
           >
             continue
