@@ -1,35 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const validation_1 = require("../middleware/validation");
 const users = require("../../data/users");
 const validProperties = ["email", "password"];
-function allPropertiesAreValid(arr) {
-    return (req, res, next) => {
-        const { data } = req.body;
-        arr.forEach((element) => {
-            if (!data[element]) {
-                next({
-                    status: 400,
-                    message: `${element} is required.`,
-                });
-            }
-        });
-        next();
-    };
-}
-function validateEmailAddress(req, res, next) {
-    const { email } = req.body.data;
-    const EMAIL_REGEX = /^\S+@\S+\.\S+$/;
-    if (EMAIL_REGEX.test(email)) {
-        next();
-    }
-    else {
-        next({
-            status: 400,
-            message: "A valid email is required.",
-        });
-    }
-}
-const hasValidProperties = allPropertiesAreValid(validProperties);
+const hasValidProperties = (0, validation_1.allPropertiesAreValid)(validProperties);
 function createUser(req, res) {
     const { email, password } = req.body.data;
     const newUser = {
@@ -40,5 +14,5 @@ function createUser(req, res) {
     res.status(201).json({ data: newUser });
 }
 module.exports = {
-    create: [hasValidProperties, validateEmailAddress, createUser],
+    create: [hasValidProperties, validation_1.validateEmailAddress, createUser],
 };
