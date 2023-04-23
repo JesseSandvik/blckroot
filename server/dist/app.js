@@ -29,25 +29,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv = __importStar(require("dotenv"));
 const cors_1 = __importDefault(require("cors"));
+const notFoundHandler_1 = require("./middleware/notFoundHandler");
+const errorHandler_1 = require("./middleware/errorHandler");
 dotenv.config();
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
-app.get("/", (req, res) => {
-    res.send("Hello World!");
-});
 app.use("/register", require("./register/register.router"));
 app.use("/auth", require("./auth/auth.router"));
 app.use("/users", require("./user/user.router"));
-app.use((req, res, next) => {
-    next({
-        status: 404,
-        message: `Path not found: ${req.originalUrl}`,
-    });
-});
-const handleError = (err, req, res, next) => {
-    const { status = 500, message = "Something went wrong!" } = err;
-    res.status(status).json({ error: message });
-};
-app.use(handleError);
+app.use(notFoundHandler_1.handleNotFound);
+app.use(errorHandler_1.handleError);
 module.exports = app;

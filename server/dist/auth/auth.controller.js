@@ -11,10 +11,12 @@ function userExists(req, res, next) {
         res.locals.user = matchingUser;
         next();
     }
-    next({
-        status: 401,
-        message: `User not found.`,
-    });
+    else {
+        next({
+            status: 401,
+            message: `User not found.`,
+        });
+    }
 }
 function handleLogin(req, res) {
     const { email, password } = res.locals.user;

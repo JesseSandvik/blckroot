@@ -21,11 +21,12 @@ function userExists(req: Request, res: Response, next: NextFunction) {
   if (matchingUser) {
     res.locals.user = matchingUser;
     next();
+  } else {
+    next({
+      status: 401,
+      message: `User not found.`,
+    });
   }
-  next({
-    status: 401,
-    message: `User not found.`,
-  });
 }
 
 function handleLogin(req: Request, res: Response) {
