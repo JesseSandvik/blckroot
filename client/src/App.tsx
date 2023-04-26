@@ -12,7 +12,14 @@ interface User {
   email: String;
   password: String;
 }
-const UserContext = createContext<User | undefined>(undefined);
+
+interface UserContext {
+  email: String;
+  password: String;
+  setUser: () =>
+}
+
+const UserContext = createContext<UserContext | undefined>(undefined);
 
 /**
  * TODO: Light/Dark Theme toggle
@@ -23,10 +30,11 @@ const UserContext = createContext<User | undefined>(undefined);
 function App() {
   const location = useLocation();
 
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<User | undefined>();
+  const value = { user, setUser };
 
   return (
-    <UserContext.Provider value={user}>
+    <UserContext.Provider value={value}>
       <div className="App">
         <header>
           <nav className="navbar">
