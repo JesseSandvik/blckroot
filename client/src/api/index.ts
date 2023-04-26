@@ -82,7 +82,10 @@ export async function createUser(
   return await fetchJson(url, options);
 }
 
-export async function login(data: User, signal: AbortSignal): Promise<User> {
+export async function loginUser(
+  data: User,
+  signal: AbortSignal
+): Promise<User> {
   const url = `${API_BASE_URL}/auth`;
   const options = {
     method: "POST",

@@ -1,5 +1,6 @@
-import { useState, createContext } from "react";
+import { useContext, useEffect } from "react";
 import { NavLink, Routes, Route, useLocation } from "react-router-dom";
+import { AuthContext } from "./context/AuthContext";
 
 import Dashboard from "./pages/dashboard/Dashboard";
 import HomePage from "./pages/Home";
@@ -8,19 +9,6 @@ import SignUpPage from "./pages/signup/SignUp";
 
 import "./App.css";
 
-interface User {
-  email: String;
-  password: String;
-}
-
-interface UserContext {
-  email: String;
-  password: String;
-  setUser: () =>
-}
-
-const UserContext = createContext<UserContext | undefined>(undefined);
-
 /**
  * TODO: Light/Dark Theme toggle
  */
@@ -28,13 +16,15 @@ const UserContext = createContext<UserContext | undefined>(undefined);
 // const ThemeContext = createContext<ThemeContextType>("light");
 
 function App() {
+  const { user, setUser } = useContext(AuthContext);
   const location = useLocation();
 
-  const [user, setUser] = useState<User | undefined>();
-  const value = { user, setUser };
+  useEffect(() => {
+    console.log("USER: ", JSON.stringify(user));
+  }, [user]);
 
   return (
-    <UserContext.Provider value={value}>
+    <AuthContext.Provider value={{ user, setUser }}>
       <div className="App">
         <header>
           <nav className="navbar">
@@ -68,7 +58,7 @@ function App() {
           </div>
         </footer>
       </div>
-    </UserContext.Provider>
+    </AuthContext.Provider>
   );
 }
 

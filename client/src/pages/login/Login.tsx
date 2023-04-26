@@ -1,10 +1,12 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { login } from "../../api";
+import { useAuth } from "../../hooks/useAuth";
+import { loginUser } from "../../api";
 
 import "./Login.css";
 
 function LoginPage() {
+  const { login } = useAuth();
   const EMAIL_REGEX = useMemo(() => /^\S+@\S+\.\S+$/, []);
   const PASSWORD_REGEX = useMemo(
     () => /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/,
@@ -57,7 +59,7 @@ function LoginPage() {
 
     if (emailValidationTestPasses && passwordValidationTestPasses) {
       const { signal } = new AbortController();
-      const response = await login(
+      const response = await loginUser(
         {
           email,
           password,
@@ -65,6 +67,10 @@ function LoginPage() {
         signal
       );
       console.log(response);
+      login({
+        id: "1a",
+        email: response.email,
+      });
       setEmail("");
       setPassword("");
       navigate("/dashboard");
