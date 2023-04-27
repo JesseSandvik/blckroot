@@ -1,6 +1,5 @@
-import { useContext, useEffect } from "react";
 import { NavLink, Routes, Route, useLocation } from "react-router-dom";
-import { AuthContext } from "./context/AuthContext";
+import { AuthProvider } from "./context/AuthContext";
 
 import Dashboard from "./pages/dashboard/Dashboard";
 import HomePage from "./pages/Home";
@@ -16,15 +15,10 @@ import "./App.css";
 // const ThemeContext = createContext<ThemeContextType>("light");
 
 function App() {
-  const { user, setUser } = useContext(AuthContext);
   const location = useLocation();
 
-  useEffect(() => {
-    console.log("USER: ", JSON.stringify(user));
-  }, [user]);
-
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthProvider>
       <div className="App">
         <header>
           <nav className="navbar">
@@ -58,7 +52,7 @@ function App() {
           </div>
         </footer>
       </div>
-    </AuthContext.Provider>
+    </AuthProvider>
   );
 }
 

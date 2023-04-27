@@ -19,8 +19,8 @@ function userExists(req, res, next) {
     }
 }
 function handleLogin(req, res) {
-    const { email, password } = res.locals.user;
-    res.json({ data: { email, password } });
+    const { email, id, password } = res.locals.user;
+    res.json({ data: { email, id, password } });
 }
 module.exports = {
     login: [hasValidProperties, validation_1.validateEmailAddress, userExists, handleLogin],

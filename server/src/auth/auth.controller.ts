@@ -30,8 +30,8 @@ function userExists(req: Request, res: Response, next: NextFunction) {
 }
 
 function handleLogin(req: Request, res: Response) {
-  const { email, password } = res.locals.user;
-  res.json({ data: { email, password } });
+  const { email, id, password } = res.locals.user;
+  res.json({ data: { email, id, password } });
 }
 
 module.exports = {

@@ -55,6 +55,7 @@ async function fetchJson(url: string, options: Options): Promise<Error | any> {
 }
 
 interface User {
+  id?: string;
   email: string;
   password: string;
 }

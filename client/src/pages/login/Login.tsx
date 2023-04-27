@@ -1,12 +1,12 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth";
+import { AuthContext } from "../../context/AuthContext";
 import { loginUser } from "../../api";
 
 import "./Login.css";
 
 function LoginPage() {
-  const { login } = useAuth();
+  const { setUser } = useContext(AuthContext);
   const EMAIL_REGEX = useMemo(() => /^\S+@\S+\.\S+$/, []);
   const PASSWORD_REGEX = useMemo(
     () => /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/,
@@ -66,10 +66,10 @@ function LoginPage() {
         },
         signal
       );
-      console.log(response);
-      login({
-        id: "1a",
-        email: response.email,
+      console.log({ response });
+      setUser({
+        id: response?.id || "",
+        email: response?.email || "",
       });
       setEmail("");
       setPassword("");
