@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const validation_1 = require("../middleware/validation");
-const users = require("../../data/users");
+const { users } = require("../../data/users.js");
 const validProperties = ["email", "password"];
 const hasValidProperties = (0, validation_1.allPropertiesAreValid)(validProperties);
 function userExists(req, res, next) {

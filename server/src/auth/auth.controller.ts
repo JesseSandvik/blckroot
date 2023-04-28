@@ -3,7 +3,7 @@ import {
   allPropertiesAreValid,
   validateEmailAddress,
 } from "../middleware/validation";
-const users = require("../../data/users");
+const { users } = require("../../data/users.js");
 
 interface User {
   id: number;
