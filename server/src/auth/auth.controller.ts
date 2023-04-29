@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { compare } from "bcrypt";
+// TODO: implement json web token
 import { sign } from "jsonwebtoken";
 import {
   allPropertiesAreValid,

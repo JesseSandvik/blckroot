@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.validateEmailAddress = exports.allPropertiesAreValid = void 0;
+exports.emailFormatIsValid = exports.allPropertiesAreValid = void 0;
 function allPropertiesAreValid(arr) {
     return (req, res, next) => {
         const { data } = req.body;
@@ -16,7 +16,7 @@ function allPropertiesAreValid(arr) {
     };
 }
 exports.allPropertiesAreValid = allPropertiesAreValid;
-function validateEmailAddress(req, res, next) {
+function emailFormatIsValid(req, res, next) {
     const { email } = req.body.data;
     const EMAIL_REGEX = /^\S+@\S+\.\S+$/;
     if (EMAIL_REGEX.test(email)) {
@@ -29,4 +29,4 @@ function validateEmailAddress(req, res, next) {
         });
     }
 }
-exports.validateEmailAddress = validateEmailAddress;
+exports.emailFormatIsValid = emailFormatIsValid;

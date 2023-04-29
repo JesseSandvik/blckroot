@@ -11,18 +11,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const request = require("supertest");
 const server = require("../app");
-const users = require("../../data/users");
+const { users } = require("../../data/users");
 describe("US-02: List / Read Users", () => {
     beforeAll(() => {
         const user1 = {
             id: 1,
-            username: "RSanchez",
-            password: "get@schwifty"
+            email: "RSanchez@gmail.com",
+            password: "get@schwifty",
         };
         const user2 = {
             id: 2,
-            username: "JSmith",
-            password: "!loveBeth"
+            email: "JSmith@yahoo.com",
+            password: "!loveBeth",
         };
         users.push(user1);
         users.push(user2);
@@ -36,15 +36,15 @@ describe("US-02: List / Read Users", () => {
         const response = yield request(server).get("/users/1");
         expect(response.status).toEqual(200);
         expect(response.body.data).toEqual(expect.objectContaining({
-            username: "RSanchez",
-            password: "get@schwifty"
+            email: "RSanchez@gmail.com",
+            password: "get@schwifty",
         }));
     }));
     test("Return 200 For User List", () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield request(server).get("/users");
         expect(response.status).toEqual(200);
         expect(response.body.data).toHaveLength(2);
-        expect(response.body.data[0].username).toEqual("RSanchez");
-        expect(response.body.data[1].username).toEqual("JSmith");
+        expect(response.body.data[0].email).toEqual("RSanchez@gmail.com");
+        expect(response.body.data[1].email).toEqual("JSmith@yahoo.com");
     }));
 });

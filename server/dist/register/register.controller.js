@@ -28,5 +28,5 @@ function createUser(req, res) {
     });
 }
 module.exports = {
-    create: [hasValidProperties, validation_1.validateEmailAddress, createUser],
+    create: [hasValidProperties, validation_1.emailFormatIsValid, createUser],
 };

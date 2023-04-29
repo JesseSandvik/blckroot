@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const request = require("supertest");
 const server = require("../app");
-const users = require("../../data/users");
+const { users } = require("../../data/users");
 describe("US-01: Create A New User", () => {
     beforeEach(() => {
         users.splice(0, users.length);
@@ -21,46 +21,56 @@ describe("US-01: Create A New User", () => {
         expect(response.status).toEqual(404);
         expect(response.body.error).toContain("/badroute");
     }));
-    test("Return 400 For Missing Username", () => __awaiter(void 0, void 0, void 0, function* () {
+    test("Return 400 For Missing Email", () => __awaiter(void 0, void 0, void 0, function* () {
         const user = {
             password: "test@password123",
         };
-        const response = yield request(server).post("/register").send({ data: user });
+        const response = yield request(server)
+            .post("/register")
+            .send({ data: user });
         expect(response.status).toEqual(400);
-        expect(response.body.error).toContain("username");
+        expect(response.body.error).toContain("email");
     }));
-    test("Return 400 For Empty Username", () => __awaiter(void 0, void 0, void 0, function* () {
+    test("Return 400 For Empty Email", () => __awaiter(void 0, void 0, void 0, function* () {
         const user = {
-            username: "",
+            email: "",
             password: "test@password123",
         };
-        const response = yield request(server).post("/register").send({ data: user });
+        const response = yield request(server)
+            .post("/register")
+            .send({ data: user });
         expect(response.status).toEqual(400);
-        expect(response.body.error).toContain("username");
+        expect(response.body.error).toContain("email");
     }));
     test("Return 400 For Missing Password", () => __awaiter(void 0, void 0, void 0, function* () {
         const user = {
-            username: "TestUsername123",
+            email: "TestUsername123@yahoo.com",
         };
-        const response = yield request(server).post("/register").send({ data: user });
+        const response = yield request(server)
+            .post("/register")
+            .send({ data: user });
         expect(response.status).toEqual(400);
         expect(response.body.error).toContain("password");
     }));
     test("Return 400 For Empty Password", () => __awaiter(void 0, void 0, void 0, function* () {
         const user = {
-            username: "TestUsername123",
+            email: "TestUsername123@yahoo.com",
             password: "",
         };
-        const response = yield request(server).post("/register").send({ data: user });
+        const response = yield request(server)
+            .post("/register")
+            .send({ data: user });
         expect(response.status).toEqual(400);
         expect(response.body.error).toContain("password");
     }));
     test("Return 201 For Successful User Creation", () => __awaiter(void 0, void 0, void 0, function* () {
         const user = {
-            username: "TestUsername123",
+            email: "TestUsername123@yahoo.com",
             password: "test@password123",
         };
-        const response = yield request(server).post("/register").send({ data: user });
+        const response = yield request(server)
+            .post("/register")
+            .send({ data: user });
         expect(response.status).toEqual(201);
         expect(response.body.error).toBeUndefined();
         expect(response.body.data).toEqual(user);

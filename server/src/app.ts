@@ -13,7 +13,7 @@ app.use("/register", require("./register/register.router"));
 app.use("/auth", require("./auth/auth.router"));
 app.use("/users", require("./user/user.router"));
 
-app.use(handleNotFound);
+app.all("*", handleNotFound);
 app.use(handleError);
 
 module.exports = app;

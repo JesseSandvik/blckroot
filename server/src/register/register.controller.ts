@@ -4,7 +4,7 @@ import {
   allPropertiesAreValid,
   emailFormatIsValid,
 } from "../middleware/validation";
-const { users, setUser } = require("../../data/users.js");
+const { users, addUser } = require("../../data/users.js");
 
 const validProperties = ["email", "password"];
 const hasValidProperties = allPropertiesAreValid(validProperties);
@@ -16,7 +16,7 @@ async function createUser(req: Request, res: Response) {
     email,
     password: hashedPassword,
   };
-  setUser(newUser);
+  addUser(newUser);
   console.log({ newUser });
   res.status(201).json({ data: newUser });
 }
