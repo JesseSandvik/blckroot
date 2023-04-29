@@ -1,22 +1,36 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import userEvent from '@testing-library/user-event';
-import App from './App';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
+import App from "./App";
 
 describe("US-01: Create A New User", () => {
   test("Inputting valid create new user form data and successfully creating new user routes user to dashboard", async () => {
-    render(<MemoryRouter><App /></MemoryRouter>);
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
 
-    userEvent.click(await screen.findByRole("button", { name: /sign up/i }));
+    userEvent.click(await screen.findByRole("link", { name: /sign up/i }));
 
-    userEvent.type(await screen.findByLabelText("username:"), "test_username123");
-    userEvent.type(await screen.findByLabelText("password:"), "psswrd123@");
-    userEvent.type(await screen.findByLabelText("confirm password:"), "psswrd123@");
+    userEvent.type(
+      await screen.findByLabelText("email:"),
+      "test_username123@yahoo.com"
+    );
+    userEvent.type(await screen.findByLabelText("password:"), "Psswrd123@");
+    userEvent.type(
+      await screen.findByLabelText("confirm password:"),
+      "Psswrd123@"
+    );
 
-    userEvent.click(await screen.findByRole("button", { name: /create account/i }));
+    userEvent.click(
+      await screen.findByRole("button", { name: /create account/i })
+    );
 
-    const currentPageHeading = await screen.findByRole("heading", { name: /dashboard/i });
+    const currentPageHeading = await screen.findByRole("heading", {
+      name: "DASHBOARD",
+    });
 
     expect(currentPageHeading).toBeInTheDocument();
   });
