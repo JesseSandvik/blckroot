@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const users = require("../../data/users");
+const { users } = require("../../data/users");
 function userExists(req, res, next) {
     const { userId } = req.params;
     const matchingUser = users.find((user) => user.id === parseInt(userId));
@@ -18,7 +18,8 @@ function readUser(req, res) {
     res.json({ data });
 }
 function listUsers(req, res) {
-    res.json({ data: users });
+    const userList = [...users];
+    res.json({ data: userList });
 }
 module.exports = {
     read: [userExists, readUser],

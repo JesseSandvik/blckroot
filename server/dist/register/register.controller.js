@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const bcrypt_1 = require("bcrypt");
 const validation_1 = require("../middleware/validation");
-const { users, setUser } = require("../../data/users.js");
+const { users, addUser } = require("../../data/users.js");
 const validProperties = ["email", "password"];
 const hasValidProperties = (0, validation_1.allPropertiesAreValid)(validProperties);
 function createUser(req, res) {
@@ -22,7 +22,7 @@ function createUser(req, res) {
             email,
             password: hashedPassword,
         };
-        setUser(newUser);
+        addUser(newUser);
         console.log({ newUser });
         res.status(201).json({ data: newUser });
     });

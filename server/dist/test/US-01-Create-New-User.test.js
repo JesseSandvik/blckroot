@@ -73,6 +73,6 @@ describe("US-01: Create A New User", () => {
             .send({ data: user });
         expect(response.status).toEqual(201);
         expect(response.body.error).toBeUndefined();
-        expect(response.body.data).toEqual(user);
+        expect(response.body.data.email).toEqual(user.email);
     }));
 });

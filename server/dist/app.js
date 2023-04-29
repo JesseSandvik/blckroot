@@ -38,6 +38,6 @@ app.use(express_1.default.json());
 app.use("/register", require("./register/register.router"));
 app.use("/auth", require("./auth/auth.router"));
 app.use("/users", require("./user/user.router"));
-app.use(notFoundHandler_1.handleNotFound);
+app.all("*", notFoundHandler_1.handleNotFound);
 app.use(errorHandler_1.handleError);
 module.exports = app;

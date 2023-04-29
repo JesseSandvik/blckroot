@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-const users = require("../../data/users");
+const { users } = require("../../data/users");
 
 interface User {
   id: number;
@@ -27,7 +27,8 @@ function readUser(req: Request, res: Response) {
 }
 
 function listUsers(req: Request, res: Response) {
-  res.json({ data: users });
+  const userList = [...users];
+  res.json({ data: userList });
 }
 
 module.exports = {
