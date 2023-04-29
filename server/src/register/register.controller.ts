@@ -2,7 +2,7 @@ import { hash } from "bcrypt";
 import { Request, Response } from "express";
 import {
   allPropertiesAreValid,
-  validateEmailAddress,
+  emailFormatIsValid,
 } from "../middleware/validation";
 const { users, setUser } = require("../../data/users.js");
 
@@ -22,5 +22,5 @@ async function createUser(req: Request, res: Response) {
 }
 
 module.exports = {
-  create: [hasValidProperties, validateEmailAddress, createUser],
+  create: [hasValidProperties, emailFormatIsValid, createUser],
 };

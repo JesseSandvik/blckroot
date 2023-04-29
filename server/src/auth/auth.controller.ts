@@ -1,7 +1,9 @@
 import { Request, Response, NextFunction } from "express";
+import { compare } from "bcrypt";
+import { sign } from "jsonwebtoken";
 import {
   allPropertiesAreValid,
-  validateEmailAddress,
+  emailFormatIsValid,
 } from "../middleware/validation";
 const { users } = require("../../data/users.js");
 
@@ -16,15 +18,34 @@ const hasValidProperties = allPropertiesAreValid(validProperties);
 
 function userExists(req: Request, res: Response, next: NextFunction) {
   const { email } = req.body.data;
-  const matchingUser = users.find((user: User) => user.email === email);
+  const foundUser = users.find((user: User) => user.email === email);
 
-  if (matchingUser) {
-    res.locals.user = matchingUser;
+  if (foundUser) {
+    res.locals.user = foundUser;
     next();
   } else {
     next({
       status: 401,
       message: `User not found.`,
+    });
+  }
+}
+
+async function passwordIsValid(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const { password } = res.locals.user;
+
+  const passwordMatches = await compare(password, req.body.data.password);
+
+  if (passwordMatches) {
+    next();
+  } else {
+    next({
+      status: 401,
+      message: "Email and password provided do not match our records.",
     });
   }
 }
@@ -35,5 +56,11 @@ function handleLogin(req: Request, res: Response) {
 }
 
 module.exports = {
-  login: [hasValidProperties, validateEmailAddress, userExists, handleLogin],
+  login: [
+    hasValidProperties,
+    emailFormatIsValid,
+    userExists,
+    passwordIsValid,
+    handleLogin,
+  ],
 };

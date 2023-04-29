@@ -16,7 +16,7 @@ export function allPropertiesAreValid(arr: Array<string>) {
   };
 }
 
-export function validateEmailAddress(
+export function emailFormatIsValid(
   req: Request,
   res: Response,
   next: NextFunction
