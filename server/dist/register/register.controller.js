@@ -19,6 +19,7 @@ function createUser(req, res) {
         const { email, password } = req.body.data;
         const hashedPassword = yield (0, bcrypt_1.hash)(password, 10);
         const newUser = {
+            id: `AF${Math.random()}`,
             email,
             password: hashedPassword,
         };

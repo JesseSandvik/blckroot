@@ -13,6 +13,7 @@ async function createUser(req: Request, res: Response) {
   const { email, password } = req.body.data;
   const hashedPassword = await hash(password, 10);
   const newUser = {
+    id: `AF${Math.random()}`,
     email,
     password: hashedPassword,
   };

@@ -1,17 +1,20 @@
-import { useContext, useEffect } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { useContext, useEffect, useReducer } from "react";
+import { authReducer, initialAuthState } from "../../context/auth/AuthReducer";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 import "./Dashboard.css";
 
 function Dashboard() {
-  const { user } = useContext(AuthContext);
+  const [state] = useReducer(authReducer, initialAuthState);
   const { getItem } = useLocalStorage();
 
   useEffect(() => {
-    console.log({ user });
-    console.log("LOCAL STORAGE: ", getItem("user"));
-  }, [getItem, user]);
+    console.log(initialAuthState.isLoaded);
+  }, []);
+
+  useEffect(() => {
+    state.isLoaded && state.user && console.log("USER: ", state.user);
+  }, [state.isLoaded, state.user]);
 
   return (
     <main className="Dashboard">

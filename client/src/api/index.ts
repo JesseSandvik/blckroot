@@ -54,10 +54,10 @@ async function fetchJson(url: string, options: Options): Promise<Error | any> {
   }
 }
 
-interface User {
+export interface User {
   id?: string;
-  email: string;
-  password: string;
+  email?: string;
+  password?: string;
 }
 
 /** POST a new reservation to the database

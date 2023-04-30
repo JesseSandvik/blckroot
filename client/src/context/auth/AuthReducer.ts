@@ -1,18 +1,26 @@
-import { User } from "../context/AuthContext";
+import { User } from "../../api";
 
 type AuthAction = {
-  type: "LOGIN_ERROR" | "LOGIN_SUCCESS" | "LOGOUT" | "REQUEST_LOGIN";
-  user: User;
+  errorMessage?: string;
+  type: "LOGIN_ERROR" | "LOGIN_SUCCESS" | "LOGOUT" | "REQUEST_LOGIN" | "";
+  user?: User;
 };
 
-export interface InitialAuthState {
+interface InitialAuthState {
+  errorMessage?: string;
   isError: boolean;
   isLoaded: boolean;
   isLoading: boolean;
   user: User;
 }
 
-export const AuthReducer = (
+export const initialAuthState: InitialAuthState = {
+  isError: false,
+  isLoaded: false,
+  isLoading: false,
+  user: { id: "", email: "" },
+};
+export const authReducer = (
   state: InitialAuthState,
   action: AuthAction
 ): InitialAuthState => {
@@ -29,9 +37,9 @@ export const AuthReducer = (
       return {
         ...state,
         isError: false,
-        isLoaded: false,
-        isLoading: true,
-        user: action.user,
+        isLoaded: true,
+        isLoading: false,
+        user: action.user ? action.user : { id: "", email: "" },
       };
     case "LOGOUT":
       return {
