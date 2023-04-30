@@ -1,13 +1,12 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import { createUser } from "../../api";
 
 import "./SignUp.css";
 
 function SignUpPage() {
-  /**
-   * TODO: change USERNAME/username to email. Preferred method for password recovery, simplifies the process.
-   */
+  const { setUser } = useContext(AuthContext);
   const EMAIL_REGEX = useMemo(() => /^\S+@\S+\.\S+$/, []);
   const PASSWORD_REGEX = useMemo(
     () => /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/,
@@ -75,7 +74,11 @@ function SignUpPage() {
         },
         signal
       );
-      console.log(response);
+      console.log({ response });
+      setUser({
+        id: response?.id || "",
+        email: response?.email || "",
+      });
       setEmail("");
       setPassword("");
       setConfirmPassword("");

@@ -1,4 +1,3 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
@@ -29,7 +28,7 @@ describe("US-01: Create A New User", () => {
     );
 
     const currentPageHeading = await screen.findByRole("heading", {
-      name: "DASHBOARD",
+      name: /dashboard/i,
     });
 
     expect(currentPageHeading).toBeInTheDocument();

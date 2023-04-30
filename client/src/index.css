@@ -5,7 +5,10 @@
   padding: 0;
   --primary-color: #ebebeb;
   --secondary-color: #222222;
-  --accent-color: #baf2bb;
+  /* --accent-color: #baf2bb; */
+  --accent-color: #c8c6af;
+  --accent-bright: #6fffe9;
+  /* muted cyan 5bc0be */
 }
 
 a {

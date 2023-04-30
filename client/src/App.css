@@ -41,6 +41,10 @@ header .navbar .brand {
   text-transform: capitalize;
 }
 
+header .navbar .brand i {
+  color: var(--accent-bright);
+}
+
 header .navbar-right-outer {
   align-items: center;
   display: flex;

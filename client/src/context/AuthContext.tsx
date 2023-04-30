@@ -1,11 +1,12 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useReducer } from "react";
+import { AuthReducer } from "../app/authReducer";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 type Props = {
   children: ReactNode;
 };
 
-interface User {
+export interface User {
   id: string;
   email: string;
   authToken?: string;
@@ -13,16 +14,19 @@ interface User {
 
 interface AuthContextType {
   user: User | null;
-  setUser: (user: User | null) => void;
 }
 
 export const AuthContext = createContext<AuthContextType>({
-  user: null,
-  setUser: () => {},
+  user: { id: "", email: "" },
 });
 
 export const AuthProvider = (props: Props) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [{ user }] = useReducer(AuthReducer, {
+    isError: false,
+    isLoaded: false,
+    isLoading: false,
+    user: { id: "", email: "" },
+  });
   const { setItem } = useLocalStorage();
 
   useEffect(() => {
@@ -30,7 +34,7 @@ export const AuthProvider = (props: Props) => {
   }, [setItem, user]);
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user }}>
       {props.children}
     </AuthContext.Provider>
   );

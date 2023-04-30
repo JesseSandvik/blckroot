@@ -1,5 +1,6 @@
+import { useContext, useEffect } from "react";
 import { NavLink, Routes, Route, useLocation } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider, AuthContext } from "./context/AuthContext";
 
 import Dashboard from "./pages/dashboard/Dashboard";
 import HomePage from "./pages/Home";
@@ -15,7 +16,12 @@ import "./App.css";
 // const ThemeContext = createContext<ThemeContextType>("light");
 
 function App() {
+  const { user } = useContext(AuthContext);
   const location = useLocation();
+
+  useEffect(() => {
+    user && console.log("APP USER: ", user);
+  }, [user]);
 
   return (
     <AuthProvider>
@@ -24,15 +30,15 @@ function App() {
           <nav className="navbar">
             <div className="navbar-left-outer">
               <NavLink className="navbar brand" to="/">
-                <i className="fa-solid fa-layer-group"></i>akago
+                <i className="fa-solid fa-layer-group"></i>sovereign era
               </NavLink>
             </div>
           </nav>
           <div className="navbar-right-outer">
-            {location.pathname !== "/login" && (
+            {location.pathname !== "/login" && !user && (
               <NavLink to="/login">login</NavLink>
             )}
-            {location.pathname !== "/signup" && (
+            {location.pathname !== "/signup" && !user && (
               <NavLink to="/signup">sign up</NavLink>
             )}
           </div>
