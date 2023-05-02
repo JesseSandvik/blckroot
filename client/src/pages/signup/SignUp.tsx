@@ -1,12 +1,19 @@
-import React, { useEffect, useMemo, useReducer, useRef, useState } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useMemo,
+  useReducer,
+  useRef,
+  useState,
+} from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { authReducer, initialAuthState } from "../../context/auth/AuthReducer";
+import { AuthContext } from "../../context/auth/AuthContext";
 import { createUser } from "../../api";
 
 import "./SignUp.css";
 
 function SignUpPage() {
-  const [state, dispatch] = useReducer(authReducer, initialAuthState);
+  const { authenticated, setAuthenticated, setUser } = useContext(AuthContext);
   const EMAIL_REGEX = useMemo(() => /^\S+@\S+\.\S+$/, []);
   const PASSWORD_REGEX = useMemo(
     () => /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/,
@@ -67,7 +74,6 @@ function SignUpPage() {
 
     if (emailValidationTestPasses && passwordValidationTestPasses) {
       const { signal } = new AbortController();
-      dispatch({ type: "REQUEST_LOGIN" });
 
       try {
         const response = await createUser(
@@ -81,16 +87,13 @@ function SignUpPage() {
 
         response?.id &&
           response?.email &&
-          dispatch({
-            type: "LOGIN_SUCCESS",
-            user: { id: response?.id, email: response?.email },
-          });
+          setUser({ id: response.id, email: response.email });
+        setAuthenticated(true);
         setEmail("");
         setPassword("");
         setConfirmPassword("");
         navigate("/dashboard");
       } catch (error) {
-        dispatch({ type: "LOGIN_ERROR" });
         console.log({ error });
       }
     } else {
