@@ -31,9 +31,13 @@ const Button = ({
   onClick,
   type,
 }: ButtonProps): JSX.Element => {
+  const classProps: string =
+    `${type} ${className} ${disabled && "disabled"}` ||
+    `${type} ${disabled && "disabled"}`;
+
   return (
     <button
-      className={className}
+      className={classProps}
       disabled={disabled}
       onClick={onClick}
       type={type}
