@@ -1,0 +1,14 @@
+
+button.button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0;
+}
+
+button.disabled {
+    background-color: violet;
+    cursor: unset;
+    font-size: 2rem;
+}
