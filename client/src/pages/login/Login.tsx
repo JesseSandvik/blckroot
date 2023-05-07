@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import Button from "../../atoms/button/Button";
 import { AuthContext } from "../../context/auth/AuthContext";
 import { loginUser } from "../../api";
 
@@ -194,13 +195,12 @@ function LoginPage() {
           <NavLink to="/forgot_password">Forgot password?</NavLink>
         </div>
         <div className="btn-group">
-          <button
-            className="form-submit-btn"
+          <Button
             disabled={!emailIsValid || !passwordIsValid ? true : false}
             type="submit"
           >
             continue
-          </button>
+          </Button>
         </div>
       </form>
       <div className="Login-alt-login-options">

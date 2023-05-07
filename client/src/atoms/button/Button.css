@@ -1,5 +1,5 @@
 
-button.button {
+button {
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -7,14 +7,44 @@ button.button {
     padding: 0;
 }
 
-button.disabled {
-    background-color: violet;
-    cursor: unset;
-    font-size: 2rem;
-}
-
 button.submit {
-    background-color: var(--accent-color-light);
-    color: var(--dark);
+    background-color: var(--accent-color-bright);
+    border: 2px solid var(--default-dark-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.5rem 2rem;
     transition: 0.5s ease-in-out;
 }
+
+button.disabled {
+  background-color: var(--default-disabled-color);
+    cursor: unset;
+}
+
+/* .form-submit-btn {
+    background-color: var(--accent-color);
+    border: 3px solid var(--secondary-color);
+    border-radius: 4px;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    font-weight: bold;
+    height: 40px;
+    transition: 0.5s ease-in-out;
+    width: 160px;
+  }
+  
+  .form-submit-btn:hover {
+    box-shadow: 0 7px 12px -5px rgba(0, 0, 0, 0.66);
+  }
+  
+  .form-submit-btn:disabled {
+    background-color: #808080;
+    border: 3px solid #808080;
+    color: #cecece;
+    cursor: unset;
+  }
+  
+  .form-submit-btn:disabled:hover {
+    box-shadow: unset;
+  } */

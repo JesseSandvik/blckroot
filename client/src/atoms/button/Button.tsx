@@ -20,7 +20,7 @@ type ButtonProps = {
   children: ReactNode;
   className?: string;
   disabled?: boolean;
-  onClick: MouseEventHandler<HTMLButtonElement>;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   type: "button" | "reset" | "submit";
 };
 
@@ -31,15 +31,19 @@ const Button = ({
   onClick,
   type,
 }: ButtonProps): JSX.Element => {
-  const classProps: string = [
-    disabled && "disabled ",
-    className && `${className} `,
-    type,
-  ].join("");
+  const classProps = [];
+  className && classProps.push(className);
+  disabled && classProps.push("disabled");
+  classProps.push(type);
+  // const classProps: string = [
+  //   disabled && "disabled ",
+  //   className && `${className} `,
+  //   type,
+  // ].join("");
 
   return (
     <button
-      className={classProps}
+      className={classProps.join(" ")}
       disabled={disabled}
       onClick={onClick}
       type={type}

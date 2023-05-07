@@ -2,12 +2,8 @@
   background-color: var(--default-light-color);
   color: var(--default-dark-color);
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto auto 1fr auto;
   min-height: 100vh;
-}
-
-.App > * {
-  padding: 1rem;
 }
 
 header {
@@ -15,6 +11,7 @@ header {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-row: 1 / 1;
+  padding: 0.5rem;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -101,40 +98,18 @@ header .navbar-right ul li:hover {
 }
 
 main {
-  grid-row: 2 / 2;
-}
-
-.form-submit-btn {
-  background-color: var(--accent-color);
-  border: 3px solid var(--secondary-color);
-  border-radius: 4px;
-  color: var(--secondary-color);
-  font-size: 1rem;
-  font-weight: bold;
-  height: 40px;
-  transition: 0.5s ease-in-out;
-  width: 160px;
-}
-
-.form-submit-btn:hover {
-  box-shadow: 0 7px 12px -5px rgba(0, 0, 0, 0.66);
-}
-
-.form-submit-btn:disabled {
-  background-color: #808080;
-  border: 3px solid #808080;
-  color: #cecece;
-  cursor: unset;
-}
-
-.form-submit-btn:disabled:hover {
-  box-shadow: unset;
+  background-color: var(--default-dark-color);
+  color: var(--default-light-color);
+  grid-row: 3 / 3;
 }
 
 footer {
+  background-color: var(--default-light-color);
+  color: var(--default-dark-color);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-row: 3 / -1;
+  grid-row: 4 / -1;
+  padding: 1rem;
 }
 
 footer .copyright {

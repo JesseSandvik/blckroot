@@ -1,7 +1,4 @@
 .Login {
-  background-color: var(--secondary-color);
-  border: 4px solid var(--primary-color);
-  color: var(--primary-color);
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(4, 1fr);
@@ -30,11 +27,11 @@
 }
 
 .Login-form {
-  background-color: var(--primary-color);
+  background-color: var(--default-light-color);
   border-radius: 4px;
   box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.66);
   display: grid;
-  color: var(--secondary-color);
+  color: var(--default-dark-color);
   grid-column: 5 / span 4;
   grid-row: 2 / 4;
   grid-template-rows: repeat(4, 1fr);

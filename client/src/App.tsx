@@ -2,7 +2,6 @@ import { useContext, useEffect } from "react";
 import { NavLink, Routes, Route, useLocation } from "react-router-dom";
 import { AuthContext, AuthProvider } from "./context/auth/AuthContext";
 import Dashboard from "./pages/dashboard/Dashboard";
-// import HomePage from "./pages/Home";
 import HomePage from "./pages/home/Home";
 import LoginPage from "./pages/login/Login";
 import SignUpPage from "./pages/signup/SignUp";
@@ -36,7 +35,7 @@ function App() {
             <ul>
               <li>
                 <NavLink className="navbar brand" to="/">
-                  <i className="fa-solid fa-circle-half-stroke"></i>blackroot
+                  <i className="fa-solid fa-circle-half-stroke"></i>blckroot
                 </NavLink>
               </li>
             </ul>

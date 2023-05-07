@@ -3,15 +3,23 @@
   font-family: "Exo 2", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  --default-light-color: #ebebeb;
-  --default-dark-color: #222222;
-  /* --accent-color: #baf2bb; */
-  --accent-color-light: #eceacf;
+  /* --default-light-color: #ebebeb; */
+  /* Light Color: White Smoke */
+  /* --default-light-color: #f5f3f5; */
+  --default-light-color: #f7f9f9;
+  /* --default-dark-color: #222222; */
+  /* Dark Color: Outer Space */
+  --default-dark-color: #474a48;
+  --default-disabled-color: #c2c1c2;
+  /* --accent-color-bright: #56cbf9; */
+  --alert-color: #e8aeb7;
+  --info-color: #b8e1ff;
+  --success-color: #94fbab;
+  --accent-color-bright: #d2fdff;
+  --accent-color-light: #fffae2;
+  /* Accent Color: Bone */
   --accent-color-medium: #c8c6af;
   --accent-color-dark: #979685;
-  /* --accent-color-light: #6fffe9;
-  --accent-color-medium: #82eddd;
-  --accent-color-dark: #94dbd1; */
 }
 
 a {
