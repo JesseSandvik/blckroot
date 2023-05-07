@@ -15,6 +15,11 @@ import "./App.css";
 // type ThemeContextType = "light" | "dark";
 // const ThemeContext = createContext<ThemeContextType>("light");
 
+/**
+ * TODO: Inspiration quote generator, display new quote daily.
+ * Make a separate API with database for the quotes?
+ */
+
 function App() {
   const { user } = useContext(AuthContext);
   const location = useLocation();
@@ -31,7 +36,7 @@ function App() {
             <ul>
               <li>
                 <NavLink className="navbar brand" to="/">
-                  <i className="fa-solid fa-layer-group"></i>blackroot
+                  <i className="fa-solid fa-circle-half-stroke"></i>blackroot
                 </NavLink>
               </li>
             </ul>
@@ -45,7 +50,9 @@ function App() {
               )}
               {location.pathname !== "/signup" && (
                 <li>
-                  <NavLink to="/signup">sign up</NavLink>
+                  <NavLink className="sign-up" to="/signup">
+                    sign up
+                  </NavLink>
                 </li>
               )}
             </ul>

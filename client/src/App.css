@@ -55,7 +55,15 @@ header .navbar-left .brand {
 }
 
 header .navbar-left .brand i {
-  color: var(--accent-color-dark);
+  align-items: center;
+  background-color: var(--accent-color-dark);
+  border-radius: 4px;
+  color: var(--default-light-color);
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  width: 40px;
+  transform: rotate(180deg);
 }
 
 header .navbar-right {
@@ -68,19 +76,28 @@ header .navbar-right {
 
 header .navbar-right a {
   align-items: center;
-  border: 2px solid var(--secondary-color);
-  border-radius: 4px;
   color: var(--primary-color);
   display: flex;
   justify-content: center;
   text-align: center;
   text-transform: capitalize;
-  transition: 0.5s ease-in-out;
   width: 80px;
 }
 
-header .navbar-right a:hover {
-  background-color: var(--accent-color-medium);
+header .navbar-right ul li {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: 0.3s ease-in-out;
+}
+
+header .navbar-right ul li .sign-up {
+  border: 1px solid var(--accent-color-dark);
+  border-radius: 4px;
+}
+
+header .navbar-right ul li:hover {
+  border: 1px solid var(--accent-color-dark);
+  box-shadow: 0 7px 12px -5px rgba(0, 0, 0, 0.2);
 }
 
 main {
