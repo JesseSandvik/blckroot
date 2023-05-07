@@ -1,6 +1,6 @@
 .App {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
+  background-color: var(--default-light-color);
+  color: var(--default-dark-color);
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
@@ -11,8 +11,7 @@
 }
 
 header {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
+  background-color: transparent;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-row: 1 / 1;
@@ -25,61 +24,63 @@ header i {
   transform: rotate(90deg);
 }
 
-header .navbar-left-outer {
+header nav ul {
   align-items: center;
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+header nav ul li a {
+  padding: 0.5rem;
+}
+
+header .navbar-left {
+  align-items: center;
+  border-bottom: 1px solid var(--accent-color-dark);
+  border-bottom-left-radius: 4px;
+  border-left: 1px solid var(--accent-color-dark);
   display: flex;
   grid-column: 1 / 1;
 }
 
-header .navbar .brand {
+header .navbar-left .brand {
   align-items: center;
-  color: var(--primary-color);
   display: flex;
+  font-family: Jura;
   font-size: 2rem;
+  font-weight: bold;
   gap: 8px;
-  padding: 0 16px;
   text-transform: capitalize;
 }
 
-header .navbar .brand i {
-  color: var(--accent-bright);
+header .navbar-left .brand i {
+  color: var(--accent-color-dark);
 }
 
-header .navbar-right-outer {
+header .navbar-right {
   align-items: center;
   display: flex;
   gap: 1rem;
   grid-column: 3 / -1;
   justify-content: flex-end;
-  padding: 0 1rem;
 }
 
-header .navbar-right-outer a {
+header .navbar-right a {
   align-items: center;
-  background-color: var(--secondary-color);
-  border: 1px solid var(--secondary-color);
+  border: 2px solid var(--secondary-color);
   border-radius: 4px;
   color: var(--primary-color);
   display: flex;
   justify-content: center;
-  padding: 0.5rem;
   text-align: center;
   text-transform: capitalize;
+  transition: 0.5s ease-in-out;
   width: 80px;
 }
 
-header .navbar-right-outer a:last-child {
-  background-color: var(--accent-color);
-  color: var(--secondary-color);
-}
-
-header .navbar-right-outer a:last-child:hover {
-  color: var(--secondary-color);
-}
-
-header .navbar-right-outer a:hover {
-  border: 1px solid var(--accent-color);
-  color: var(--accent-color);
+header .navbar-right a:hover {
+  background-color: var(--accent-color-medium);
 }
 
 main {

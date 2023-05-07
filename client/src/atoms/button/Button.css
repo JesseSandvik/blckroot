@@ -12,3 +12,9 @@ button.disabled {
     cursor: unset;
     font-size: 2rem;
 }
+
+button.submit {
+    background-color: var(--accent-color-light);
+    color: var(--dark);
+    transition: 0.5s ease-in-out;
+}

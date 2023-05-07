@@ -3,9 +3,7 @@ import Button from "../../atoms/button/Button";
 const HomePage = (): JSX.Element => {
   return (
     <div>
-      <Button disabled onClick={() => console.log("HELLO")}>
-        Test Button
-      </Button>
+      <Button onClick={() => console.log("HELLO")}>Test Button</Button>
     </div>
   );
 };

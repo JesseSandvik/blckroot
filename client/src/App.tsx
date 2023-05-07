@@ -27,21 +27,29 @@ function App() {
     <AuthProvider>
       <div className="App">
         <header>
-          <nav className="navbar">
-            <div className="navbar-left-outer">
-              <NavLink className="navbar brand" to="/">
-                <i className="fa-solid fa-layer-group"></i>sovereign era
-              </NavLink>
-            </div>
+          <nav className="navbar-left">
+            <ul>
+              <li>
+                <NavLink className="navbar brand" to="/">
+                  <i className="fa-solid fa-layer-group"></i>blackroot
+                </NavLink>
+              </li>
+            </ul>
           </nav>
-          <div className="navbar-right-outer">
-            {location.pathname !== "/login" && (
-              <NavLink to="/login">login</NavLink>
-            )}
-            {location.pathname !== "/signup" && (
-              <NavLink to="/signup">sign up</NavLink>
-            )}
-          </div>
+          <nav className="navbar-right">
+            <ul>
+              {location.pathname !== "/login" && (
+                <li>
+                  <NavLink to="/login">login</NavLink>
+                </li>
+              )}
+              {location.pathname !== "/signup" && (
+                <li>
+                  <NavLink to="/signup">sign up</NavLink>
+                </li>
+              )}
+            </ul>
+          </nav>
         </header>
         <Routes>
           <Route path="/" element={<HomePage />} />

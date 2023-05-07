@@ -1,14 +1,17 @@
 * {
   box-sizing: border-box;
-  font-family: Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Exo 2", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  --primary-color: #ebebeb;
-  --secondary-color: #222222;
+  --default-light-color: #ebebeb;
+  --default-dark-color: #222222;
   /* --accent-color: #baf2bb; */
-  --accent-color: #c8c6af;
-  --accent-bright: #6fffe9;
-  /* muted cyan 5bc0be */
+  --accent-color-light: #eceacf;
+  --accent-color-medium: #c8c6af;
+  --accent-color-dark: #979685;
+  /* --accent-color-light: #6fffe9;
+  --accent-color-medium: #82eddd;
+  --accent-color-dark: #94dbd1; */
 }
 
 a {
@@ -47,10 +50,10 @@ button {
 
 .instructions {
   background-color: #f0f0f0;
-  border: 1px solid var(--secondary-color);
+  border: 1px solid var(--default-dark-color);
   border-radius: 4px;
   box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.66);
-  color: var(--secondary-color);
+  color: var(--default-dark-color);
   margin: 1rem;
   padding: 1rem;
   position: fixed;
