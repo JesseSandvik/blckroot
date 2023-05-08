@@ -33,16 +33,6 @@
   grid-template-columns: 1fr 2fr 1fr;
 }
 
-.SignUp-form .input-container-upper {
-  display: flex;
-  grid-column: 2 / 2;
-  justify-content: space-between;
-}
-
-.SignUp-form .input-container-lower {
-  grid-column: 2 / 2;
-}
-
 .SignUp-form .btn-group {
   align-items: center;
   display: flex;

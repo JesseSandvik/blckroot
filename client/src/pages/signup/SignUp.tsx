@@ -118,34 +118,33 @@ function SignUpPage() {
       </div>
       <Form className="SignUp-form" onSubmit={handleOnSubmit}>
         <div className="input-container">
-          <div className="input-container-upper">
-            <LabeledInput
-              aria-describedby="emailnote"
-              aria-invalid={emailIsValid ? "false" : "true"}
-              autoComplete="off"
-              inputId="email"
-              label="email:"
-              name="email"
-              onBlur={() => setEmailIsFocus(false)}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                handleOnChange(event, setEmail)
-              }
-              onFocus={() => setEmailIsFocus(true)}
-              inputRef={emailRef}
-              required
-              type="email"
-              value={email || ""}
+          <LabeledInput
+            aria-describedby="emailnote"
+            aria-invalid={emailIsValid ? "false" : "true"}
+            autoComplete="off"
+            className="input-user-credentials"
+            inputId="email"
+            label="email:"
+            name="email"
+            onBlur={() => setEmailIsFocus(false)}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              handleOnChange(event, setEmail)
+            }
+            onFocus={() => setEmailIsFocus(true)}
+            inputRef={emailRef}
+            required
+            type="email"
+            value={email || ""}
+          />
+          <div className="input-status">
+            <Icon
+              className={emailIsValid ? "success" : "hide"}
+              type="checkmark"
             />
-            <div className="input-status">
-              <Icon
-                className={emailIsValid ? "success" : "hide"}
-                type="checkmark"
-              />
-              <Icon
-                className={emailIsValid || !email ? "hide" : "alert"}
-                type="x-mark"
-              />
-            </div>
+            <Icon
+              className={emailIsValid || !email ? "hide" : "alert"}
+              type="x-mark"
+            />
           </div>
           <div className="input-container-lower">
             <p
@@ -162,32 +161,31 @@ function SignUpPage() {
           </div>
         </div>
         <div className="input-container">
-          <div className="input-container-upper">
-            <LabeledInput
-              aria-describedby="passwordnote"
-              aria-invalid={passwordIsValid ? "false" : "true"}
-              inputId="password"
-              label="password:"
-              name="password"
-              onBlur={() => setPasswordIsFocus(false)}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                handleOnChange(event, setPassword)
-              }
-              onFocus={() => setPasswordIsFocus(true)}
-              required
-              type="password"
-              value={password || ""}
+          <LabeledInput
+            aria-describedby="passwordnote"
+            aria-invalid={passwordIsValid ? "false" : "true"}
+            className="input-user-credentials"
+            inputId="password"
+            label="password:"
+            name="password"
+            onBlur={() => setPasswordIsFocus(false)}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              handleOnChange(event, setPassword)
+            }
+            onFocus={() => setPasswordIsFocus(true)}
+            required
+            type="password"
+            value={password || ""}
+          />
+          <div className="input-status">
+            <Icon
+              className={passwordIsValid ? "success" : "hide"}
+              type="checkmark"
             />
-            <div className="input-status">
-              <Icon
-                className={passwordIsValid ? "success" : "hide"}
-                type="checkmark"
-              />
-              <Icon
-                className={passwordIsValid || !password ? "hide" : "alert"}
-                type="x-mark"
-              />
-            </div>
+            <Icon
+              className={passwordIsValid || !password ? "hide" : "alert"}
+              type="x-mark"
+            />
           </div>
           <div className="input-container-lower">
             <p
@@ -214,36 +212,35 @@ function SignUpPage() {
           </div>
         </div>
         <div className="input-container">
-          <div className="input-container-upper">
-            <LabeledInput
-              aria-describedby="confirmpasswordnote"
-              aria-invalid={confirmPasswordIsValid ? "false" : "true"}
-              inputId="confirm_password"
-              label="confirm password:"
-              name="confirm_password"
-              onBlur={() => setConfirmPasswordIsFocus(false)}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                handleOnChange(event, setConfirmPassword)
+          <LabeledInput
+            aria-describedby="confirmpasswordnote"
+            aria-invalid={confirmPasswordIsValid ? "false" : "true"}
+            className="input-user-credentials"
+            inputId="confirm_password"
+            label="confirm password:"
+            name="confirm_password"
+            onBlur={() => setConfirmPasswordIsFocus(false)}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              handleOnChange(event, setConfirmPassword)
+            }
+            onFocus={() => setConfirmPasswordIsFocus(true)}
+            required
+            type="password"
+            value={confirmPassword || ""}
+          />
+          <div className="input-status">
+            <Icon
+              className={
+                confirmPasswordIsValid && confirmPassword ? "success" : "hide"
               }
-              onFocus={() => setConfirmPasswordIsFocus(true)}
-              required
-              type="password"
-              value={confirmPassword || ""}
+              type="checkmark"
             />
-            <div className="input-status">
-              <Icon
-                className={
-                  confirmPasswordIsValid && confirmPassword ? "success" : "hide"
-                }
-                type="checkmark"
-              />
-              <Icon
-                className={
-                  confirmPasswordIsValid || !confirmPassword ? "hide" : "alert"
-                }
-                type="x-mark"
-              />
-            </div>
+            <Icon
+              className={
+                confirmPasswordIsValid || !confirmPassword ? "hide" : "alert"
+              }
+              type="x-mark"
+            />
           </div>
           <div className="input-container-lower">
             <p
