@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Button from "../../atoms/button/Button";
+import Heading from "../../atoms/heading/Heading";
 import Input from "../../atoms/input/Input";
 import Label from "../../atoms/label/Label";
 import { AuthContext } from "../../context/auth/AuthContext";
@@ -92,11 +93,11 @@ function LoginPage() {
   return (
     <main className="Login">
       <div className="Login-header">
-        <h1>
+        <Heading tag="1">
           Minimalistic time managment
           <br />
           <span className="accent-text">made simple.</span>
-        </h1>
+        </Heading>
       </div>
       <form className="Login-form" onSubmit={handleOnSubmit}>
         <div className="input-container">

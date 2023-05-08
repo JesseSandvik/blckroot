@@ -12,20 +12,6 @@
   justify-content: center;
 }
 
-.SignUp-header h1 {
-  letter-spacing: 0.05rem;
-  text-transform: capitalize;
-}
-
-.SignUp-header h1 .accent-text {
-  align-items: center;
-  color: var(--accent-color);
-  display: flex;
-  justify-content: center;
-  padding: 0.25rem;
-  scale: 1.1;
-}
-
 .SignUp-form {
   background-color: var(--default-light-color);
   border-bottom: 2px solid var(--primary-accent-color-med);

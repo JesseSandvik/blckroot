@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Button from "../../atoms/button/Button";
+import Heading from "../../atoms/heading/Heading";
 import Input from "../../atoms/input/Input";
 import Label from "../../atoms/label/Label";
 import { AuthContext } from "../../context/auth/AuthContext";
@@ -108,11 +109,11 @@ function SignUpPage() {
   return (
     <main className="SignUp">
       <div className="SignUp-header">
-        <h1>
+        <Heading tag="1">
           Minimalistic time managment
           <br />
           <span className="accent-text">made simple.</span>
-        </h1>
+        </Heading>
       </div>
       <form className="SignUp-form" onSubmit={handleOnSubmit}>
         <div className="input-container">
