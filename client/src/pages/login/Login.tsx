@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Button from "../../atoms/button/Button";
 import Heading from "../../atoms/heading/Heading";
+import Icon from "../../atoms/icon/Icon";
 import Input from "../../atoms/input/Input";
 import Label from "../../atoms/label/Label";
 import { AuthContext } from "../../context/auth/AuthContext";
@@ -104,12 +105,14 @@ function LoginPage() {
           <div className="input-container-upper">
             <Label htmlFor="email">email:</Label>
             <div className="input-status">
-              <span className={emailIsValid ? "valid" : "hide"}>
-                <i className="fa-solid fa-check"></i>
-              </span>
-              <span className={emailIsValid || !email ? "hide" : "invalid"}>
-                <i className="fa-solid fa-xmark"></i>
-              </span>
+              <Icon
+                className={emailIsValid ? "valid" : "hide"}
+                type="checkmark"
+              />
+              <Icon
+                className={emailIsValid || !email ? "hide" : "invalid"}
+                type="x-mark"
+              />
             </div>
           </div>
           <div className="input-container-lower">
@@ -137,7 +140,7 @@ function LoginPage() {
                   : "offscreen"
               }
             >
-              <i className="fa-solid fa-info-circle"></i>
+              <Icon type="info" />
               Please enter an email address with a valid format.
             </p>
           </div>
@@ -146,14 +149,14 @@ function LoginPage() {
           <div className="input-container-upper">
             <Label htmlFor="password">password:</Label>
             <div className="input-status">
-              <span className={passwordIsValid ? "valid" : "hide"}>
-                <i className="fa-solid fa-check"></i>
-              </span>
-              <span
+              <Icon
+                className={passwordIsValid ? "valid" : "hide"}
+                type="checkmark"
+              />
+              <Icon
                 className={passwordIsValid || !password ? "hide" : "invalid"}
-              >
-                <i className="fa-solid fa-xmark"></i>
-              </span>
+                type="x-mark"
+              />
             </div>
           </div>
           <div className="input-container-lower">
@@ -179,7 +182,7 @@ function LoginPage() {
                   : "offscreen"
               }
             >
-              <i className="fa-solid fa-info-circle"></i>
+              <Icon type="info" />
               8 to 24 characters.
               <br />
               Must include uppercase & lowercase letters, a number, & a special

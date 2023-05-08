@@ -3,6 +3,7 @@ import { NavLink, Routes, Route, useLocation } from "react-router-dom";
 import { AuthContext, AuthProvider } from "./context/auth/AuthContext";
 import Dashboard from "./pages/dashboard/Dashboard";
 import HomePage from "./pages/home/Home";
+import Icon from "./atoms/icon/Icon";
 import LoginPage from "./pages/login/Login";
 import SignUpPage from "./pages/signup/SignUp";
 
@@ -35,7 +36,8 @@ function App() {
             <ul>
               <li>
                 <NavLink className="navbar brand" to="/">
-                  <i className="fa-solid fa-circle-half-stroke"></i>blckroot
+                  <Icon type="brand logo" />
+                  blckroot
                 </NavLink>
               </li>
             </ul>
