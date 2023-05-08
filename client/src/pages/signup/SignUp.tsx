@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Button from "../../atoms/button/Button";
+import Input from "../../atoms/input/Input";
 import { AuthContext } from "../../context/auth/AuthContext";
 import { createUser } from "../../api";
 
@@ -126,7 +127,7 @@ function SignUpPage() {
             </div>
           </div>
           <div className="input-container-lower">
-            <input
+            <Input
               aria-describedby="emailnote"
               aria-invalid={emailIsValid ? "false" : "true"}
               autoComplete="off"
@@ -137,7 +138,7 @@ function SignUpPage() {
                 handleOnChange(event, setEmail)
               }
               onFocus={() => setEmailIsFocus(true)}
-              ref={emailRef}
+              inputRef={emailRef}
               required
               type="email"
               value={email || ""}
@@ -170,7 +171,7 @@ function SignUpPage() {
             </div>
           </div>
           <div className="input-container-lower">
-            <input
+            <Input
               aria-describedby="passwordnote"
               aria-invalid={passwordIsValid ? "false" : "true"}
               id="password"
@@ -230,7 +231,7 @@ function SignUpPage() {
             </div>
           </div>
           <div className="input-container-lower">
-            <input
+            <Input
               aria-describedby="confirmpasswordnote"
               aria-invalid={confirmPasswordIsValid ? "false" : "true"}
               id="confirm_password"

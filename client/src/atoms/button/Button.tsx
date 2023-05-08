@@ -35,11 +35,6 @@ const Button = ({
   className && classProps.push(className);
   disabled && classProps.push("disabled");
   classProps.push(type);
-  // const classProps: string = [
-  //   disabled && "disabled ",
-  //   className && `${className} `,
-  //   type,
-  // ].join("");
 
   return (
     <button
