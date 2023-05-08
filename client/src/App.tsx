@@ -36,7 +36,7 @@ function App() {
             <ul>
               <li>
                 <NavLink className="navbar brand" to="/">
-                  <Icon type="brand logo" />
+                  <Icon type="brand-logo" />
                   blckroot
                 </NavLink>
               </li>

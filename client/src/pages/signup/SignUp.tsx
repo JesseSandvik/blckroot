@@ -111,7 +111,7 @@ function SignUpPage() {
     <main className="SignUp">
       <div className="SignUp-header">
         <Heading tag="1">
-          Minimalistic time managment
+          minimalistic time managment
           <br />
           <span className="accent-text">made simple.</span>
         </Heading>
@@ -122,11 +122,11 @@ function SignUpPage() {
             <Label htmlFor="email">email:</Label>
             <div className="input-status">
               <Icon
-                className={emailIsValid ? "valid" : "hide"}
+                className={emailIsValid ? "success" : "hide"}
                 type="checkmark"
               />
               <Icon
-                className={emailIsValid || !email ? "hide" : "invalid"}
+                className={emailIsValid || !email ? "hide" : "alert"}
                 type="x-mark"
               />
             </div>
@@ -166,11 +166,11 @@ function SignUpPage() {
             <Label htmlFor="password">password:</Label>
             <div className="input-status">
               <Icon
-                className={passwordIsValid ? "valid" : "hide"}
+                className={passwordIsValid ? "success" : "hide"}
                 type="checkmark"
               />
               <Icon
-                className={passwordIsValid || !password ? "hide" : "invalid"}
+                className={passwordIsValid || !password ? "hide" : "alert"}
                 type="x-mark"
               />
             </div>

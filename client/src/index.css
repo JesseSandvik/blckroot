@@ -8,7 +8,7 @@
   --default-muted-color: #f0f0f0;
   --default-disabled-color: #c2c1c2;
   --alert-color: #c97064;
-  --info-color: #b8e1ff;
+  --info-color: #3590f3;
   --success-color: #68a357;
   --primary-accent-color-neon: #dbf4a7;
   --primary-accent-color-med: #c8c6af;
@@ -42,12 +42,16 @@ button {
   width: 0;
 }
 
-.valid {
-  color: var(--success-color);
+.alert {
+  color: var(--alert-color);
 }
 
-.invalid {
-  color: var(--alert-color);
+.info {
+  color: var(--info-color);
+}
+
+.success {
+  color: var(--success-color);
 }
 
 .instructions {

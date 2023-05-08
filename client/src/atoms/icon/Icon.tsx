@@ -2,6 +2,13 @@ import { MouseEventHandler } from "react";
 
 import "./Icon.css";
 
+const getIconType = (iconType: string): string => {
+  const availableIcons: Map<string, string> = new Map(
+    Object.entries(require("./icons.json"))
+  );
+  return availableIcons.get(iconType) || "";
+};
+
 type IconProps = {
   className?: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;
@@ -10,20 +17,10 @@ type IconProps = {
 };
 
 const Icon = ({ className, onClick, title, type }: IconProps): JSX.Element => {
-  const getIconType = (iconType: string): string => {
-    const availableIcons: { [key: string]: string } = require("./icons.json");
-    let foundIcon = "";
-    for (const [key, value] of Object.entries(availableIcons)) {
-      if (key === iconType) {
-        foundIcon = value;
-      }
-    }
-    return foundIcon;
-  };
-
   const classProps = [];
   classProps.push(getIconType(type));
   className && classProps.push(className);
+  classProps.push(type);
   return <i className={classProps.join(" ")} onClick={onClick} title={title} />;
 };
 
