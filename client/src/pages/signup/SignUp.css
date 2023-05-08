@@ -18,12 +18,10 @@
   border-right: 2px solid var(--primary-accent-color-med);
   border-radius: 4px;
   box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.66);
-  display: grid;
   color: var(--default-dark-color);
   grid-column: 5 / span 4;
   grid-row: 2 / 4;
   grid-template-rows: repeat(4, 1fr);
-  padding: 1rem;
 }
 
 .SignUp-form > * {

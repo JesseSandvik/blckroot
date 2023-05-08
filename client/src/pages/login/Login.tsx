@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Button from "../../atoms/button/Button";
+import Form from "../../organisms/form/Form";
 import Heading from "../../atoms/heading/Heading";
 import Icon from "../../atoms/icon/Icon";
-import Input from "../../atoms/input/Input";
-import Label from "../../atoms/label/Label";
+import LabeledInput from "../../molecules/labeledInput/LabeledInput";
 import { AuthContext } from "../../context/auth/AuthContext";
 import { loginUser } from "../../api";
 
@@ -100,38 +100,37 @@ function LoginPage() {
           <span className="accent-text">made simple.</span>
         </Heading>
       </div>
-      <form className="Login-form" onSubmit={handleOnSubmit}>
+      <Form className="Login-form" onSubmit={handleOnSubmit}>
         <div className="input-container">
-          <div className="input-container-upper">
-            <Label htmlFor="email">email:</Label>
-            <div className="input-status">
-              <Icon
-                className={emailIsValid ? "success" : "hide"}
-                type="checkmark"
-              />
-              <Icon
-                className={emailIsValid || !email ? "hide" : "alert"}
-                type="x-mark"
-              />
-            </div>
+          <LabeledInput
+            aria-describedby="emailnote"
+            aria-invalid={emailIsValid ? "false" : "true"}
+            autoComplete="off"
+            className="input-user-credentials"
+            inputId="email"
+            label="email:"
+            name="email"
+            onBlur={() => setEmailIsFocus(false)}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              handleOnChange(event, setEmail)
+            }
+            onFocus={() => setEmailIsFocus(true)}
+            inputRef={emailRef}
+            required
+            type="email"
+            value={email || ""}
+          />
+          <div className="input-status">
+            <Icon
+              className={emailIsValid ? "success" : "hide"}
+              type="checkmark"
+            />
+            <Icon
+              className={emailIsValid || !email ? "hide" : "alert"}
+              type="x-mark"
+            />
           </div>
           <div className="input-container-lower">
-            <Input
-              aria-describedby="emailnote"
-              aria-invalid={emailIsValid ? "false" : "true"}
-              autoComplete="off"
-              id="email"
-              name="email"
-              onBlur={() => setEmailIsFocus(false)}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                handleOnChange(event, setEmail)
-              }
-              onFocus={() => setEmailIsFocus(true)}
-              inputRef={emailRef}
-              required
-              type="email"
-              value={email || ""}
-            />
             <p
               id="emailnote"
               className={
@@ -146,34 +145,33 @@ function LoginPage() {
           </div>
         </div>
         <div className="input-container">
-          <div className="input-container-upper">
-            <Label htmlFor="password">password:</Label>
-            <div className="input-status">
-              <Icon
-                className={passwordIsValid ? "success" : "hide"}
-                type="checkmark"
-              />
-              <Icon
-                className={passwordIsValid || !password ? "hide" : "alert"}
-                type="x-mark"
-              />
-            </div>
+          <LabeledInput
+            aria-describedby="passwordnote"
+            aria-invalid={passwordIsValid ? "false" : "true"}
+            className="input-user-credentials"
+            inputId="password"
+            label="password:"
+            name="password"
+            onBlur={() => setPasswordIsFocus(false)}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              handleOnChange(event, setPassword)
+            }
+            onFocus={() => setPasswordIsFocus(true)}
+            required
+            type="password"
+            value={password || ""}
+          />
+          <div className="input-status">
+            <Icon
+              className={passwordIsValid ? "success" : "hide"}
+              type="checkmark"
+            />
+            <Icon
+              className={passwordIsValid || !password ? "hide" : "alert"}
+              type="x-mark"
+            />
           </div>
           <div className="input-container-lower">
-            <Input
-              aria-describedby="passwordnote"
-              aria-invalid={passwordIsValid ? "false" : "true"}
-              id="password"
-              name="password"
-              onBlur={() => setPasswordIsFocus(false)}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                handleOnChange(event, setPassword)
-              }
-              onFocus={() => setPasswordIsFocus(true)}
-              required
-              type="password"
-              value={password || ""}
-            />
             <p
               id="passwordnote"
               className={
@@ -208,7 +206,7 @@ function LoginPage() {
             continue
           </Button>
         </div>
-      </form>
+      </Form>
       <div className="Login-alt-login-options">
         <p>Not a member?</p>
         <NavLink to="/signup">Create an account</NavLink>

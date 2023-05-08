@@ -8,10 +8,10 @@ import React, {
 } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Button from "../../atoms/button/Button";
+import Form from "../../organisms/form/Form";
 import Heading from "../../atoms/heading/Heading";
 import Icon from "../../atoms/icon/Icon";
-import Input from "../../atoms/input/Input";
-import Label from "../../atoms/label/Label";
+import LabeledInput from "../../molecules/labeledInput/LabeledInput";
 import { AuthContext } from "../../context/auth/AuthContext";
 import { createUser } from "../../api";
 
@@ -116,10 +116,26 @@ function SignUpPage() {
           <span className="accent-text">made simple.</span>
         </Heading>
       </div>
-      <form className="SignUp-form" onSubmit={handleOnSubmit}>
+      <Form className="SignUp-form" onSubmit={handleOnSubmit}>
         <div className="input-container">
           <div className="input-container-upper">
-            <Label htmlFor="email">email:</Label>
+            <LabeledInput
+              aria-describedby="emailnote"
+              aria-invalid={emailIsValid ? "false" : "true"}
+              autoComplete="off"
+              inputId="email"
+              label="email:"
+              name="email"
+              onBlur={() => setEmailIsFocus(false)}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                handleOnChange(event, setEmail)
+              }
+              onFocus={() => setEmailIsFocus(true)}
+              inputRef={emailRef}
+              required
+              type="email"
+              value={email || ""}
+            />
             <div className="input-status">
               <Icon
                 className={emailIsValid ? "success" : "hide"}
@@ -132,22 +148,6 @@ function SignUpPage() {
             </div>
           </div>
           <div className="input-container-lower">
-            <Input
-              aria-describedby="emailnote"
-              aria-invalid={emailIsValid ? "false" : "true"}
-              autoComplete="off"
-              id="email"
-              name="email"
-              onBlur={() => setEmailIsFocus(false)}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                handleOnChange(event, setEmail)
-              }
-              onFocus={() => setEmailIsFocus(true)}
-              inputRef={emailRef}
-              required
-              type="email"
-              value={email || ""}
-            />
             <p
               id="emailnote"
               className={
@@ -163,7 +163,21 @@ function SignUpPage() {
         </div>
         <div className="input-container">
           <div className="input-container-upper">
-            <Label htmlFor="password">password:</Label>
+            <LabeledInput
+              aria-describedby="passwordnote"
+              aria-invalid={passwordIsValid ? "false" : "true"}
+              inputId="password"
+              label="password:"
+              name="password"
+              onBlur={() => setPasswordIsFocus(false)}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                handleOnChange(event, setPassword)
+              }
+              onFocus={() => setPasswordIsFocus(true)}
+              required
+              type="password"
+              value={password || ""}
+            />
             <div className="input-status">
               <Icon
                 className={passwordIsValid ? "success" : "hide"}
@@ -176,20 +190,6 @@ function SignUpPage() {
             </div>
           </div>
           <div className="input-container-lower">
-            <Input
-              aria-describedby="passwordnote"
-              aria-invalid={passwordIsValid ? "false" : "true"}
-              id="password"
-              name="password"
-              onBlur={() => setPasswordIsFocus(false)}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                handleOnChange(event, setPassword)
-              }
-              onFocus={() => setPasswordIsFocus(true)}
-              required
-              type="password"
-              value={password || ""}
-            />
             <p
               id="passwordnote"
               className={
@@ -215,29 +215,11 @@ function SignUpPage() {
         </div>
         <div className="input-container">
           <div className="input-container-upper">
-            <Label htmlFor="confirm_password">confirm password:</Label>
-            <div className="input-status">
-              <Icon
-                className={
-                  confirmPasswordIsValid && confirmPassword ? "valid" : "hide"
-                }
-                type="checkmark"
-              />
-              <Icon
-                className={
-                  confirmPasswordIsValid || !confirmPassword
-                    ? "hide"
-                    : "invalid"
-                }
-                type="x-mark"
-              />
-            </div>
-          </div>
-          <div className="input-container-lower">
-            <Input
+            <LabeledInput
               aria-describedby="confirmpasswordnote"
               aria-invalid={confirmPasswordIsValid ? "false" : "true"}
-              id="confirm_password"
+              inputId="confirm_password"
+              label="confirm password:"
               name="confirm_password"
               onBlur={() => setConfirmPasswordIsFocus(false)}
               onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
@@ -248,6 +230,22 @@ function SignUpPage() {
               type="password"
               value={confirmPassword || ""}
             />
+            <div className="input-status">
+              <Icon
+                className={
+                  confirmPasswordIsValid && confirmPassword ? "success" : "hide"
+                }
+                type="checkmark"
+              />
+              <Icon
+                className={
+                  confirmPasswordIsValid || !confirmPassword ? "hide" : "alert"
+                }
+                type="x-mark"
+              />
+            </div>
+          </div>
+          <div className="input-container-lower">
             <p
               id="confirmpasswordnote"
               className={
@@ -273,7 +271,7 @@ function SignUpPage() {
             create account
           </Button>
         </div>
-      </form>
+      </Form>
       <div className="SignUp-alt-login-options">
         <p>Already a member?</p>
         <NavLink to="/login">Login to your account</NavLink>

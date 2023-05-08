@@ -18,12 +18,10 @@
   border-right: 2px solid var(--primary-accent-color-med);
   border-radius: 4px;
   box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.66);
-  display: grid;
   color: var(--default-dark-color);
   grid-column: 5 / span 4;
   grid-row: 2 / 4;
   grid-template-rows: repeat(4, 1fr);
-  padding: 1rem;
 }
 
 .Login-form > * {
@@ -33,6 +31,10 @@
 .Login-form .input-container {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
+}
+
+.input-user-credentials {
+  grid-column: 2 / 2;
 }
 
 .Login-form .support-container {
@@ -48,16 +50,6 @@
 
 .Login-form .support-container a:hover {
   text-decoration: underline;
-}
-
-.Login-form .input-container-upper {
-  display: flex;
-  grid-column: 2 / 2;
-  justify-content: space-between;
-}
-
-.Login-form .input-container-lower {
-  grid-column: 2 / 2;
 }
 
 .Login-form .btn-group {
