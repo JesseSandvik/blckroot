@@ -1,4 +1,3 @@
-
 button {
     background-color: transparent;
     border: none;
@@ -23,28 +22,9 @@ button.submit:hover {
 
 button.disabled {
   background-color: var(--default-disabled-color);
-    cursor: unset;
+  cursor: unset;
 }
 
-/* .form-submit-btn {
-    background-color: var(--accent-color);
-    border: 3px solid var(--secondary-color);
-    border-radius: 4px;
-    color: var(--secondary-color);
-    font-size: 1rem;
-    font-weight: bold;
-    height: 40px;
-    transition: 0.5s ease-in-out;
-    width: 160px;
-  }
-  
-  .form-submit-btn:disabled {
-    background-color: #808080;
-    border: 3px solid #808080;
-    color: #cecece;
-    cursor: unset;
-  }
-  
-  .form-submit-btn:disabled:hover {
-    box-shadow: unset;
-  } */
+button.disabled:hover {
+  box-shadow: unset;
+}

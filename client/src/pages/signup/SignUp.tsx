@@ -7,6 +7,7 @@ import React, {
   useState,
 } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import Button from "../../atoms/button/Button";
 import { AuthContext } from "../../context/auth/AuthContext";
 import { createUser } from "../../api";
 
@@ -257,8 +258,7 @@ function SignUpPage() {
           </div>
         </div>
         <div className="btn-group">
-          <button
-            className="form-submit-btn"
+          <Button
             disabled={
               !emailIsValid || !passwordIsValid || !confirmPasswordIsValid
                 ? true
@@ -267,7 +267,7 @@ function SignUpPage() {
             type="submit"
           >
             create account
-          </button>
+          </Button>
         </div>
       </form>
       <div className="SignUp-alt-login-options">
