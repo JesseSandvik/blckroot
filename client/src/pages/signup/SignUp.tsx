@@ -9,6 +9,7 @@ import React, {
 import { NavLink, useNavigate } from "react-router-dom";
 import Button from "../../atoms/button/Button";
 import Input from "../../atoms/input/Input";
+import Label from "../../atoms/label/Label";
 import { AuthContext } from "../../context/auth/AuthContext";
 import { createUser } from "../../api";
 
@@ -116,7 +117,7 @@ function SignUpPage() {
       <form className="SignUp-form" onSubmit={handleOnSubmit}>
         <div className="input-container">
           <div className="input-container-upper">
-            <label htmlFor="email">email:</label>
+            <Label htmlFor="email">email:</Label>
             <div className="input-status">
               <span className={emailIsValid ? "valid" : "hide"}>
                 <i className="fa-solid fa-check"></i>
@@ -158,7 +159,7 @@ function SignUpPage() {
         </div>
         <div className="input-container">
           <div className="input-container-upper">
-            <label htmlFor="password">password:</label>
+            <Label htmlFor="password">password:</Label>
             <div className="input-status">
               <span className={passwordIsValid ? "valid" : "hide"}>
                 <i className="fa-solid fa-check"></i>
@@ -210,7 +211,7 @@ function SignUpPage() {
         </div>
         <div className="input-container">
           <div className="input-container-upper">
-            <label htmlFor="confirm_password">confirm password:</label>
+            <Label htmlFor="confirm_password">confirm password:</Label>
             <div className="input-status">
               <span
                 className={

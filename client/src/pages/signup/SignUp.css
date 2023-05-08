@@ -55,19 +55,8 @@
   justify-content: space-between;
 }
 
-.SignUp-form .input-container label {
-  font-weight: bold;
-  text-transform: capitalize;
-}
-
 .SignUp-form .input-container-lower {
   grid-column: 2 / 2;
-}
-
-.SignUp-form .input-container input {
-  font-size: 1.2rem;
-  padding: 0.5rem;
-  width: 100%;
 }
 
 .SignUp-form .btn-group {

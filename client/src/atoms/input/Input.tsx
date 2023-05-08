@@ -1,5 +1,7 @@
 import { ChangeEventHandler, FocusEventHandler, LegacyRef } from "react";
 
+import "./Input.css";
+
 type InputProps = {
   ariaDescribedBy?: string;
   ariaInvalid?: "false" | "true" | "grammar" | "spelling";
