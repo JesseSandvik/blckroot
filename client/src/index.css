@@ -3,23 +3,16 @@
   font-family: "Exo 2", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  /* --default-light-color: #ebebeb; */
-  /* Light Color: White Smoke */
-  /* --default-light-color: #f5f3f5; */
   --default-light-color: #f7f9f9;
-  /* --default-dark-color: #222222; */
-  /* Dark Color: Outer Space */
   --default-dark-color: #474a48;
+  --default-muted-color: #f0f0f0;
   --default-disabled-color: #c2c1c2;
-  /* --accent-color-bright: #56cbf9; */
-  --alert-color: #e8aeb7;
+  --alert-color: #c97064;
   --info-color: #b8e1ff;
-  --success-color: #94fbab;
-  --accent-color-bright: #d2fdff;
-  --accent-color-light: #fffae2;
-  /* Accent Color: Bone */
-  --accent-color-medium: #c8c6af;
-  --accent-color-dark: #979685;
+  --success-color: #68a357;
+  --primary-accent-color-med: #c8c6af;
+  --primary-accent-color-dark: #979685;
+  --secondary-accent-color: #785964;
 }
 
 a {
@@ -49,15 +42,15 @@ button {
 }
 
 .valid {
-  color: green;
+  color: var(--success-color);
 }
 
 .invalid {
-  color: red;
+  color: var(--alert-color);
 }
 
 .instructions {
-  background-color: #f0f0f0;
+  background-color: var(--default-muted-color);
   border: 1px solid var(--default-dark-color);
   border-radius: 4px;
   box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.66);

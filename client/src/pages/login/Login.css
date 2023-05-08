@@ -28,6 +28,8 @@
 
 .Login-form {
   background-color: var(--default-light-color);
+  border-bottom: 2px solid var(--primary-accent-color-med);
+  border-right: 2px solid var(--primary-accent-color-med);
   border-radius: 4px;
   box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.66);
   display: grid;
@@ -100,7 +102,7 @@
 }
 
 .Login-alt-login-options a {
-  color: var(--accent-color);
+  color: var(--primary-accent-color-med);
   margin: 4px;
   text-transform: capitalize;
 }

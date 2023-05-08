@@ -8,13 +8,17 @@ button {
 }
 
 button.submit {
-    background-color: var(--accent-color-bright);
-    border: 2px solid var(--default-dark-color);
+    background-color: var(--secondary-accent-color);
     border-radius: 4px;
+    color: var(--default-light-color);
     font-size: 1rem;
     font-weight: 600;
     padding: 0.5rem 2rem;
     transition: 0.5s ease-in-out;
+}
+
+button.submit:hover {
+  box-shadow: 0 7px 12px -5px rgba(0, 0, 0, 0.50);
 }
 
 button.disabled {
@@ -32,10 +36,6 @@ button.disabled {
     height: 40px;
     transition: 0.5s ease-in-out;
     width: 160px;
-  }
-  
-  .form-submit-btn:hover {
-    box-shadow: 0 7px 12px -5px rgba(0, 0, 0, 0.66);
   }
   
   .form-submit-btn:disabled {
