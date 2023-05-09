@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { loginUser } from "../../api";
+
 import Button from "../../atoms/button/Button";
 import Form from "../../organisms/form/Form";
 import Heading from "../../atoms/heading/Heading";
 import Icon from "../../atoms/icon/Icon";
 import LabeledInput from "../../molecules/labeledInput/LabeledInput";
-import { loginUser } from "../../api";
 
 import "./Login.css";
 
@@ -86,13 +87,11 @@ function LoginPage() {
 
   return (
     <main className="Login">
-      <div className="Login-header">
-        <Heading tag="1">
-          minimalistic time managment
-          <br />
-          <span className="accent-text">made simple.</span>
-        </Heading>
-      </div>
+      <Heading tag="1">
+        minimalistic time managment
+        <br />
+        <span className="accent-text">made simple.</span>
+      </Heading>
       <Form className="Login-form" onSubmit={handleOnSubmit}>
         <div className="input-container">
           <LabeledInput

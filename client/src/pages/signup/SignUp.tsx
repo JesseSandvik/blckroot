@@ -95,13 +95,11 @@ function SignUpPage() {
 
   return (
     <main className="SignUp">
-      <div className="SignUp-header">
-        <Heading tag="1">
-          minimalistic time managment
-          <br />
-          <span className="accent-text">made simple.</span>
-        </Heading>
-      </div>
+      <Heading tag="1">
+        minimalistic time managment
+        <br />
+        <span className="accent-text">made simple.</span>
+      </Heading>
       <Form className="SignUp-form" onSubmit={handleOnSubmit}>
         <div className="input-container">
           <LabeledInput
