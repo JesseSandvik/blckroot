@@ -1,6 +1,4 @@
-import { useContext, useEffect } from "react";
 import { NavLink, Routes, Route, useLocation } from "react-router-dom";
-import { AuthContext, AuthProvider } from "./context/auth/AuthContext";
 import Dashboard from "./pages/dashboard/Dashboard";
 import HomePage from "./pages/home/Home";
 import Icon from "./atoms/icon/Icon";
@@ -21,60 +19,53 @@ import "./App.css";
  */
 
 function App() {
-  const { user } = useContext(AuthContext);
   const location = useLocation();
 
-  useEffect(() => {
-    console.log({ user });
-  }, [user]);
-
   return (
-    <AuthProvider>
-      <div className="App">
-        <header>
-          <nav className="navbar-left">
-            <ul>
+    <div className="App">
+      <header>
+        <nav className="navbar-left">
+          <ul>
+            <li>
+              <NavLink className="navbar brand" to="/">
+                <Icon type="brand-logo" />
+                blckroot
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+        <nav className="navbar-right">
+          <ul>
+            {location.pathname !== "/login" && (
               <li>
-                <NavLink className="navbar brand" to="/">
-                  <Icon type="brand-logo" />
-                  blckroot
+                <NavLink to="/login">login</NavLink>
+              </li>
+            )}
+            {location.pathname !== "/signup" && (
+              <li>
+                <NavLink className="sign-up" to="/signup">
+                  sign up
                 </NavLink>
               </li>
-            </ul>
-          </nav>
-          <nav className="navbar-right">
-            <ul>
-              {location.pathname !== "/login" && (
-                <li>
-                  <NavLink to="/login">login</NavLink>
-                </li>
-              )}
-              {location.pathname !== "/signup" && (
-                <li>
-                  <NavLink className="sign-up" to="/signup">
-                    sign up
-                  </NavLink>
-                </li>
-              )}
-            </ul>
-          </nav>
-        </header>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Routes>
-        <footer>
-          <div className="copyright">
-            <small>
-              Copyright &copy; {new Date().getFullYear()} Jesse Sandvik. All
-              rights reserved.
-            </small>
-          </div>
-        </footer>
-      </div>
-    </AuthProvider>
+            )}
+          </ul>
+        </nav>
+      </header>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+      <footer>
+        <div className="copyright">
+          <small>
+            Copyright &copy; {new Date().getFullYear()} Jesse Sandvik. All
+            rights reserved.
+          </small>
+        </div>
+      </footer>
+    </div>
   );
 }
 

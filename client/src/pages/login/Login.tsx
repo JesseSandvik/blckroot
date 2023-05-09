@@ -1,17 +1,15 @@
-import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Button from "../../atoms/button/Button";
 import Form from "../../organisms/form/Form";
 import Heading from "../../atoms/heading/Heading";
 import Icon from "../../atoms/icon/Icon";
 import LabeledInput from "../../molecules/labeledInput/LabeledInput";
-import { AuthContext } from "../../context/auth/AuthContext";
 import { loginUser } from "../../api";
 
 import "./Login.css";
 
 function LoginPage() {
-  const { authenticated, setAuthenticated, setUser } = useContext(AuthContext);
   const EMAIL_REGEX = useMemo(() => /^\S+@\S+\.\S+$/, []);
   const PASSWORD_REGEX = useMemo(
     () => /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/,
@@ -74,11 +72,6 @@ function LoginPage() {
           signal
         );
         console.log({ response });
-
-        response?.id &&
-          response?.email &&
-          setUser({ id: response.id, email: response.email });
-        setAuthenticated(true);
         setEmail("");
         setPassword("");
         navigate("/dashboard");
