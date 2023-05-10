@@ -1,10 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import Button from "../../atoms/button/Button";
-import Form from "../../organisms/form/Form";
-import Heading from "../../atoms/heading/Heading";
 import Icon from "../../atoms/icon/Icon";
 import LabeledInput from "../../molecules/labeledInput/LabeledInput";
+import UserFormTemplate from "../../templates/forms/UserForm";
 import { createUser } from "../../api";
 
 import "./SignUp.css";
@@ -93,173 +91,177 @@ function SignUpPage() {
     }
   };
 
-  return (
-    <main className="SignUp">
-      <Heading tag="1">
-        minimalistic time managment
-        <br />
-        <span className="accent-text">made simple.</span>
-      </Heading>
-      <Form className="SignUp-form" onSubmit={handleOnSubmit}>
-        <div className="input-container">
-          <LabeledInput
-            aria-describedby="emailnote"
-            aria-invalid={emailIsValid ? "false" : "true"}
-            autoComplete="off"
-            className="input-user-credentials"
-            inputId="email"
-            label="email:"
-            name="email"
-            onBlur={() => setEmailIsFocus(false)}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              handleOnChange(event, setEmail)
-            }
-            onFocus={() => setEmailIsFocus(true)}
-            inputRef={emailRef}
-            required
-            type="email"
-            value={email || ""}
+  const EmailInput = (): JSX.Element => {
+    return (
+      <>
+        <LabeledInput
+          aria-describedby="emailnote"
+          aria-invalid={emailIsValid ? "false" : "true"}
+          autoComplete="off"
+          className="input-user-credentials"
+          inputId="email"
+          label="email:"
+          name="email"
+          onBlur={() => setEmailIsFocus(false)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            handleOnChange(event, setEmail)
+          }
+          onFocus={() => setEmailIsFocus(true)}
+          inputRef={emailRef}
+          required
+          type="email"
+          value={email || ""}
+        />
+        <div className="input-status">
+          <Icon
+            className={emailIsValid ? "success" : "hide"}
+            type="checkmark"
           />
-          <div className="input-status">
-            <Icon
-              className={emailIsValid ? "success" : "hide"}
-              type="checkmark"
-            />
-            <Icon
-              className={emailIsValid || !email ? "hide" : "alert"}
-              type="x-mark"
-            />
-          </div>
-          <div className="input-container-lower">
-            <p
-              id="emailnote"
-              className={
-                emailIsFocus && email && !emailIsValid
-                  ? "instructions"
-                  : "offscreen"
-              }
-            >
-              <Icon type="info" />
-              Please enter an email address with a valid format.
-            </p>
-          </div>
-        </div>
-        <div className="input-container">
-          <LabeledInput
-            aria-describedby="passwordnote"
-            aria-invalid={passwordIsValid ? "false" : "true"}
-            className="input-user-credentials"
-            inputId="password"
-            label="password:"
-            name="password"
-            onBlur={() => setPasswordIsFocus(false)}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              handleOnChange(event, setPassword)
-            }
-            onFocus={() => setPasswordIsFocus(true)}
-            required
-            type="password"
-            value={password || ""}
+          <Icon
+            className={emailIsValid || !email ? "hide" : "alert"}
+            type="x-mark"
           />
-          <div className="input-status">
-            <Icon
-              className={passwordIsValid ? "success" : "hide"}
-              type="checkmark"
-            />
-            <Icon
-              className={passwordIsValid || !password ? "hide" : "alert"}
-              type="x-mark"
-            />
-          </div>
-          <div className="input-container-lower">
-            <p
-              id="passwordnote"
-              className={
-                passwordIsFocus && !passwordIsValid
-                  ? "instructions"
-                  : "offscreen"
-              }
-            >
-              <Icon type="info" />
-              8 to 24 characters.
-              <br />
-              Must include uppercase & lowercase letters, a number, & a special
-              character.
-              <br />
-              Allowed special characters:{" "}
-              <span aria-label="exclamation mark">!</span>
-              <span aria-label="at symbol">@</span>
-              <span aria-label="hashtag">#</span>
-              <span aria-label="dollar sign">$</span>
-              <span aria-label="percent">%</span>
-            </p>
-          </div>
         </div>
-        <div className="input-container">
-          <LabeledInput
-            aria-describedby="confirmpasswordnote"
-            aria-invalid={confirmPasswordIsValid ? "false" : "true"}
-            className="input-user-credentials"
-            inputId="confirm_password"
-            label="confirm password:"
-            name="confirm_password"
-            onBlur={() => setConfirmPasswordIsFocus(false)}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              handleOnChange(event, setConfirmPassword)
+        <div className="input-container-lower">
+          <p
+            id="emailnote"
+            className={
+              emailIsFocus && email && !emailIsValid
+                ? "instructions"
+                : "offscreen"
             }
-            onFocus={() => setConfirmPasswordIsFocus(true)}
-            required
-            type="password"
-            value={confirmPassword || ""}
-          />
-          <div className="input-status">
-            <Icon
-              className={
-                confirmPasswordIsValid && confirmPassword ? "success" : "hide"
-              }
-              type="checkmark"
-            />
-            <Icon
-              className={
-                confirmPasswordIsValid || !confirmPassword ? "hide" : "alert"
-              }
-              type="x-mark"
-            />
-          </div>
-          <div className="input-container-lower">
-            <p
-              id="confirmpasswordnote"
-              className={
-                confirmPasswordIsFocus && !confirmPasswordIsValid
-                  ? "instructions"
-                  : "offscreen"
-              }
-            >
-              <Icon type="info" />
-              Must match the password from the above input field.
-            </p>
-          </div>
-        </div>
-        <div className="btn-group">
-          <Button
-            disabled={
-              !emailIsValid || !passwordIsValid || !confirmPasswordIsValid
-                ? true
-                : false
-            }
-            type="submit"
           >
-            create account
-          </Button>
+            <Icon type="info" />
+            Please enter an email address with a valid format.
+          </p>
         </div>
-      </Form>
+      </>
+    );
+  };
+
+  const PasswordInput = (): JSX.Element => {
+    return (
+      <>
+        <LabeledInput
+          aria-describedby="passwordnote"
+          aria-invalid={passwordIsValid ? "false" : "true"}
+          className="input-user-credentials"
+          inputId="password"
+          label="password:"
+          name="password"
+          onBlur={() => setPasswordIsFocus(false)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            handleOnChange(event, setPassword)
+          }
+          onFocus={() => setPasswordIsFocus(true)}
+          required
+          type="password"
+          value={password || ""}
+        />
+        <div className="input-status">
+          <Icon
+            className={passwordIsValid ? "success" : "hide"}
+            type="checkmark"
+          />
+          <Icon
+            className={passwordIsValid || !password ? "hide" : "alert"}
+            type="x-mark"
+          />
+        </div>
+        <p
+          id="passwordnote"
+          className={
+            passwordIsFocus && !passwordIsValid ? "instructions" : "offscreen"
+          }
+        >
+          <Icon type="info" />
+          8 to 24 characters.
+          <br />
+          Must include uppercase & lowercase letters, a number, & a special
+          character.
+          <br />
+          Allowed special characters:{" "}
+          <span aria-label="exclamation mark">!</span>
+          <span aria-label="at symbol">@</span>
+          <span aria-label="hashtag">#</span>
+          <span aria-label="dollar sign">$</span>
+          <span aria-label="percent">%</span>
+        </p>
+      </>
+    );
+  };
+
+  const PasswordConfirmInput = (): JSX.Element => {
+    return (
+      <>
+        <LabeledInput
+          aria-describedby="confirmpasswordnote"
+          aria-invalid={confirmPasswordIsValid ? "false" : "true"}
+          className="input-user-credentials"
+          inputId="confirm_password"
+          label="confirm password:"
+          name="confirm_password"
+          onBlur={() => setConfirmPasswordIsFocus(false)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            handleOnChange(event, setConfirmPassword)
+          }
+          onFocus={() => setConfirmPasswordIsFocus(true)}
+          required
+          type="password"
+          value={confirmPassword || ""}
+        />
+        <div className="input-status">
+          <Icon
+            className={
+              confirmPasswordIsValid && confirmPassword ? "success" : "hide"
+            }
+            type="checkmark"
+          />
+          <Icon
+            className={
+              confirmPasswordIsValid || !confirmPassword ? "hide" : "alert"
+            }
+            type="x-mark"
+          />
+        </div>
+        <p
+          id="confirmpasswordnote"
+          className={
+            confirmPasswordIsFocus && !confirmPasswordIsValid
+              ? "instructions"
+              : "offscreen"
+          }
+        >
+          <Icon type="info" />
+          Must match the password from the above input field.
+        </p>
+      </>
+    );
+  };
+
+  return (
+    <>
+      <UserFormTemplate
+        firstInput={<EmailInput />}
+        secondInput={<PasswordInput />}
+        thirdInput={<PasswordConfirmInput />}
+        pageClassName="Signup"
+        pageHeading="minimalistic time management made simple"
+        onFormSubmit={handleOnSubmit}
+        submitButtonName="create account"
+        submitButtonDisabled={
+          !emailIsValid || !passwordIsValid || !confirmPasswordIsValid
+            ? true
+            : false
+        }
+      />
       <div className="SignUp-alt-login-options">
         <p>Already a member?</p>
         <NavLink to="/login">Login to your account</NavLink>
         <p>or</p>
         <NavLink to="/dashboard">Continue as guest</NavLink>
       </div>
-    </main>
+    </>
   );
 }
 
