@@ -1,7 +1,8 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
-import EmailInput from "../../molecules/labeledInput/emailInput/EmailInput";
+import EmailInput from "../../molecules/emailInput/EmailInput";
+import PasswordInput from "../../molecules/passwordInput/PasswordInput";
 import Icon from "../../atoms/icon/Icon";
 import LabeledInput from "../../molecules/labeledInput/LabeledInput";
 import UserFormTemplate from "../../templates/forms/UserForm";
@@ -10,18 +11,11 @@ import { createUser } from "../../api";
 import "./SignUp.css";
 
 function SignUpPage() {
-  const PASSWORD_REGEX = useMemo(
-    () => /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/,
-    []
-  );
-
   const navigate = useNavigate();
 
   const [email, setEmail] = useState<string>("");
-
   const [password, setPassword] = useState<string>("");
-  const [passwordIsValid, setPasswordIsValid] = useState<boolean>(false);
-  const [passwordIsFocus, setPasswordIsFocus] = useState<boolean>(false);
+
   const errorRef = useRef();
 
   const [confirmPassword, setConfirmPassword] = useState<string>("");
@@ -32,14 +26,6 @@ function SignUpPage() {
 
   const [errorMessage, setErrorMessage] = useState<string>("");
 
-  const passwordValidationTestPasses = PASSWORD_REGEX.test(password);
-
-  useEffect(() => {
-    setPasswordIsValid(passwordValidationTestPasses);
-    const passwordIsConfirmed = password === confirmPassword;
-    setConfirmPasswordIsValid(passwordIsConfirmed);
-  }, [password, passwordValidationTestPasses, confirmPassword]);
-
   useEffect(() => {
     setErrorMessage("");
   }, [email, password, confirmPassword]);
@@ -47,7 +33,7 @@ function SignUpPage() {
   const handleOnChange = (
     event: React.ChangeEvent<HTMLInputElement>,
     setState: React.Dispatch<React.SetStateAction<string>>
-  ) => {
+  ): void => {
     event.preventDefault();
     setState(event.currentTarget.value);
   };
@@ -73,58 +59,6 @@ function SignUpPage() {
     } catch (error) {
       console.log({ error });
     }
-  };
-
-  const PasswordInput = (): JSX.Element => {
-    return (
-      <>
-        <LabeledInput
-          aria-describedby="passwordnote"
-          aria-invalid={passwordIsValid ? "false" : "true"}
-          className="input-user-credentials"
-          inputId="password"
-          label="password:"
-          name="password"
-          onBlur={() => setPasswordIsFocus(false)}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-            handleOnChange(event, setPassword)
-          }
-          onFocus={() => setPasswordIsFocus(true)}
-          required
-          type="password"
-          value={password || ""}
-        />
-        <div className="input-status">
-          <Icon
-            className={passwordIsValid ? "success" : "hide"}
-            type="checkmark"
-          />
-          <Icon
-            className={passwordIsValid || !password ? "hide" : "alert"}
-            type="x-mark"
-          />
-        </div>
-        <p
-          id="passwordnote"
-          className={
-            passwordIsFocus && !passwordIsValid ? "instructions" : "offscreen"
-          }
-        >
-          <Icon type="info" />
-          8 to 24 characters.
-          <br />
-          Must include uppercase & lowercase letters, a number, & a special
-          character.
-          <br />
-          Allowed special characters:{" "}
-          <span aria-label="exclamation mark">!</span>
-          <span aria-label="at symbol">@</span>
-          <span aria-label="hashtag">#</span>
-          <span aria-label="dollar sign">$</span>
-          <span aria-label="percent">%</span>
-        </p>
-      </>
-    );
   };
 
   const PasswordConfirmInput = (): JSX.Element => {
@@ -178,8 +112,20 @@ function SignUpPage() {
   return (
     <>
       <UserFormTemplate
-        firstInput={<EmailInput email={email} setEmail={setEmail} />}
-        secondInput={<PasswordInput />}
+        firstInput={
+          <EmailInput
+            email={email}
+            handleOnChange={handleOnChange}
+            setEmail={setEmail}
+          />
+        }
+        secondInput={
+          <PasswordInput
+            handleOnChange={handleOnChange}
+            password={password}
+            setPassword={setPassword}
+          />
+        }
         thirdInput={<PasswordConfirmInput />}
         pageClassName="Signup"
         pageHeading="minimalistic time management made simple"

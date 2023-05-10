@@ -1,34 +1,28 @@
-import {
-  ChangeEvent,
-  Dispatch,
-  useMemo,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import Icon from "../../../atoms/icon/Icon";
-import LabeledInput from "../LabeledInput";
+import { Dispatch, useMemo, useEffect, useRef, useState } from "react";
+
+import Icon from "../../atoms/icon/Icon";
+import LabeledInput from "../labeledInput/LabeledInput";
 
 type EmailInputProps = {
   email: string;
+  handleOnChange: (
+    event: React.ChangeEvent<HTMLInputElement>,
+    setState: React.Dispatch<React.SetStateAction<string>>
+  ) => void;
   setEmail: Dispatch<React.SetStateAction<string>>;
 };
 
-const EmailInput = ({ email, setEmail }: EmailInputProps): JSX.Element => {
+const EmailInput = ({
+  email,
+  handleOnChange,
+  setEmail,
+}: EmailInputProps): JSX.Element => {
   const EMAIL_REGEX = useMemo(() => /^\S+@\S+\.\S+$/, []);
   const [emailIsFocus, setEmailIsFocus] = useState<boolean>(false);
   const [emailIsValid, setEmailIsValid] = useState<boolean>(false);
   const emailRef = useRef<HTMLInputElement>(null);
 
   const emailValidationTestPasses = EMAIL_REGEX.test(email);
-
-  const handleOnChange = (
-    event: ChangeEvent<HTMLInputElement>,
-    setState: Dispatch<React.SetStateAction<string>>
-  ) => {
-    event.preventDefault();
-    setState(event.currentTarget.value);
-  };
 
   useEffect(() => {
     emailRef?.current && emailRef.current.focus();
