@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+
+import EmailInput from "../../molecules/labeledInput/emailInput/EmailInput";
 import Icon from "../../atoms/icon/Icon";
 import LabeledInput from "../../molecules/labeledInput/LabeledInput";
 import UserFormTemplate from "../../templates/forms/UserForm";
@@ -8,23 +10,19 @@ import { createUser } from "../../api";
 import "./SignUp.css";
 
 function SignUpPage() {
-  const EMAIL_REGEX = useMemo(() => /^\S+@\S+\.\S+$/, []);
   const PASSWORD_REGEX = useMemo(
     () => /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/,
     []
   );
 
   const navigate = useNavigate();
-  const emailRef = useRef<HTMLInputElement>(null);
-  const errorRef = useRef();
 
   const [email, setEmail] = useState<string>("");
-  const [emailIsValid, setEmailIsValid] = useState<boolean>(false);
-  const [emailIsFocus, setEmailIsFocus] = useState<boolean>(false);
 
   const [password, setPassword] = useState<string>("");
   const [passwordIsValid, setPasswordIsValid] = useState<boolean>(false);
   const [passwordIsFocus, setPasswordIsFocus] = useState<boolean>(false);
+  const errorRef = useRef();
 
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [confirmPasswordIsValid, setConfirmPasswordIsValid] =
@@ -34,16 +32,7 @@ function SignUpPage() {
 
   const [errorMessage, setErrorMessage] = useState<string>("");
 
-  const emailValidationTestPasses = EMAIL_REGEX.test(email);
   const passwordValidationTestPasses = PASSWORD_REGEX.test(password);
-
-  useEffect(() => {
-    emailRef?.current && emailRef.current.focus();
-  }, []);
-
-  useEffect(() => {
-    setEmailIsValid(emailValidationTestPasses);
-  }, [emailValidationTestPasses]);
 
   useEffect(() => {
     setPasswordIsValid(passwordValidationTestPasses);
@@ -66,77 +55,24 @@ function SignUpPage() {
   const handleOnSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (emailValidationTestPasses && passwordValidationTestPasses) {
-      const { signal } = new AbortController();
+    const { signal } = new AbortController();
 
-      try {
-        const response = await createUser(
-          {
-            email,
-            password,
-          },
-          signal
-        );
-        console.log({ response });
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
-        navigate("/dashboard");
-      } catch (error) {
-        console.log({ error });
-      }
-    } else {
-      setErrorMessage("Invalid Entry");
-      return;
+    try {
+      const response = await createUser(
+        {
+          email,
+          password,
+        },
+        signal
+      );
+      console.log({ response });
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+      navigate("/dashboard");
+    } catch (error) {
+      console.log({ error });
     }
-  };
-
-  const EmailInput = (): JSX.Element => {
-    return (
-      <>
-        <LabeledInput
-          aria-describedby="emailnote"
-          aria-invalid={emailIsValid ? "false" : "true"}
-          autoComplete="off"
-          className="input-user-credentials"
-          inputId="email"
-          label="email:"
-          name="email"
-          onBlur={() => setEmailIsFocus(false)}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-            handleOnChange(event, setEmail)
-          }
-          onFocus={() => setEmailIsFocus(true)}
-          inputRef={emailRef}
-          required
-          type="email"
-          value={email || ""}
-        />
-        <div className="input-status">
-          <Icon
-            className={emailIsValid ? "success" : "hide"}
-            type="checkmark"
-          />
-          <Icon
-            className={emailIsValid || !email ? "hide" : "alert"}
-            type="x-mark"
-          />
-        </div>
-        <div className="input-container-lower">
-          <p
-            id="emailnote"
-            className={
-              emailIsFocus && email && !emailIsValid
-                ? "instructions"
-                : "offscreen"
-            }
-          >
-            <Icon type="info" />
-            Please enter an email address with a valid format.
-          </p>
-        </div>
-      </>
-    );
   };
 
   const PasswordInput = (): JSX.Element => {
@@ -242,18 +178,14 @@ function SignUpPage() {
   return (
     <>
       <UserFormTemplate
-        firstInput={<EmailInput />}
+        firstInput={<EmailInput email={email} setEmail={setEmail} />}
         secondInput={<PasswordInput />}
         thirdInput={<PasswordConfirmInput />}
         pageClassName="Signup"
         pageHeading="minimalistic time management made simple"
         onFormSubmit={handleOnSubmit}
         submitButtonName="create account"
-        submitButtonDisabled={
-          !emailIsValid || !passwordIsValid || !confirmPasswordIsValid
-            ? true
-            : false
-        }
+        submitButtonDisabled={false}
       />
       <div className="SignUp-alt-login-options">
         <p>Already a member?</p>
