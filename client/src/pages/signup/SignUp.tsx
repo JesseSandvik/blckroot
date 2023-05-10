@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
+import PasswordConfirmInput from "../../molecules/passwordConfirmInput/PasswordConfirmInput";
 import EmailInput from "../../molecules/emailInput/EmailInput";
 import PasswordInput from "../../molecules/passwordInput/PasswordInput";
-import Icon from "../../atoms/icon/Icon";
-import LabeledInput from "../../molecules/labeledInput/LabeledInput";
 import UserFormTemplate from "../../templates/forms/UserForm";
 import { createUser } from "../../api";
 
@@ -19,10 +18,6 @@ function SignUpPage() {
   const errorRef = useRef();
 
   const [confirmPassword, setConfirmPassword] = useState<string>("");
-  const [confirmPasswordIsValid, setConfirmPasswordIsValid] =
-    useState<boolean>(false);
-  const [confirmPasswordIsFocus, setConfirmPasswordIsFocus] =
-    useState<boolean>(false);
 
   const [errorMessage, setErrorMessage] = useState<string>("");
 
@@ -61,54 +56,6 @@ function SignUpPage() {
     }
   };
 
-  const PasswordConfirmInput = (): JSX.Element => {
-    return (
-      <>
-        <LabeledInput
-          aria-describedby="confirmpasswordnote"
-          aria-invalid={confirmPasswordIsValid ? "false" : "true"}
-          className="input-user-credentials"
-          inputId="confirm_password"
-          label="confirm password:"
-          name="confirm_password"
-          onBlur={() => setConfirmPasswordIsFocus(false)}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-            handleOnChange(event, setConfirmPassword)
-          }
-          onFocus={() => setConfirmPasswordIsFocus(true)}
-          required
-          type="password"
-          value={confirmPassword || ""}
-        />
-        <div className="input-status">
-          <Icon
-            className={
-              confirmPasswordIsValid && confirmPassword ? "success" : "hide"
-            }
-            type="checkmark"
-          />
-          <Icon
-            className={
-              confirmPasswordIsValid || !confirmPassword ? "hide" : "alert"
-            }
-            type="x-mark"
-          />
-        </div>
-        <p
-          id="confirmpasswordnote"
-          className={
-            confirmPasswordIsFocus && !confirmPasswordIsValid
-              ? "instructions"
-              : "offscreen"
-          }
-        >
-          <Icon type="info" />
-          Must match the password from the above input field.
-        </p>
-      </>
-    );
-  };
-
   return (
     <>
       <UserFormTemplate
@@ -126,7 +73,14 @@ function SignUpPage() {
             setPassword={setPassword}
           />
         }
-        thirdInput={<PasswordConfirmInput />}
+        thirdInput={
+          <PasswordConfirmInput
+            confirmPassword={confirmPassword}
+            handleOnChange={handleOnChange}
+            password={password}
+            setConfirmPassword={setConfirmPassword}
+          />
+        }
         pageClassName="Signup"
         pageHeading="minimalistic time management made simple"
         onFormSubmit={handleOnSubmit}
