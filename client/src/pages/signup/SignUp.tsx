@@ -11,27 +11,16 @@ import "./SignUp.css";
 
 function SignUpPage() {
   const navigate = useNavigate();
+  const errorRef = useRef();
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-
-  const errorRef = useRef();
-
   const [confirmPassword, setConfirmPassword] = useState<string>("");
-
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   useEffect(() => {
     setErrorMessage("");
   }, [email, password, confirmPassword]);
-
-  const handleOnChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    setState: React.Dispatch<React.SetStateAction<string>>
-  ): void => {
-    event.preventDefault();
-    setState(event.currentTarget.value);
-  };
 
   const handleOnSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -59,24 +48,13 @@ function SignUpPage() {
   return (
     <>
       <UserFormTemplate
-        firstInput={
-          <EmailInput
-            email={email}
-            handleOnChange={handleOnChange}
-            setEmail={setEmail}
-          />
-        }
+        firstInput={<EmailInput email={email} setEmail={setEmail} />}
         secondInput={
-          <PasswordInput
-            handleOnChange={handleOnChange}
-            password={password}
-            setPassword={setPassword}
-          />
+          <PasswordInput password={password} setPassword={setPassword} />
         }
         thirdInput={
           <PasswordConfirmInput
             confirmPassword={confirmPassword}
-            handleOnChange={handleOnChange}
             password={password}
             setConfirmPassword={setConfirmPassword}
           />

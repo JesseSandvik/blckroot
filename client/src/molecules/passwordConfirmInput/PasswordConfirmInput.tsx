@@ -1,21 +1,17 @@
 import { Dispatch, useEffect, useState } from "react";
+import { handleGenericOnChange } from "../../utils/state/form";
 
 import Icon from "../../atoms/icon/Icon";
 import LabeledInput from "../labeledInput/LabeledInput";
 
 type ConfirmPasswordInputProps = {
   confirmPassword: string;
-  handleOnChange: (
-    event: React.ChangeEvent<HTMLInputElement>,
-    setState: React.Dispatch<React.SetStateAction<string>>
-  ) => void;
   password: string;
   setConfirmPassword: Dispatch<React.SetStateAction<string>>;
 };
 
 const PasswordConfirmInput = ({
   confirmPassword,
-  handleOnChange,
   password,
   setConfirmPassword,
 }: ConfirmPasswordInputProps): JSX.Element => {
@@ -39,7 +35,7 @@ const PasswordConfirmInput = ({
         name="confirm_password"
         onBlur={() => setConfirmPasswordIsFocus(false)}
         onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-          handleOnChange(event, setConfirmPassword)
+          handleGenericOnChange(event, setConfirmPassword)
         }
         onFocus={() => setConfirmPasswordIsFocus(true)}
         required

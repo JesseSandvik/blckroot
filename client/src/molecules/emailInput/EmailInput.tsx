@@ -1,22 +1,15 @@
 import { Dispatch, useMemo, useEffect, useRef, useState } from "react";
+import { handleGenericOnChange } from "../../utils/state/form";
 
 import Icon from "../../atoms/icon/Icon";
 import LabeledInput from "../labeledInput/LabeledInput";
 
 type EmailInputProps = {
   email: string;
-  handleOnChange: (
-    event: React.ChangeEvent<HTMLInputElement>,
-    setState: React.Dispatch<React.SetStateAction<string>>
-  ) => void;
   setEmail: Dispatch<React.SetStateAction<string>>;
 };
 
-const EmailInput = ({
-  email,
-  handleOnChange,
-  setEmail,
-}: EmailInputProps): JSX.Element => {
+const EmailInput = ({ email, setEmail }: EmailInputProps): JSX.Element => {
   const EMAIL_REGEX = useMemo(() => /^\S+@\S+\.\S+$/, []);
   const [emailIsFocus, setEmailIsFocus] = useState<boolean>(false);
   const [emailIsValid, setEmailIsValid] = useState<boolean>(false);
@@ -44,7 +37,7 @@ const EmailInput = ({
         name="email"
         onBlur={() => setEmailIsFocus(false)}
         onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-          handleOnChange(event, setEmail)
+          handleGenericOnChange(event, setEmail)
         }
         onFocus={() => setEmailIsFocus(true)}
         inputRef={emailRef}
