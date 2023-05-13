@@ -4,7 +4,7 @@ import { loginUser } from "../../api";
 
 import EmailInput from "../../molecules/emailInput/EmailInput";
 import PasswordInput from "../../molecules/passwordInput/PasswordInput";
-import UserFormTemplate from "../../templates/forms/UserForm";
+import UserFormPageTemplate from "../../templates/forms/UserFormPage";
 
 import "./Login.css";
 
@@ -42,25 +42,31 @@ function LoginPage() {
     }
   };
 
+  const FormFooter = (): JSX.Element => {
+    return (
+      <>
+        <p>Not a member?</p>
+        <NavLink to="/signup">Create an account</NavLink>
+        <p>or</p>
+        <NavLink to="/dashboard">Continue as guest</NavLink>
+      </>
+    );
+  };
+
   return (
     <>
-      <UserFormTemplate
+      <UserFormPageTemplate
         firstInput={<EmailInput email={email} setEmail={setEmail} />}
         secondInput={
           <PasswordInput password={password} setPassword={setPassword} />
         }
+        formFooter={<FormFooter />}
         pageClassName="Login"
         pageHeading="minimalistic time management made simple"
         onFormSubmit={handleOnSubmit}
         submitButtonName="create account"
         submitButtonDisabled={false}
       />
-      <div className="Login-alt-login-options">
-        <p>Not a member?</p>
-        <NavLink to="/signup">Create an account</NavLink>
-        <p>or</p>
-        <NavLink to="/dashboard">Continue as guest</NavLink>
-      </div>
     </>
   );
 }
