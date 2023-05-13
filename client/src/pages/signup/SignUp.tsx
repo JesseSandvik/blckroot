@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { createUser } from "../../api";
 
 import PasswordConfirmInput from "../../molecules/passwordConfirmInput/PasswordConfirmInput";
 import EmailInput from "../../molecules/emailInput/EmailInput";
 import PasswordInput from "../../molecules/passwordInput/PasswordInput";
 import UserFormTemplate from "../../templates/forms/UserForm";
-import { createUser } from "../../api";
 
 import "./SignUp.css";
 
