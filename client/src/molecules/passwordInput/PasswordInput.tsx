@@ -6,18 +6,21 @@ import LabeledInput from "../labeledInput/LabeledInput";
 
 type PasswordInputProps = {
   password: string;
+  passwordIsValid: boolean;
   setPassword: Dispatch<React.SetStateAction<string>>;
+  setPasswordIsValid: Dispatch<React.SetStateAction<boolean>>;
 };
 
 const PasswordInput = ({
   password,
+  passwordIsValid,
   setPassword,
+  setPasswordIsValid,
 }: PasswordInputProps): JSX.Element => {
   const PASSWORD_REGEX = useMemo(
     () => /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/,
     []
   );
-  const [passwordIsValid, setPasswordIsValid] = useState<boolean>(false);
   const [passwordIsFocus, setPasswordIsFocus] = useState<boolean>(false);
 
   const passwordValidationTestPasses = PASSWORD_REGEX.test(password);

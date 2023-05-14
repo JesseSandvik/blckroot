@@ -1,4 +1,4 @@
-import { Dispatch, useEffect, useState } from "react";
+import { Dispatch, useState } from "react";
 import { handleGenericOnChange } from "../../utils/state/form";
 
 import Icon from "../../atoms/icon/Icon";
@@ -7,22 +7,18 @@ import LabeledInput from "../labeledInput/LabeledInput";
 type ConfirmPasswordInputProps = {
   confirmPassword: string;
   password: string;
+  confirmPasswordIsValid: boolean;
   setConfirmPassword: Dispatch<React.SetStateAction<string>>;
+  setConfirmPasswordIsValid: Dispatch<React.SetStateAction<boolean>>;
 };
 
 const PasswordConfirmInput = ({
   confirmPassword,
-  password,
+  confirmPasswordIsValid,
   setConfirmPassword,
 }: ConfirmPasswordInputProps): JSX.Element => {
-  const [confirmPasswordIsValid, setConfirmPasswordIsValid] =
-    useState<boolean>(false);
   const [confirmPasswordIsFocus, setConfirmPasswordIsFocus] =
     useState<boolean>(false);
-
-  useEffect(() => {
-    setConfirmPasswordIsValid(confirmPassword === password);
-  }, [confirmPassword, password]);
 
   return (
     <>

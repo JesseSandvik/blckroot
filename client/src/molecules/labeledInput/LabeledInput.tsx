@@ -7,8 +7,6 @@ import {
 import Input from "../../atoms/input/Input";
 import Label from "../../atoms/label/Label";
 
-import "./LabeledInput.css";
-
 type LabeledInputProps = {
   ariaDescribedBy?: string;
   ariaInvalid?: "false" | "true" | "grammar" | "spelling";

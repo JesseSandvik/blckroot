@@ -14,13 +14,21 @@ function SignUpPage() {
   const errorRef = useRef();
 
   const [email, setEmail] = useState<string>("");
+  const [emailIsValid, setEmailIsValid] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("");
+  const [passwordIsValid, setPasswordIsValid] = useState<boolean>(false);
   const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [confirmPasswordIsValid, setConfirmPasswordIsValid] =
+    useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   useEffect(() => {
     setErrorMessage("");
   }, [email, password, confirmPassword]);
+
+  useEffect(() => {
+    setConfirmPasswordIsValid(confirmPassword === password);
+  }, [confirmPassword, password]);
 
   const handleOnSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -58,22 +66,40 @@ function SignUpPage() {
   return (
     <>
       <UserFormPageTemplate
-        firstInput={<EmailInput email={email} setEmail={setEmail} />}
+        firstInput={
+          <EmailInput
+            email={email}
+            emailIsValid={emailIsValid}
+            setEmail={setEmail}
+            setEmailIsValid={setEmailIsValid}
+          />
+        }
         secondInput={
-          <PasswordInput password={password} setPassword={setPassword} />
+          <PasswordInput
+            password={password}
+            passwordIsValid={passwordIsValid}
+            setPassword={setPassword}
+            setPasswordIsValid={setPasswordIsValid}
+          />
         }
         thirdInput={
           <PasswordConfirmInput
             confirmPassword={confirmPassword}
+            confirmPasswordIsValid={confirmPasswordIsValid}
             password={password}
             setConfirmPassword={setConfirmPassword}
+            setConfirmPasswordIsValid={setConfirmPasswordIsValid}
           />
         }
         formFooter={<FormFooter />}
         pageHeading="minimalistic time management made simple"
         onFormSubmit={handleOnSubmit}
         submitButtonName="create account"
-        submitButtonDisabled={false}
+        submitButtonDisabled={
+          emailIsValid && passwordIsValid && confirmPasswordIsValid
+            ? false
+            : true
+        }
       />
     </>
   );

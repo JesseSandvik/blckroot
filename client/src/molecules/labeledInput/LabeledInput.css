@@ -1,9 +1,0 @@
-label.input-user-credentials {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-label.input-user-credentials input {
-    margin-top: 2px;
-}

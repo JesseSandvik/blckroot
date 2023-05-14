@@ -36,9 +36,11 @@ const UserFormPageTemplate = ({
         <div className="input-container">{firstInput}</div>
         <div className="input-container">{secondInput}</div>
         {thirdInput && <div className="input-container">{thirdInput}</div>}
-        <Button disabled={submitButtonDisabled} type="submit">
-          {submitButtonName}
-        </Button>
+        <div className="form-btn-group">
+          <Button disabled={submitButtonDisabled} type="submit">
+            {submitButtonName}
+          </Button>
+        </div>
       </Form>
       <div className="form-footer">{formFooter}</div>
     </main>

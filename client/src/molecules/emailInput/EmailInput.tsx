@@ -6,13 +6,19 @@ import LabeledInput from "../labeledInput/LabeledInput";
 
 type EmailInputProps = {
   email: string;
+  emailIsValid: boolean;
   setEmail: Dispatch<React.SetStateAction<string>>;
+  setEmailIsValid: Dispatch<React.SetStateAction<boolean>>;
 };
 
-const EmailInput = ({ email, setEmail }: EmailInputProps): JSX.Element => {
+const EmailInput = ({
+  email,
+  emailIsValid,
+  setEmail,
+  setEmailIsValid,
+}: EmailInputProps): JSX.Element => {
   const EMAIL_REGEX = useMemo(() => /^\S+@\S+\.\S+$/, []);
   const [emailIsFocus, setEmailIsFocus] = useState<boolean>(false);
-  const [emailIsValid, setEmailIsValid] = useState<boolean>(false);
   const emailRef = useRef<HTMLInputElement>(null);
 
   const emailValidationTestPasses = EMAIL_REGEX.test(email);

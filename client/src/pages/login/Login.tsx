@@ -13,7 +13,9 @@ function LoginPage() {
   const errorRef = useRef();
 
   const [email, setEmail] = useState<string>("");
+  const [emailIsValid, setEmailIsValid] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("");
+  const [passwordIsValid, setPasswordIsValid] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   useEffect(() => {
@@ -55,15 +57,27 @@ function LoginPage() {
   return (
     <>
       <UserFormPageTemplate
-        firstInput={<EmailInput email={email} setEmail={setEmail} />}
+        firstInput={
+          <EmailInput
+            email={email}
+            emailIsValid={emailIsValid}
+            setEmail={setEmail}
+            setEmailIsValid={setEmailIsValid}
+          />
+        }
         secondInput={
-          <PasswordInput password={password} setPassword={setPassword} />
+          <PasswordInput
+            password={password}
+            passwordIsValid={passwordIsValid}
+            setPassword={setPassword}
+            setPasswordIsValid={setPasswordIsValid}
+          />
         }
         formFooter={<FormFooter />}
         pageHeading="minimalistic time management made simple"
         onFormSubmit={handleOnSubmit}
         submitButtonName="create account"
-        submitButtonDisabled={false}
+        submitButtonDisabled={emailIsValid && passwordIsValid ? false : true}
       />
     </>
   );
