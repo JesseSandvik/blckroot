@@ -1,9 +1,8 @@
 import { NavLink, Routes, Route, useLocation } from "react-router-dom";
-import Dashboard from "./pages/dashboard/Dashboard";
-import HomePage from "./pages/home/Home";
+
 import Icon from "./atoms/icon/Icon";
-import LoginPage from "./pages/login/Login";
-import SignUpPage from "./pages/signup/SignUp";
+
+import { routes } from "./app/routes";
 
 import "./App.css";
 
@@ -52,16 +51,15 @@ function App() {
         </nav>
       </header>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        {routes.map(({ path, element }) => (
+          <Route key={path} path={path} element={element} />
+        ))}
       </Routes>
       <footer>
         <div className="copyright">
           <small>
-            Copyright &copy; {new Date().getFullYear()} Jesse Sandvik. All
-            rights reserved.
+            Copyright &copy; {new Date().getFullYear()} Blckroot. All rights
+            reserved.
           </small>
         </div>
       </footer>

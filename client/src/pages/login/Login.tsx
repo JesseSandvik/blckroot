@@ -6,8 +6,6 @@ import EmailInput from "../../molecules/emailInput/EmailInput";
 import PasswordInput from "../../molecules/passwordInput/PasswordInput";
 import UserFormPageTemplate from "../../templates/forms/UserFormPage";
 
-import "./Login.css";
-
 function LoginPage() {
   const navigate = useNavigate();
   const errorRef = useRef();
