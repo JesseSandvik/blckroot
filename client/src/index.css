@@ -24,14 +24,11 @@ body {
   --secondary-accent-color: #785964; */
 }
 
-ul[class],
-ol[class] {
+ol,
+ul {
   list-style: none;
+  margin: 0;
   padding: 0;
-}
-
-article > * + * {
-  margin-top: 1em;
 }
 
 body,
@@ -58,6 +55,7 @@ a:not([class]) {
 a {
   color: inherit;
   text-decoration: none;
+  text-transform: capitalize;
 }
 
 button {

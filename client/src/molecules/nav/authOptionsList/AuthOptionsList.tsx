@@ -1,5 +1,7 @@
 import { NavLink, useLocation } from "react-router-dom";
 
+import "./AuthOptionsList.css";
+
 const AuthOptionsList = () => {
   const location = useLocation();
 

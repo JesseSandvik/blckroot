@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { app } from "../../app/index";
+import { app } from "../../../app/index";
 
-import Icon from "../../atoms/icon/Icon";
+import Icon from "../../../atoms/icon/Icon";
+
+import "./BrandLogo.css";
 
 const BrandLogo = () => {
   return (

@@ -1,11 +1,11 @@
 i.brand-logo {
-    align-items: center;
-    background-color: var(--primary-accent-color-med);
-    border-radius: 4px;
-    color: var(--default-light-color);
-    display: flex;
-    height: 40px;
-    justify-content: center;
-    transform: rotate(180deg);
-    width: 40px;
+  align-items: center;
+  background-color: var(--primary-accent-color-med);
+  border-radius: 4px;
+  color: var(--default-light-color);
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  transform: rotate(180deg);
+  width: 40px;
 }

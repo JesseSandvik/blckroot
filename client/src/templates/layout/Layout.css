@@ -9,8 +9,10 @@
 }
 
 #root #root-header {
+  border-bottom: 2px solid black;
   grid-template-columns: auto 1fr auto;
   grid-row: 1 / 1;
+  padding: 1rem;
 }
 
 #root #root-header #brand-logo {
@@ -19,10 +21,6 @@
 
 #root #root-header #auth-options {
   grid-column: 3 / -1;
-}
-
-#root #root-header #auth-options #auth-options-list > * {
-  background-color: aquamarine;
 }
 
 #root #root-main {
