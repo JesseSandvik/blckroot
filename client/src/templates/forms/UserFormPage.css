@@ -1,0 +1,54 @@
+.User-Form {
+  border: 1px solid violet;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.User-Form .form-header {
+  align-items: center;
+  display: flex;
+  grid-column: 1 / -1;
+  grid-row: 1 / 1;
+  justify-content: center;
+}
+
+.User-Form form {
+  background-color: var(--default-light-color);
+  border-bottom: 2px solid var(--primary-accent-color-med);
+  border-right: 2px solid var(--primary-accent-color-med);
+  border-radius: 4px;
+  box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.66);
+  color: var(--default-dark-color);
+  grid-column: 5 / span 4;
+  grid-row: 2 / 4;
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.User-Form .input-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+/* .User-Form > * {
+  border: 2px solid yellowgreen;
+} */
+
+.User-Form .input-container input {
+  border: 2px solid violet;
+  grid-column: 2 / 2;
+}
+
+.User-Form .input-status {
+  border: 2px solid aquamarine;
+}
+
+.User-Form .form-footer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  grid-column: 5 / span 4;
+  grid-row: 4 / -1;
+  justify-content: center;
+  text-align: center;
+}

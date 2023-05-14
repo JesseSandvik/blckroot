@@ -4,13 +4,14 @@ import Button from "../../atoms/button/Button";
 import Form from "../../organisms/form/Form";
 import Heading from "../../atoms/heading/Heading";
 
+import "./UserFormPage.css";
+
 type UserFormPageTemplateProps = {
   firstInput: ReactNode;
   secondInput: ReactNode;
   thirdInput?: ReactNode;
   formFooter: ReactNode;
   onFormSubmit: FormEventHandler<HTMLFormElement>;
-  pageClassName: string;
   pageHeading: string;
   submitButtonName: string;
   submitButtonDisabled: boolean;
@@ -22,14 +23,15 @@ const UserFormPageTemplate = ({
   thirdInput,
   formFooter,
   onFormSubmit,
-  pageClassName,
   pageHeading,
   submitButtonName,
   submitButtonDisabled,
 }: UserFormPageTemplateProps): JSX.Element => {
   return (
-    <main className={pageClassName}>
-      <Heading tag="1">{pageHeading}</Heading>
+    <main className="User-Form">
+      <div className="form-header">
+        <Heading tag="1">{pageHeading}</Heading>
+      </div>
       <Form onSubmit={onFormSubmit}>
         <div className="input-container">{firstInput}</div>
         <div className="input-container">{secondInput}</div>

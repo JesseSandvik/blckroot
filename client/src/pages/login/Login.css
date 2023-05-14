@@ -1,43 +1,4 @@
-.Login {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-}
-
-.Login-header {
-  align-items: center;
-  display: flex;
-  grid-column: 1 / -1;
-  grid-row: 1 / 1;
-  justify-content: center;
-}
-
-.Login-form {
-  background-color: var(--default-light-color);
-  border-bottom: 2px solid var(--primary-accent-color-med);
-  border-right: 2px solid var(--primary-accent-color-med);
-  border-radius: 4px;
-  box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.66);
-  color: var(--default-dark-color);
-  grid-column: 5 / span 4;
-  grid-row: 2 / 4;
-  grid-template-rows: repeat(4, 1fr);
-}
-
-.Login-form > * {
-  padding: 0.5rem;
-}
-
-.Login-form .input-container {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-}
-
-.input-user-credentials {
-  grid-column: 2 / 2;
-}
-
-.Login-form .support-container {
+.User-Form .form-footer- {
   align-items: flex-start;
   display: flex;
   justify-content: center;

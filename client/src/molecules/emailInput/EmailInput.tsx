@@ -26,7 +26,7 @@ const EmailInput = ({ email, setEmail }: EmailInputProps): JSX.Element => {
   }, [emailValidationTestPasses]);
 
   return (
-    <div>
+    <>
       <LabeledInput
         aria-describedby="emailnote"
         aria-invalid={emailIsValid ? "false" : "true"}
@@ -52,20 +52,16 @@ const EmailInput = ({ email, setEmail }: EmailInputProps): JSX.Element => {
           type="x-mark"
         />
       </div>
-      <div className="input-container-lower">
-        <p
-          id="emailnote"
-          className={
-            emailIsFocus && email && !emailIsValid
-              ? "instructions"
-              : "offscreen"
-          }
-        >
-          <Icon type="info" />
-          Please enter an email address with a valid format.
-        </p>
-      </div>
-    </div>
+      <p
+        id="emailnote"
+        className={
+          emailIsFocus && email && !emailIsValid ? "instructions" : "offscreen"
+        }
+      >
+        <Icon type="info" />
+        Please enter an email address with a valid format.
+      </p>
+    </>
   );
 };
 

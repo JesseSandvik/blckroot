@@ -22,7 +22,6 @@ function LoginPage() {
 
   const handleOnSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     const { signal } = new AbortController();
 
     try {
@@ -61,7 +60,6 @@ function LoginPage() {
           <PasswordInput password={password} setPassword={setPassword} />
         }
         formFooter={<FormFooter />}
-        pageClassName="Login"
         pageHeading="minimalistic time management made simple"
         onFormSubmit={handleOnSubmit}
         submitButtonName="create account"
