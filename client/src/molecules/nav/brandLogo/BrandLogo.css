@@ -1,15 +1,3 @@
 #brand-logo {
   display: grid;
-  justify-content: center;
-  font-size: 3rem;
-}
-
-#brand-logo #brand-link {
-  align-items: center;
-  border-bottom: 2px solid violet;
-  border-left: 2px solid violet;
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  padding: 0 1rem;
 }

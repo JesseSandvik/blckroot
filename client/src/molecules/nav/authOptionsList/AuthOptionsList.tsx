@@ -1,4 +1,6 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
+import IntLink from "../../../atoms/intLink/IntLink";
 
 import "./AuthOptionsList.css";
 
@@ -10,16 +12,16 @@ const AuthOptionsList = () => {
       <ul id="auth-options-list">
         {location.pathname !== "/login" && (
           <li>
-            <NavLink id="login-link" to="/login">
+            <IntLink id="login-link" to="/login">
               login
-            </NavLink>
+            </IntLink>
           </li>
         )}
         {location.pathname !== "/signup" && (
           <li>
-            <NavLink id="signup-link" to="/signup">
-              sign up
-            </NavLink>
+            <IntLink id="signup-link" to="/signup">
+              signup
+            </IntLink>
           </li>
         )}
       </ul>

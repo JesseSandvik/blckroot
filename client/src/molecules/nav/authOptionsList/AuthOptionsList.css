@@ -8,28 +8,5 @@
   display: flex;
   gap: 1rem;
   justify-content: space-evenly;
-}
-
-#auth-options #auth-options-list > * {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-
-#auth-options #auth-options-list a {
-  align-items: center;
-  display: flex;
-  font-weight: 500;
-  height: 48px;
-  justify-content: center;
-  transition: 0.5s ease-in-out;
-  width: 96px;
-}
-
-#auth-options #auth-options-list a:hover {
-  box-shadow: 0 7px 12px -5px rgba(0, 0, 0, 0.5);
-}
-
-#auth-options #auth-options-list #signup-link {
-  border: 1px solid black;
+  padding: 1rem;
 }

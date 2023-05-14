@@ -1,0 +1,32 @@
+a#brand-link {
+  align-items: center;
+  border-bottom: 2px solid violet;
+  border-left: 2px solid violet;
+  border-bottom-left-radius: 4px;
+  display: flex;
+  font-size: 3rem;
+  gap: 1rem;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+a#signup-link {
+  border: 1px solid black;
+}
+
+a#login-link,
+a#signup-link {
+  align-items: center;
+  border-radius: 4px;
+  display: flex;
+  font-weight: 500;
+  height: 48px;
+  justify-content: center;
+  transition: 0.5s ease-in-out;
+  width: 96px;
+}
+
+a#login-link:hover,
+a#signup-link:hover {
+  box-shadow: 0 7px 12px -5px rgba(0, 0, 0, 0.5);
+}
