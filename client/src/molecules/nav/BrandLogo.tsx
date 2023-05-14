@@ -5,8 +5,8 @@ import Icon from "../../atoms/icon/Icon";
 
 const BrandLogo = () => {
   return (
-    <nav>
-      <NavLink id="brand-logo" to="/">
+    <nav id="brand-logo">
+      <NavLink id="brand-link" to="/">
         <Icon type={app.logo} />
         {app.name}
       </NavLink>

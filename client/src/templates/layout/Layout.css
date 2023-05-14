@@ -1,17 +1,34 @@
 #root {
-  border: 1px solid red;
   display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
 }
 
 #root > * {
-  border: 2px solid aqua;
+  display: grid;
 }
 
 #root #root-header {
+  grid-template-columns: auto 1fr auto;
+  grid-row: 1 / 1;
+}
+
+#root #root-header #brand-logo {
+  grid-column: 1 / 1;
+}
+
+#root #root-header #auth-options {
+  grid-column: 3 / -1;
+}
+
+#root #root-header #auth-options #auth-options-list > * {
+  background-color: aquamarine;
 }
 
 #root #root-main {
+  grid-row: 2 / 2;
 }
 
 #root #root-footer {
+  grid-row: 3 / -1;
 }

@@ -5,7 +5,7 @@ const AuthOptionsList = () => {
 
   return (
     <nav id="auth-options">
-      <ul>
+      <ul id="auth-options-list">
         {location.pathname !== "/login" && (
           <li>
             <NavLink id="login-link" to="/login">
