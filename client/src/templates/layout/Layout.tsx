@@ -1,19 +1,24 @@
 import { Routes, Route } from "react-router-dom";
 import { routes } from "../../app/routes";
 
-import PrimaryHeader from "../../organisms/header/PrimaryHeader";
+import RootFooter from "../../organisms/footer/RootFooter";
+import RootHeader from "../../organisms/header/RootHeader";
+import RootMain from "../../organisms/main/RootMain";
 
-const Layout = () => {
+import "./Layout.css";
+
+const Layout = (): JSX.Element => {
   return (
     <>
-      <PrimaryHeader />
-      <main>
+      <RootHeader />
+      <RootMain>
         <Routes>
           {routes.map(({ path, element }) => (
             <Route key={path} path={path} element={element} />
           ))}
         </Routes>
-      </main>
+      </RootMain>
+      <RootFooter />
     </>
   );
 };

@@ -3,13 +3,13 @@ import BrandLogo from "../../molecules/nav/BrandLogo";
 
 import "./Header.css";
 
-const PrimaryHeader = (): JSX.Element => {
+const RootHeader = (): JSX.Element => {
   return (
-    <header>
+    <header id="root-header">
       <BrandLogo />
       <AuthOptionsList />
     </header>
   );
 };
 
-export default PrimaryHeader;
+export default RootHeader;

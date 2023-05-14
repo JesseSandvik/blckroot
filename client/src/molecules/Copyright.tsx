@@ -1,11 +1,13 @@
 import { app } from "../app/index";
 
-const Copyright = () => {
+import Small from "../atoms/small/Small";
+
+const Copyright = (): JSX.Element => {
   return (
-    <small>
+    <Small id="copyright">
       Copyright &copy; {new Date().getFullYear()} {app.name}. All rights
       reserved.
-    </small>
+    </Small>
   );
 };
 

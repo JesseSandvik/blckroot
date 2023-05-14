@@ -2,12 +2,12 @@ import Copyright from "../../molecules/Copyright";
 
 import "./Footer.css";
 
-const PrimaryFooter = () => {
+const RootFooter = () => {
   return (
-    <footer>
+    <footer id="root-footer">
       <Copyright />
     </footer>
   );
 };
 
-export default PrimaryFooter;
+export default RootFooter;

@@ -1,0 +1,17 @@
+#root {
+  border: 1px solid red;
+  display: grid;
+}
+
+#root > * {
+  border: 2px solid aqua;
+}
+
+#root #root-header {
+}
+
+#root #root-main {
+}
+
+#root #root-footer {
+}

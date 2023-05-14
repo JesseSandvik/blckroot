@@ -1,19 +1,58 @@
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+body {
   font-family: "Exo 2", Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  --default-light-color: #f7f9f9;
-  --default-dark-color: #474a48;
-  --default-muted-color: #f0f0f0;
-  --default-disabled-color: #c2c1c2;
+  line-height: 1.5;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+
+  --light-color: #f7f9f9;
+  --dark-color: #474a48;
+  --muted-color: #f0f0f0;
+  --disabled-color: #c2c1c2;
   --alert-color: #c97064;
   --info-color: #3590f3;
   --success-color: #68a357;
-  --primary-accent-color-neon: #dbf4a7;
+  /* --primary-accent-color-neon: #dbf4a7;
   --primary-accent-color-med: #c8c6af;
   --primary-accent-color-dark: #979685;
-  --secondary-accent-color: #785964;
+  --secondary-accent-color: #785964; */
+}
+
+ul[class],
+ol[class] {
+  list-style: none;
+  padding: 0;
+}
+
+article > * + * {
+  margin-top: 1em;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
 }
 
 a {
@@ -24,6 +63,18 @@ a {
 button {
   cursor: pointer;
   text-transform: capitalize;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
 }
 
 .hide {
