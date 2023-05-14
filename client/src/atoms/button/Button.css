@@ -1,23 +1,24 @@
 button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+  text-transform: capitalize;
 }
 
 button.submit {
-    background-color: var(--secondary-accent-color);
-    border-radius: 4px;
-    color: var(--default-light-color);
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 0.5rem 2rem;
-    transition: 0.5s ease-in-out;
+  background-color: var(--secondary-accent-color);
+  border-radius: 4px;
+  color: var(--default-light-color);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem 2rem;
+  transition: 0.5s ease-in-out;
 }
 
 button.submit:hover {
-  box-shadow: 0 7px 12px -5px rgba(0, 0, 0, 0.50);
+  box-shadow: 0 7px 12px -5px rgba(0, 0, 0, 0.5);
 }
 
 button.disabled {

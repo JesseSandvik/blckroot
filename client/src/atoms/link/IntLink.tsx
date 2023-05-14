@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { NavLink } from "react-router-dom";
 
-import "./IntLink.css";
+import "./Link.css";
 
 type IntLinkPropTypes = {
   children: ReactNode;

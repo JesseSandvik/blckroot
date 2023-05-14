@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 
-import IntLink from "../../../atoms/intLink/IntLink";
+import IntLink from "../../../atoms/link/IntLink";
 
 import "./AuthOptionsList.css";
 

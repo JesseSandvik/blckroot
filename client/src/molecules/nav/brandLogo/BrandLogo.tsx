@@ -1,7 +1,7 @@
 import { app } from "../../../app/index";
 
 import Icon from "../../../atoms/icon/Icon";
-import IntLink from "../../../atoms/intLink/IntLink";
+import IntLink from "../../../atoms/link/IntLink";
 
 import "./BrandLogo.css";
 

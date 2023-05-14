@@ -9,18 +9,7 @@
 }
 
 #root #root-header {
-  border-bottom: 2px solid black;
-  grid-template-columns: auto 1fr auto;
   grid-row: 1 / 1;
-  padding: 1rem;
-}
-
-#root #root-header #brand-logo {
-  grid-column: 1 / 1;
-}
-
-#root #root-header #auth-options {
-  grid-column: 3 / -1;
 }
 
 #root #root-main {

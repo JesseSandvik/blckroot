@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 
+import "./Small.css";
+
 type SmallPropTypes = {
   children: ReactNode;
   className?: string;

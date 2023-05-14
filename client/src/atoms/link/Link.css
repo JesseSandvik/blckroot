@@ -1,7 +1,13 @@
+a {
+  color: inherit;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
 a#brand-link {
   align-items: center;
-  border-bottom: 2px solid violet;
-  border-left: 2px solid violet;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
   border-bottom-left-radius: 4px;
   display: flex;
   font-size: 3rem;

@@ -2,15 +2,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-body {
-  font-family: "Exo 2", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.5;
-  min-height: 100vh;
-  scroll-behavior: smooth;
-  text-rendering: optimizeSpeed;
-
   --light-color: #f7f9f9;
   --dark-color: #474a48;
   --muted-color: #f0f0f0;
@@ -22,6 +13,14 @@ body {
   --primary-accent-color-med: #c8c6af;
   --primary-accent-color-dark: #979685;
   --secondary-accent-color: #785964; */
+}
+
+body {
+  font-family: "Exo 2", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
 }
 
 ol,
@@ -47,24 +46,12 @@ dd {
   margin: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-  text-transform: capitalize;
-}
-
-button {
-  cursor: pointer;
-  text-transform: capitalize;
-}
-
 img {
   max-width: 100%;
   display: block;
 }
 
 input,
-button,
 textarea,
 select {
   font: inherit;
