@@ -2,7 +2,6 @@ import { FormEventHandler, ReactNode } from "react";
 
 import Button from "../../atoms/button/Button";
 import Form from "../../organisms/form/Form";
-import Heading from "../../atoms/heading/Heading";
 
 import "./UserFormPage.css";
 
@@ -28,10 +27,10 @@ const UserFormPageTemplate = ({
   submitButtonDisabled,
 }: UserFormPageTemplateProps): JSX.Element => {
   return (
-    <main className="User-Form">
-      <div className="form-header">
+    <section>
+      {/* <Header>
         <Heading tag="1">{pageHeading}</Heading>
-      </div>
+      </Header> */}
       <Form onSubmit={onFormSubmit}>
         <div className="input-container">{firstInput}</div>
         <div className="input-container">{secondInput}</div>
@@ -42,8 +41,8 @@ const UserFormPageTemplate = ({
           </Button>
         </div>
       </Form>
-      <div className="form-footer">{formFooter}</div>
-    </main>
+      {/* <Footer>{formFooter}</Footer> */}
+    </section>
   );
 };
 

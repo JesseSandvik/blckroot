@@ -2,7 +2,7 @@ import { Dispatch, useMemo, useEffect, useState } from "react";
 import { handleGenericOnChange } from "../../utils/state/form";
 
 import Icon from "../../atoms/icon/Icon";
-import LabeledInput from "../labeledInput/LabeledInput";
+import LabeledInput from "./LabeledInput";
 
 type PasswordInputProps = {
   password: string;

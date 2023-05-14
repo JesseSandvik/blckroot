@@ -4,7 +4,7 @@
   grid-template-rows: repeat(4, 1fr);
 }
 
-.User-Form .form-header {
+.User-Form header {
   align-items: center;
   display: flex;
   grid-column: 1 / -1;
@@ -43,7 +43,7 @@
   justify-content: center;
 }
 
-.User-Form .form-footer {
+.User-Form footer {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -53,11 +53,11 @@
   text-align: center;
 }
 
-.User-Form .form-footer a {
+.User-Form footer a {
   color: var(--primary-accent-color-med);
   text-transform: capitalize;
 }
 
-.User-Form .form-footer a:hover {
+.User-Form footer a:hover {
   text-decoration: underline;
 }

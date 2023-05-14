@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { createUser } from "../../api";
 
-import EmailInput from "../../molecules/emailInput/EmailInput";
-import PasswordConfirmInput from "../../molecules/passwordConfirmInput/PasswordConfirmInput";
-import PasswordInput from "../../molecules/passwordInput/PasswordInput";
-import UserFormPageTemplate from "../../templates/forms/UserFormPage";
+import EmailInput from "../../molecules/labeledInput/EmailInput";
+import PasswordConfirmInput from "../../molecules/labeledInput/PasswordConfirmInput";
+import PasswordInput from "../../molecules/labeledInput/PasswordInput";
+import UserFormPageTemplate from "../../templates/form/UserFormPage";
 
 function SignUpPage() {
   const navigate = useNavigate();

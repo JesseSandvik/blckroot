@@ -6,7 +6,7 @@
   min-height: 100vh;
 }
 
-header {
+.App header {
   background-color: transparent;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -17,22 +17,22 @@ header {
   z-index: 1;
 }
 
-header i {
+.App header i {
   transform: rotate(90deg);
 }
 
-header nav ul {
+.App header nav ul {
   align-items: center;
   display: flex;
   gap: 1rem;
   list-style: none;
 }
 
-header nav ul li a {
+.App header nav ul li a {
   padding: 0.5rem;
 }
 
-header .navbar-left {
+.App header .navbar-left {
   align-items: center;
   border-bottom: 2px solid var(--primary-accent-color-med);
   border-bottom-left-radius: 4px;
@@ -41,7 +41,7 @@ header .navbar-left {
   grid-column: 1 / 1;
 }
 
-header .navbar-left .brand {
+.App header .navbar-left .brand {
   align-items: center;
   display: flex;
   font-family: Jura;
@@ -51,7 +51,7 @@ header .navbar-left .brand {
   text-transform: capitalize;
 }
 
-header .navbar-right {
+.App header .navbar-right {
   align-items: center;
   display: flex;
   gap: 1rem;
@@ -59,7 +59,7 @@ header .navbar-right {
   justify-content: flex-end;
 }
 
-header .navbar-right a {
+.App header .navbar-right a {
   align-items: center;
   display: flex;
   justify-content: center;
@@ -68,29 +68,29 @@ header .navbar-right a {
   width: 80px;
 }
 
-header .navbar-right ul li {
+.App header .navbar-right ul li {
   border: 2px solid transparent;
   border-radius: 4px;
   transition: 0.3s ease-in-out;
 }
 
-header .navbar-right ul li .sign-up {
+.App header .navbar-right ul li .sign-up {
   border: 2px solid var(--primary-accent-color-med);
   border-radius: 4px;
 }
 
-header .navbar-right ul li:hover {
+.App header .navbar-right ul li:hover {
   border: 2px solid var(--primary-accent-color-dark);
   box-shadow: 0 7px 12px -5px rgba(0, 0, 0, 0.2);
 }
 
-main {
+.App main {
   background-color: var(--default-dark-color);
   color: var(--default-light-color);
   grid-row: 3 / 3;
 }
 
-footer {
+.App footer {
   background-color: var(--default-light-color);
   color: var(--default-dark-color);
   display: grid;
@@ -99,7 +99,7 @@ footer {
   padding: 1rem;
 }
 
-footer .copyright {
+.App footer .copyright {
   align-items: center;
   grid-column: 2 / 2;
   display: flex;

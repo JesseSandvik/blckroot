@@ -1,8 +1,4 @@
-import { NavLink, Routes, Route, useLocation } from "react-router-dom";
-
-import Icon from "./atoms/icon/Icon";
-
-import { routes } from "./app/routes";
+import Layout from "./templates/layout/Layout";
 
 import "./App.css";
 
@@ -18,51 +14,9 @@ import "./App.css";
  */
 
 function App() {
-  const location = useLocation();
-
   return (
     <div className="App">
-      <header>
-        <nav className="navbar-left">
-          <ul>
-            <li>
-              <NavLink className="navbar brand" to="/">
-                <Icon type="brand-logo" />
-                blckroot
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-        <nav className="navbar-right">
-          <ul>
-            {location.pathname !== "/login" && (
-              <li>
-                <NavLink to="/login">login</NavLink>
-              </li>
-            )}
-            {location.pathname !== "/signup" && (
-              <li>
-                <NavLink className="sign-up" to="/signup">
-                  sign up
-                </NavLink>
-              </li>
-            )}
-          </ul>
-        </nav>
-      </header>
-      <Routes>
-        {routes.map(({ path, element }) => (
-          <Route key={path} path={path} element={element} />
-        ))}
-      </Routes>
-      <footer>
-        <div className="copyright">
-          <small>
-            Copyright &copy; {new Date().getFullYear()} Blckroot. All rights
-            reserved.
-          </small>
-        </div>
-      </footer>
+      <Layout />
     </div>
   );
 }
