@@ -34,5 +34,6 @@ a#signup-link {
 
 a#login-link:hover,
 a#signup-link:hover {
+  border: 1px solid black;
   box-shadow: 0 7px 12px -5px rgba(0, 0, 0, 0.5);
 }
