@@ -4,7 +4,7 @@ import { loginUser } from "../../api";
 
 import EmailInput from "../../molecules/labeledInput/EmailInput";
 import PasswordInput from "../../molecules/labeledInput/PasswordInput";
-import UserFormPageTemplate from "../../templates/form/UserFormPage";
+import UserCredentialFormTemplate from "../../templates/userCredentialForm/UserCredentialForm";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -54,7 +54,7 @@ function LoginPage() {
 
   return (
     <>
-      <UserFormPageTemplate
+      <UserCredentialFormTemplate
         firstInput={
           <EmailInput
             email={email}

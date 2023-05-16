@@ -3,9 +3,9 @@ import { FormEventHandler, ReactNode } from "react";
 import Button from "../../atoms/button/Button";
 import Form from "../../organisms/form/Form";
 
-import "./UserFormPage.css";
+import "./UserCredentialForm.css";
 
-type UserFormPageTemplateProps = {
+type UserCredentialFormTemplateProps = {
   firstInput: ReactNode;
   secondInput: ReactNode;
   thirdInput?: ReactNode;
@@ -16,7 +16,7 @@ type UserFormPageTemplateProps = {
   submitButtonDisabled: boolean;
 };
 
-const UserFormPageTemplate = ({
+const UserCredentialFormTemplate = ({
   firstInput,
   secondInput,
   thirdInput,
@@ -25,9 +25,9 @@ const UserFormPageTemplate = ({
   pageHeading,
   submitButtonName,
   submitButtonDisabled,
-}: UserFormPageTemplateProps): JSX.Element => {
+}: UserCredentialFormTemplateProps): JSX.Element => {
   return (
-    <section>
+    <section id="user-credential-form">
       {/* <Header>
         <Heading tag="1">{pageHeading}</Heading>
       </Header> */}
@@ -46,4 +46,4 @@ const UserFormPageTemplate = ({
   );
 };
 
-export default UserFormPageTemplate;
+export default UserCredentialFormTemplate;

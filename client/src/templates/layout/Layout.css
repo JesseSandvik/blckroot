@@ -6,10 +6,13 @@
 
 #root > * {
   display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
 }
 
 #root #root-header {
   grid-row: 1 / 1;
+  position: sticky;
+  top: 0;
 }
 
 #root #root-main {
