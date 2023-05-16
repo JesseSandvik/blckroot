@@ -1,4 +1,4 @@
-import Copyright from "../../molecules/Copyright";
+import Copyright from "../../molecules/copyright/Copyright";
 
 import "./Footer.css";
 

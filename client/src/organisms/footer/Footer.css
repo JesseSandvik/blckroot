@@ -1,4 +1,7 @@
 footer#root-footer {
-  justify-content: center;
   padding: 1rem;
+}
+
+footer#root-footer #copyright {
+  grid-column: 5 / span 4;
 }

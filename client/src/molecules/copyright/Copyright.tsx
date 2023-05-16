@@ -1,6 +1,8 @@
-import { app } from "../app/index";
+import { app } from "../../app/index";
 
-import Small from "../atoms/small/Small";
+import Small from "../../atoms/small/Small";
+
+import "./Copyright.css";
 
 const Copyright = (): JSX.Element => {
   return (
