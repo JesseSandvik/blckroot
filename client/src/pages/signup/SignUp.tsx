@@ -5,28 +5,20 @@ import { createUser } from "../../api";
 import EmailInput from "../../molecules/labeledInput/EmailInput";
 import PasswordConfirmInput from "../../molecules/labeledInput/PasswordConfirmInput";
 import PasswordInput from "../../molecules/labeledInput/PasswordInput";
-import UserCredentialFormTemplate from "../../templates/userCredentialForm/UserCredentialForm";
+import UserCredentialPageTemplate from "../../templates/userCredentialPage/UserCredentialPageTemplate";
 
 function SignUpPage() {
   const navigate = useNavigate();
   const errorRef = useRef();
 
   const [email, setEmail] = useState<string>("");
-  const [emailIsValid, setEmailIsValid] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("");
-  const [passwordIsValid, setPasswordIsValid] = useState<boolean>(false);
   const [confirmPassword, setConfirmPassword] = useState<string>("");
-  const [confirmPasswordIsValid, setConfirmPasswordIsValid] =
-    useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   useEffect(() => {
     setErrorMessage("");
   }, [email, password, confirmPassword]);
-
-  useEffect(() => {
-    setConfirmPasswordIsValid(confirmPassword === password);
-  }, [confirmPassword, password]);
 
   const handleOnSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -63,41 +55,12 @@ function SignUpPage() {
 
   return (
     <>
-      <UserCredentialFormTemplate
-        firstInput={
-          <EmailInput
-            email={email}
-            emailIsValid={emailIsValid}
-            setEmail={setEmail}
-            setEmailIsValid={setEmailIsValid}
-          />
-        }
-        secondInput={
-          <PasswordInput
-            password={password}
-            passwordIsValid={passwordIsValid}
-            setPassword={setPassword}
-            setPasswordIsValid={setPasswordIsValid}
-          />
-        }
-        thirdInput={
-          <PasswordConfirmInput
-            confirmPassword={confirmPassword}
-            confirmPasswordIsValid={confirmPasswordIsValid}
-            password={password}
-            setConfirmPassword={setConfirmPassword}
-            setConfirmPasswordIsValid={setConfirmPasswordIsValid}
-          />
-        }
-        formFooter={<FormFooter />}
-        pageHeading="minimalistic time management made simple"
-        onFormSubmit={handleOnSubmit}
-        submitButtonName="create account"
-        submitButtonDisabled={
-          emailIsValid && passwordIsValid && confirmPasswordIsValid
-            ? false
-            : true
-        }
+      <UserCredentialPageTemplate
+        email={email}
+        onSubmit={handleOnSubmit}
+        password={password}
+        setEmail={setEmail}
+        setPassword={setPassword}
       />
     </>
   );

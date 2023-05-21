@@ -4,16 +4,14 @@ import { loginUser } from "../../api";
 
 import EmailInput from "../../molecules/labeledInput/EmailInput";
 import PasswordInput from "../../molecules/labeledInput/PasswordInput";
-import UserCredentialFormTemplate from "../../templates/userCredentialForm/UserCredentialForm";
+import UserCredentialPageTemplate from "../../templates/userCredentialPage/UserCredentialPageTemplate";
 
 function LoginPage() {
   const navigate = useNavigate();
   const errorRef = useRef();
 
   const [email, setEmail] = useState<string>("");
-  const [emailIsValid, setEmailIsValid] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("");
-  const [passwordIsValid, setPasswordIsValid] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   useEffect(() => {
@@ -54,28 +52,12 @@ function LoginPage() {
 
   return (
     <>
-      <UserCredentialFormTemplate
-        firstInput={
-          <EmailInput
-            email={email}
-            emailIsValid={emailIsValid}
-            setEmail={setEmail}
-            setEmailIsValid={setEmailIsValid}
-          />
-        }
-        secondInput={
-          <PasswordInput
-            password={password}
-            passwordIsValid={passwordIsValid}
-            setPassword={setPassword}
-            setPasswordIsValid={setPasswordIsValid}
-          />
-        }
-        formFooter={<FormFooter />}
-        pageHeading="minimalistic time management made simple"
-        onFormSubmit={handleOnSubmit}
-        submitButtonName="create account"
-        submitButtonDisabled={emailIsValid && passwordIsValid ? false : true}
+      <UserCredentialPageTemplate
+        email={email}
+        onSubmit={handleOnSubmit}
+        password={password}
+        setEmail={setEmail}
+        setPassword={setPassword}
       />
     </>
   );
