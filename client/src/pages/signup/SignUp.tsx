@@ -2,9 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { createUser } from "../../api";
 
-import EmailInput from "../../molecules/labeledInput/EmailInput";
-import PasswordConfirmInput from "../../molecules/labeledInput/PasswordConfirmInput";
-import PasswordInput from "../../molecules/labeledInput/PasswordInput";
 import UserCredentialPageTemplate from "../../templates/userCredentialPage/UserCredentialPageTemplate";
 
 function SignUpPage() {
@@ -56,9 +53,11 @@ function SignUpPage() {
   return (
     <>
       <UserCredentialPageTemplate
+        confirmPassword={confirmPassword}
         email={email}
         onSubmit={handleOnSubmit}
         password={password}
+        setConfirmPassword={setConfirmPassword}
         setEmail={setEmail}
         setPassword={setPassword}
       />

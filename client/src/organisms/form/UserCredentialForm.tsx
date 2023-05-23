@@ -19,8 +19,8 @@ type UserCredentialFormTypes = {
   onSubmit: FormEventHandler<HTMLFormElement>;
   password: string;
   setConfirmPassword?: Dispatch<SetStateAction<string>>;
-  setEmail?: Dispatch<SetStateAction<string>>;
-  setPassword?: Dispatch<SetStateAction<string>>;
+  setEmail: Dispatch<SetStateAction<string>>;
+  setPassword: Dispatch<SetStateAction<string>>;
 };
 
 const UserCredentialForm = ({
@@ -65,12 +65,12 @@ const UserCredentialForm = ({
         setPassword={setPassword}
         setPasswordIsValid={setPasswordIsValid}
       />
-      {showPasswordConfirmField && (
+      {showPasswordConfirmField && setConfirmPassword && (
         <PasswordConfirmInput
-          confirmPassword={confirmPassword}
+          confirmPassword={confirmPassword || ""}
           confirmPasswordIsValid={confirmPasswordIsValid}
           password={password}
-          setConfirmPassword={setConfirmPassword || undefined}
+          setConfirmPassword={setConfirmPassword}
           setConfirmPasswordIsValid={setConfirmPasswordIsValid}
         />
       )}
