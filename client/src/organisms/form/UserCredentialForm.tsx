@@ -4,6 +4,7 @@ import {
   SetStateAction,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import { useLocation } from "react-router-dom";
@@ -11,8 +12,10 @@ import { useLocation } from "react-router-dom";
 import Button from "../../atoms/button/Button";
 import EmailInput from "../../molecules/labeledInput/EmailInput";
 import Form from "./Form";
+import InfoTooltip from "../../molecules/infoTooltip/InfoTooltip";
 import PasswordConfirmInput from "../../molecules/labeledInput/PasswordConfirmInput";
 import PasswordInput from "../../molecules/labeledInput/PasswordInput";
+import ToggleFormFieldValidationIcons from "../../molecules/toggleIcons/ToggleFormFieldValidationIcons";
 
 type UserCredentialFormTypes = {
   confirmPassword?: string;
@@ -35,10 +38,14 @@ const UserCredentialForm = ({
 }: UserCredentialFormTypes): JSX.Element => {
   const EMAIL_REGEX = useMemo(() => /^\S+@\S+\.\S+$/, []);
   const emailValidationTestPasses = EMAIL_REGEX.test(email);
+  const emailRef = useRef<HTMLInputElement>(null);
 
   const location = useLocation();
   const [buttonName, setButtonName] = useState<string>("");
+
   const [emailIsValid, setEmailIsValid] = useState<boolean>(false);
+  const [emailIsFocus, setEmailIsFocus] = useState<boolean>(false);
+
   const [passwordIsValid, setPasswordIsValid] = useState<boolean>(false);
   const [confirmPasswordIsValid, setConfirmPasswordIsValid] =
     useState<boolean>(false);
@@ -48,6 +55,10 @@ const UserCredentialForm = ({
   useEffect(() => {
     location.pathname === "/signup" && setShowPasswordConfirmField(true);
   }, [location]);
+
+  useEffect(() => {
+    emailRef?.current && emailRef.current.focus();
+  }, []);
 
   useEffect(() => {
     setEmailIsValid(emailValidationTestPasses);
@@ -64,39 +75,36 @@ const UserCredentialForm = ({
       <EmailInput
         email={email}
         emailIsValid={emailIsValid}
+        emailRef={emailRef}
         setEmail={setEmail}
-        setEmailIsValid={setEmailIsValid}
+        setEmailIsFocus={setEmailIsFocus}
       />
-      <div className="input-status">
-        <Icon className={emailIsValid ? "success" : "hide"} type="checkmark" />
-        <Icon
-          className={emailIsValid || !email ? "hide" : "alert"}
-          type="x-mark"
-        />
-      </div>
-      <p
-        id="emailnote"
-        className={
-          emailIsFocus && email && !emailIsValid ? "instructions" : "offscreen"
-        }
-      >
-        <Icon type="info" />
+      <ToggleFormFieldValidationIcons toggleValidationIconsOn={emailIsValid} />
+      <InfoTooltip showInfoToolTip={!emailIsValid && emailIsFocus}>
         Please enter an email address with a valid format.
-      </p>
+      </InfoTooltip>
       <PasswordInput
         password={password}
         passwordIsValid={passwordIsValid}
         setPassword={setPassword}
         setPasswordIsValid={setPasswordIsValid}
       />
+      <ToggleFormFieldValidationIcons
+        toggleValidationIconsOn={passwordIsValid}
+      />
       {showPasswordConfirmField && setConfirmPassword && (
-        <PasswordConfirmInput
-          confirmPassword={confirmPassword || ""}
-          confirmPasswordIsValid={confirmPasswordIsValid}
-          password={password}
-          setConfirmPassword={setConfirmPassword}
-          setConfirmPasswordIsValid={setConfirmPasswordIsValid}
-        />
+        <>
+          <PasswordConfirmInput
+            confirmPassword={confirmPassword || ""}
+            confirmPasswordIsValid={confirmPasswordIsValid}
+            password={password}
+            setConfirmPassword={setConfirmPassword}
+            setConfirmPasswordIsValid={setConfirmPasswordIsValid}
+          />
+          <ToggleFormFieldValidationIcons
+            toggleValidationIconsOn={confirmPasswordIsValid}
+          />
+        </>
       )}
       <div>
         <Button type="submit">{buttonName}</Button>

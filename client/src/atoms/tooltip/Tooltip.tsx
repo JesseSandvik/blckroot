@@ -6,7 +6,7 @@ type TooltipPropTypes = {
   children: ReactNode;
   className?: string;
   id?: string;
-  showTooltip?: boolean;
+  showTooltip: boolean;
 };
 
 const Tooltip = ({
@@ -15,11 +15,11 @@ const Tooltip = ({
   id,
   showTooltip,
 }: TooltipPropTypes) => {
+  console.log({ showTooltip });
   const classProps = [];
-  classProps.push("tooltip");
   className && classProps.push(className);
-
-  showTooltip ? classProps.push("instructions") : classProps.push("offscreen");
+  showTooltip && classProps.push("tooltip");
+  !showTooltip && classProps.push("offscreen");
 
   return (
     <div className={classProps.join(" ")} id={id}>

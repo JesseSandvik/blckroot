@@ -1,29 +1,23 @@
-import { Dispatch, useMemo, useEffect, useRef, useState } from "react";
+import { Dispatch, RefObject } from "react";
 import { handleGenericOnChange } from "../../utils/state/form";
 
-import Icon from "../../atoms/icon/Icon";
 import LabeledInput from "./LabeledInput";
 
 type EmailInputProps = {
   email: string;
   emailIsValid: boolean;
+  emailRef: RefObject<HTMLInputElement>;
   setEmail: Dispatch<React.SetStateAction<string>>;
-  setEmailIsValid: Dispatch<React.SetStateAction<boolean>>;
+  setEmailIsFocus: Dispatch<React.SetStateAction<boolean>>;
 };
 
 const EmailInput = ({
   email,
   emailIsValid,
+  emailRef,
   setEmail,
-  setEmailIsValid,
+  setEmailIsFocus,
 }: EmailInputProps): JSX.Element => {
-  const [emailIsFocus, setEmailIsFocus] = useState<boolean>(false);
-  const emailRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    emailRef?.current && emailRef.current.focus();
-  }, []);
-
   return (
     <LabeledInput
       aria-describedby="emailnote"
