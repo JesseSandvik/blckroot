@@ -3,6 +3,7 @@ import {
   FormEventHandler,
   SetStateAction,
   useEffect,
+  useMemo,
   useState,
 } from "react";
 import { useLocation } from "react-router-dom";
@@ -32,6 +33,9 @@ const UserCredentialForm = ({
   setEmail,
   setPassword,
 }: UserCredentialFormTypes): JSX.Element => {
+  const EMAIL_REGEX = useMemo(() => /^\S+@\S+\.\S+$/, []);
+  const emailValidationTestPasses = EMAIL_REGEX.test(email);
+
   const location = useLocation();
   const [buttonName, setButtonName] = useState<string>("");
   const [emailIsValid, setEmailIsValid] = useState<boolean>(false);
@@ -44,6 +48,10 @@ const UserCredentialForm = ({
   useEffect(() => {
     location.pathname === "/signup" && setShowPasswordConfirmField(true);
   }, [location]);
+
+  useEffect(() => {
+    setEmailIsValid(emailValidationTestPasses);
+  }, [emailValidationTestPasses]);
 
   useEffect(() => {
     location.pathname === "/signup"
@@ -59,6 +67,22 @@ const UserCredentialForm = ({
         setEmail={setEmail}
         setEmailIsValid={setEmailIsValid}
       />
+      <div className="input-status">
+        <Icon className={emailIsValid ? "success" : "hide"} type="checkmark" />
+        <Icon
+          className={emailIsValid || !email ? "hide" : "alert"}
+          type="x-mark"
+        />
+      </div>
+      <p
+        id="emailnote"
+        className={
+          emailIsFocus && email && !emailIsValid ? "instructions" : "offscreen"
+        }
+      >
+        <Icon type="info" />
+        Please enter an email address with a valid format.
+      </p>
       <PasswordInput
         password={password}
         passwordIsValid={passwordIsValid}
