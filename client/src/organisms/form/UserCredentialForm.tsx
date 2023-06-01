@@ -80,7 +80,9 @@ const UserCredentialForm = ({
         setEmailIsFocus={setEmailIsFocus}
       />
       <ToggleFormFieldValidationIcons toggleValidationIconsOn={emailIsValid} />
-      <InfoTooltip showInfoToolTip={!emailIsValid && emailIsFocus}>
+      <InfoTooltip
+        showInfoToolTip={!emailIsValid && emailIsFocus && email.length > 0}
+      >
         Please enter an email address with a valid format.
       </InfoTooltip>
       <PasswordInput

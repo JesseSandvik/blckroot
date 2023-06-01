@@ -33,17 +33,19 @@ const ToggleIcons = ({
   return (
     <div className={className} id={id}>
       <Icon
-        className={firstIconClassName}
+        className={toggleOn ? "hide" : firstIconClassName}
         onClick={firstIconOnClick}
         title={firstIconTitle}
         type={firstIconType}
       />
-      <Icon
-        className={secondIconClassName}
-        onClick={secondIconOnClick}
-        title={secondIconTitle}
-        type={secondIconType}
-      />
+      {toggleOn && (
+        <Icon
+          className={toggleOn ? secondIconClassName : "hide"}
+          onClick={secondIconOnClick}
+          title={secondIconTitle}
+          type={secondIconType}
+        />
+      )}
     </div>
   );
 };

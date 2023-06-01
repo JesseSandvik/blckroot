@@ -19,7 +19,7 @@ const Tooltip = ({
   const classProps = [];
   className && classProps.push(className);
   showTooltip && classProps.push("tooltip");
-  !showTooltip && classProps.push("offscreen");
+  !showTooltip && classProps.push("hide");
 
   return (
     <div className={classProps.join(" ")} id={id}>

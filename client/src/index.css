@@ -67,14 +67,6 @@ select {
   width: 0;
 }
 
-.offscreen {
-  font-size: 0;
-  height: 0;
-  opacity: 0;
-  visibility: hidden;
-  width: 0;
-}
-
 .alert {
   color: var(--alert-color);
 }
