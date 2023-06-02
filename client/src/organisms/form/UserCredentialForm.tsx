@@ -57,6 +57,8 @@ const UserCredentialForm = ({
 
   const [confirmPasswordIsValid, setConfirmPasswordIsValid] =
     useState<boolean>(false);
+  const [confirmPasswordIsFocus, setConfirmPasswordIsFocus] =
+    useState<boolean>(false);
   const [showPasswordConfirmField, setShowPasswordConfirmField] =
     useState<boolean>(false);
 
@@ -75,6 +77,10 @@ const UserCredentialForm = ({
   useEffect(() => {
     setPasswordIsValid(passwordValidationTestPasses);
   }, [password, passwordValidationTestPasses]);
+
+  useEffect(() => {
+    setConfirmPasswordIsValid(confirmPassword === password);
+  }, [confirmPassword, password]);
 
   useEffect(() => {
     location.pathname === "/signup"
@@ -130,13 +136,19 @@ const UserCredentialForm = ({
           <PasswordConfirmInput
             confirmPassword={confirmPassword || ""}
             confirmPasswordIsValid={confirmPasswordIsValid}
-            password={password}
             setConfirmPassword={setConfirmPassword}
-            setConfirmPasswordIsValid={setConfirmPasswordIsValid}
+            setConfirmPasswordIsFocus={setConfirmPasswordIsFocus}
           />
           <ToggleFormFieldValidationIcons
-            toggleValidationIconsOn={confirmPasswordIsValid}
+            toggleValidationIconsOn={
+              confirmPasswordIsValid && password.length > 0
+            }
           />
+          <InfoTooltip
+            showInfoToolTip={confirmPasswordIsFocus && !confirmPasswordIsValid}
+          >
+            Must match the password from the above input field.
+          </InfoTooltip>
         </>
       )}
       <div>
