@@ -40,6 +40,12 @@ const UserCredentialForm = ({
   const emailValidationTestPasses = EMAIL_REGEX.test(email);
   const emailRef = useRef<HTMLInputElement>(null);
 
+  const PASSWORD_REGEX = useMemo(
+    () => /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/,
+    []
+  );
+  const passwordValidationTestPasses = PASSWORD_REGEX.test(password);
+
   const location = useLocation();
   const [buttonName, setButtonName] = useState<string>("");
 
@@ -47,6 +53,8 @@ const UserCredentialForm = ({
   const [emailIsFocus, setEmailIsFocus] = useState<boolean>(false);
 
   const [passwordIsValid, setPasswordIsValid] = useState<boolean>(false);
+  const [passwordIsFocus, setPasswordIsFocus] = useState<boolean>(false);
+
   const [confirmPasswordIsValid, setConfirmPasswordIsValid] =
     useState<boolean>(false);
   const [showPasswordConfirmField, setShowPasswordConfirmField] =
@@ -63,6 +71,10 @@ const UserCredentialForm = ({
   useEffect(() => {
     setEmailIsValid(emailValidationTestPasses);
   }, [emailValidationTestPasses]);
+
+  useEffect(() => {
+    setPasswordIsValid(passwordValidationTestPasses);
+  }, [password, passwordValidationTestPasses]);
 
   useEffect(() => {
     location.pathname === "/signup"
@@ -89,11 +101,30 @@ const UserCredentialForm = ({
         password={password}
         passwordIsValid={passwordIsValid}
         setPassword={setPassword}
-        setPasswordIsValid={setPasswordIsValid}
+        setPasswordIsFocus={setPasswordIsFocus}
       />
       <ToggleFormFieldValidationIcons
         toggleValidationIconsOn={passwordIsValid}
       />
+      <InfoTooltip
+        showInfoToolTip={
+          passwordIsFocus && !passwordIsValid && password.length > 0
+        }
+      >
+        <>
+          8 to 24 characters.
+          <br />
+          Must include uppercase & lowercase letters, a number, & a special
+          character.
+          <br />
+          Allowed special characters:{" "}
+          <span aria-label="exclamation mark">!</span>
+          <span aria-label="at symbol">@</span>
+          <span aria-label="hashtag">#</span>
+          <span aria-label="dollar sign">$</span>
+          <span aria-label="percent">%</span>
+        </>
+      </InfoTooltip>
       {showPasswordConfirmField && setConfirmPassword && (
         <>
           <PasswordConfirmInput
