@@ -89,7 +89,7 @@ const UserCredentialForm = ({
   }, [location]);
 
   return (
-    <Form onSubmit={onSubmit}>
+    <Form id="user-credential-form" onSubmit={onSubmit}>
       <EmailInput
         email={email}
         emailIsValid={emailIsValid}
@@ -97,7 +97,6 @@ const UserCredentialForm = ({
         setEmail={setEmail}
         setEmailIsFocus={setEmailIsFocus}
       />
-      <ToggleFormFieldValidationIcons toggleValidationIconsOn={emailIsValid} />
       <InfoTooltip
         showInfoToolTip={!emailIsValid && emailIsFocus && email.length > 0}
       >
@@ -108,9 +107,6 @@ const UserCredentialForm = ({
         passwordIsValid={passwordIsValid}
         setPassword={setPassword}
         setPasswordIsFocus={setPasswordIsFocus}
-      />
-      <ToggleFormFieldValidationIcons
-        toggleValidationIconsOn={passwordIsValid}
       />
       <InfoTooltip
         showInfoToolTip={
@@ -138,11 +134,6 @@ const UserCredentialForm = ({
             confirmPasswordIsValid={confirmPasswordIsValid}
             setConfirmPassword={setConfirmPassword}
             setConfirmPasswordIsFocus={setConfirmPasswordIsFocus}
-          />
-          <ToggleFormFieldValidationIcons
-            toggleValidationIconsOn={
-              confirmPasswordIsValid && password.length > 0
-            }
           />
           <InfoTooltip
             showInfoToolTip={confirmPasswordIsFocus && !confirmPasswordIsValid}

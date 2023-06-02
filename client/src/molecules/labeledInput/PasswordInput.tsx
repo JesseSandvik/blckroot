@@ -2,6 +2,7 @@ import { Dispatch } from "react";
 import { handleGenericOnChange } from "../../utils/state/form";
 
 import LabeledInput from "./LabeledInput";
+import ToggleFormFieldValidationIcons from "../toggleIcons/ToggleFormFieldValidationIcons";
 
 type PasswordInputProps = {
   password: string;
@@ -17,22 +18,26 @@ const PasswordInput = ({
   setPasswordIsFocus,
 }: PasswordInputProps): JSX.Element => {
   return (
-    <LabeledInput
-      aria-describedby="passwordnote"
-      aria-invalid={passwordIsValid ? "false" : "true"}
-      className="input-user-credentials"
-      inputId="password"
-      label="password:"
-      name="password"
-      onBlur={() => setPasswordIsFocus(false)}
-      onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-        handleGenericOnChange(event, setPassword)
-      }
-      onFocus={() => setPasswordIsFocus(true)}
-      required
-      type="password"
-      value={password || ""}
-    />
+    <div className="user-credential-input">
+      <LabeledInput
+        aria-describedby="passwordnote"
+        aria-invalid={passwordIsValid ? "false" : "true"}
+        inputId="password"
+        label="password:"
+        name="password"
+        onBlur={() => setPasswordIsFocus(false)}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+          handleGenericOnChange(event, setPassword)
+        }
+        onFocus={() => setPasswordIsFocus(true)}
+        required
+        type="password"
+        value={password || ""}
+      />
+      <ToggleFormFieldValidationIcons
+        toggleValidationIconsOn={passwordIsValid}
+      />
+    </div>
   );
 };
 

@@ -1,4 +1,16 @@
 form {
-    display: grid;
-    padding: 1rem;
+  display: grid;
+  padding: 1rem;
+}
+
+#user-credential-form {
+  border: 1px solid violet;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+#user-credential-form .user-credential-input {
+  border: 1px solid orange;
+  display: grid;
+  grid-column: 2 / span 4;
+  grid-template-columns: 1fr auto;
 }
