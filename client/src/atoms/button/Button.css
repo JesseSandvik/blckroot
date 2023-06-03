@@ -22,7 +22,7 @@ button.submit:hover {
 }
 
 button.disabled {
-  background-color: var(--default-disabled-color);
+  background-color: var(--disabled-color);
   cursor: unset;
 }
 

@@ -10,7 +10,9 @@ const ToggleFormFieldValidationIcons = ({
   return (
     <ToggleIcons
       id="form-field-validation-icon"
+      firstIconClassName="alert"
       firstIconType="x-mark"
+      secondIconClassName="success"
       secondIconType="checkmark"
       toggleOn={toggleValidationIconsOn}
     />
