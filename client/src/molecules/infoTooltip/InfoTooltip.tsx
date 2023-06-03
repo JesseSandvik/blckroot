@@ -16,7 +16,6 @@ const InfoTooltip = ({
   id,
   showInfoToolTip,
 }: InfoTooltipPropTypes) => {
-  console.log({ showInfoToolTip });
   return (
     <Tooltip className={className} id={id} showTooltip={showInfoToolTip}>
       <Icon type="info" />

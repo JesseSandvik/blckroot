@@ -1,11 +1,13 @@
 import { Dispatch, RefObject } from "react";
 import { handleGenericOnChange } from "../../utils/state/form";
 
+import InfoTooltip from "../infoTooltip/InfoTooltip";
 import LabeledInput from "./LabeledInput";
 import ToggleFormFieldValidationIcons from "../toggleIcons/ToggleFormFieldValidationIcons";
 
 type EmailInputProps = {
   email: string;
+  emailIsFocus: boolean;
   emailIsValid: boolean;
   emailRef: RefObject<HTMLInputElement>;
   setEmail: Dispatch<React.SetStateAction<string>>;
@@ -14,6 +16,7 @@ type EmailInputProps = {
 
 const EmailInput = ({
   email,
+  emailIsFocus,
   emailIsValid,
   emailRef,
   setEmail,
@@ -39,6 +42,12 @@ const EmailInput = ({
         value={email || ""}
       />
       <ToggleFormFieldValidationIcons toggleValidationIconsOn={emailIsValid} />
+      <InfoTooltip
+        id="email-tooltip"
+        showInfoToolTip={!emailIsValid && emailIsFocus && email.length > 0}
+      >
+        Please enter an email address with a valid format.
+      </InfoTooltip>
     </div>
   );
 };

@@ -1,16 +1,34 @@
 form {
   display: grid;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 #user-credential-form {
-  border: 1px solid violet;
+  border: 1px solid black;
   grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+#user-credential-form .user-credential-input,
+#user-credential-form #email-tooltip,
+#user-credential-form #user-credential-submit-btn {
+  grid-column: 2 / span 4;
 }
 
 #user-credential-form .user-credential-input {
-  border: 1px solid orange;
   display: grid;
-  grid-column: 2 / span 4;
   grid-template-columns: 1fr auto;
+}
+
+#user-credential-form #email-tooltip,
+#user-credential-form #password-tooltip,
+#user-credential-form #confirm-password-tooltip {
+  margin-top: 72px;
+  position: absolute;
+}
+
+#user-credential-form #user-credential-submit-btn {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
