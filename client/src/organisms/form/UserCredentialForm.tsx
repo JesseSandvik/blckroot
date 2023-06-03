@@ -108,15 +108,11 @@ const UserCredentialForm = ({
         <>
           <PasswordConfirmInput
             confirmPassword={confirmPassword || ""}
+            confirmPasswordIsFocus={confirmPasswordIsFocus}
             confirmPasswordIsValid={confirmPasswordIsValid}
             setConfirmPassword={setConfirmPassword}
             setConfirmPasswordIsFocus={setConfirmPasswordIsFocus}
           />
-          <InfoTooltip
-            showInfoToolTip={confirmPasswordIsFocus && !confirmPasswordIsValid}
-          >
-            Must match the password from the above input field.
-          </InfoTooltip>
         </>
       )}
       <div id="user-credential-submit-btn">

@@ -1,11 +1,13 @@
 import { Dispatch } from "react";
 import { handleGenericOnChange } from "../../utils/state/form";
 
+import InfoTooltip from "../infoTooltip/InfoTooltip";
 import LabeledInput from "./LabeledInput";
 import ToggleFormFieldValidationIcons from "../toggleIcons/ToggleFormFieldValidationIcons";
 
 type ConfirmPasswordInputProps = {
   confirmPassword: string;
+  confirmPasswordIsFocus: boolean;
   confirmPasswordIsValid: boolean;
   setConfirmPassword: Dispatch<React.SetStateAction<string>>;
   setConfirmPasswordIsFocus: Dispatch<React.SetStateAction<boolean>>;
@@ -13,6 +15,7 @@ type ConfirmPasswordInputProps = {
 
 const PasswordConfirmInput = ({
   confirmPassword,
+  confirmPasswordIsFocus,
   confirmPasswordIsValid,
   setConfirmPassword,
   setConfirmPasswordIsFocus,
@@ -39,6 +42,12 @@ const PasswordConfirmInput = ({
           confirmPasswordIsValid && confirmPassword.length > 0
         }
       />
+      <InfoTooltip
+        id="confirm-password-tooltip"
+        showInfoToolTip={confirmPasswordIsFocus && !confirmPasswordIsValid}
+      >
+        Must match the password from the above input field.
+      </InfoTooltip>
     </div>
   );
 };

@@ -9,3 +9,7 @@ i.brand-logo {
   transform: rotate(180deg);
   width: 40px;
 }
+
+.info-tooltip i {
+  padding-right: 0.5rem;
+}

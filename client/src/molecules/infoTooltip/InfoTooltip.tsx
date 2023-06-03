@@ -3,6 +3,8 @@ import { ReactNode } from "react";
 import Icon from "../../atoms/icon/Icon";
 import Tooltip from "../../atoms/tooltip/Tooltip";
 
+import "./InfoTooltip.css";
+
 type InfoTooltipPropTypes = {
   className?: string;
   children: ReactNode;
@@ -16,8 +18,16 @@ const InfoTooltip = ({
   id,
   showInfoToolTip,
 }: InfoTooltipPropTypes) => {
+  const classProps = [];
+  classProps.push("info-tooltip");
+  className && classProps.push(className);
+
   return (
-    <Tooltip className={className} id={id} showTooltip={showInfoToolTip}>
+    <Tooltip
+      className={classProps.join(" ")}
+      id={id}
+      showTooltip={showInfoToolTip}
+    >
       <Icon type="info" />
       {children}
     </Tooltip>
