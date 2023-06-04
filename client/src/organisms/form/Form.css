@@ -4,7 +4,7 @@ form {
 }
 
 #user-credential-form {
-  border: 4px solid var(--dark-color);
+  border: 4px solid var(--light-color);
   border-radius: 4px;
   gap: 1rem;
   grid-template-columns: repeat(8, 1fr);

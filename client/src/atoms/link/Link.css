@@ -17,7 +17,8 @@ a#brand-link {
 }
 
 a#signup-link {
-  border: 1px solid black;
+  background-color: var(--light-color);
+  color: var(--dark-color);
 }
 
 a#login-link,
@@ -26,14 +27,13 @@ a#signup-link {
   border-radius: 4px;
   display: flex;
   font-weight: 500;
-  height: 48px;
+  height: 40px;
   justify-content: center;
-  transition: 0.5s ease-in-out;
-  width: 96px;
+  width: 80px;
 }
 
 a#login-link:hover,
 a#signup-link:hover {
-  border: 1px solid black;
+  border: 2px solid var(--light-color);
   box-shadow: 0 7px 12px -5px rgba(0, 0, 0, 0.5);
 }
