@@ -1,13 +1,13 @@
 i.brand-logo {
   align-items: center;
-  background-color: var(--primary-accent-color-med);
+  background-color: var(--light-color);
   border-radius: 4px;
-  color: var(--default-light-color);
+  color: var(--dark-color);
   display: flex;
-  height: 40px;
+  height: 56px;
   justify-content: center;
   transform: rotate(180deg);
-  width: 40px;
+  width: 56px;
 }
 
 .info-tooltip i {

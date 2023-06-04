@@ -6,8 +6,8 @@ a {
 
 a#brand-link {
   align-items: center;
-  border-bottom: 2px solid black;
-  border-left: 2px solid black;
+  border-bottom: 2px solid var(--light-color);
+  border-left: 2px solid var(--light-color);
   border-bottom-left-radius: 4px;
   display: flex;
   font-size: 3rem;

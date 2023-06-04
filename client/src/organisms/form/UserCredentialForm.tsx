@@ -116,7 +116,10 @@ const UserCredentialForm = ({
         </>
       )}
       <div id="user-credential-submit-btn">
-        <Button disabled={!emailIsValid && !passwordIsValid} type="submit">
+        <Button
+          disabled={emailIsValid && passwordIsValid ? false : true}
+          type="submit"
+        >
           {buttonName}
         </Button>
       </div>

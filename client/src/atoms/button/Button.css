@@ -8,9 +8,9 @@ button {
 }
 
 button.submit {
-  background-color: var(--secondary-accent-color);
+  border: 2px solid var(--light-color);
   border-radius: 4px;
-  color: var(--default-light-color);
+  color: var(--light-color);
   font-size: 1rem;
   font-weight: 600;
   padding: 0.5rem 2rem;
@@ -23,6 +23,8 @@ button.submit:hover {
 
 button.disabled {
   background-color: var(--disabled-color);
+  border: 2px solid transparent;
+  color: var(--dark-color);
   cursor: unset;
 }
 
