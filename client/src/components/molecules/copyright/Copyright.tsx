@@ -1,4 +1,4 @@
-import { app } from "../../app/index";
+import { app } from "../../../app";
 
 import Small from "../../atoms/small/Small";
 

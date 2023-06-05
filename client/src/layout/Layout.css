@@ -1,0 +1,20 @@
+#root {
+  border: 2px solid orange;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+#root #root-header {
+  background-color: red;
+  position: sticky;
+  top: 0;
+}
+
+#root #root-main {
+  background-color: blue;
+}
+
+#root #root-footer {
+  background-color: yellowgreen;
+}

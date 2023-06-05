@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { loginUser } from "../../api";
 
-import EmailInput from "../../molecules/labeledInput/EmailInput";
-import PasswordInput from "../../molecules/labeledInput/PasswordInput";
 import UserCredentialPageTemplate from "../../templates/userCredentialPage/UserCredentialPageTemplate";
 
 function LoginPage() {

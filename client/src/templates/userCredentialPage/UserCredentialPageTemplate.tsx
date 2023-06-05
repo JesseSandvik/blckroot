@@ -1,6 +1,6 @@
 import { Dispatch, FormEventHandler, SetStateAction } from "react";
 
-import UserCredentialForm from "../../organisms/form/UserCredentialForm";
+import UserCredentialForm from "../../components/organisms/form/UserCredentialForm";
 
 import "./UserCredentialPageTemplate.css";
 

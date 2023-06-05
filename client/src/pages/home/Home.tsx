@@ -3,14 +3,6 @@ import "./Home.css";
 function HomePage() {
   return (
     <main className="Home">
-      <div className="ticker">
-        <p>minimalistic time management</p>
-        <p>made simple.</p>
-      </div>
-      <div className="intro">
-        <h3>resist.</h3>
-        <p>fight back against the allure of false productivity.</p>
-      </div>
       {/* <article className="daily-quote">
         <div className="daily-quote-heading">
           <h3>your daily inspiration</h3>

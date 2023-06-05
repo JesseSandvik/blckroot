@@ -1,5 +1,5 @@
 import { Dispatch, RefObject } from "react";
-import { handleGenericOnChange } from "../../utils/state/form";
+import { handleGenericOnChange } from "../../../utils/form";
 
 import InfoTooltip from "../infoTooltip/InfoTooltip";
 import LabeledInput from "./LabeledInput";

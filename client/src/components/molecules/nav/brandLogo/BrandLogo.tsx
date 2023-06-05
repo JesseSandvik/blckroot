@@ -1,4 +1,4 @@
-import { app } from "../../../app/index";
+import { app } from "../../../../app";
 
 import Icon from "../../../atoms/icon/Icon";
 import IntLink from "../../../atoms/link/IntLink";
