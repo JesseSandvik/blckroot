@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import { routes } from "../../app/routes";
+import { routes } from "../app/routes";
 
-import RootFooter from "../../organisms/footer/RootFooter";
-import RootHeader from "../../organisms/header/RootHeader";
-import RootMain from "../../organisms/main/RootMain";
+import RootFooter from "../components/organisms/footer/RootFooter";
+import RootHeader from "../components/organisms/header/RootHeader";
+import RootMain from "../components/organisms/main/RootMain";
 
 import "./Layout.css";
 

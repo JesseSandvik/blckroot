@@ -1,4 +1,4 @@
-import Layout from "./pages/layout/Layout";
+import Layout from "./layout/Layout";
 
 const Interface = () => {
   return <Layout />;
