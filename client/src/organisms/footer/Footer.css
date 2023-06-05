@@ -1,7 +1,0 @@
-footer#root-footer {
-  padding: 1rem;
-}
-
-footer#root-footer #copyright {
-  grid-column: 5 / span 4;
-}
