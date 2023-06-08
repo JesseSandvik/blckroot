@@ -1,0 +1,18 @@
+nav#auth-options #auth-options-list {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+}
+
+nav#auth-options #auth-options-list li a {
+  color: inherit;
+  font-weight: 900;
+  padding: 0.25rem 0.5rem;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+nav#auth-options #auth-options-list li a:hover {
+  border: 2px solid black;
+}

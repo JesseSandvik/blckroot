@@ -1,0 +1,12 @@
+header#root-header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+header#root-header #brand-logo {
+  grid-column: 1 / 1;
+}
+
+header#root-header #auth-options {
+  grid-column: 3 / -1;
+}
