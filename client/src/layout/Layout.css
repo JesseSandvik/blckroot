@@ -9,10 +9,15 @@
 }
 
 #root #root-header {
+  grid-row: 1 / 1;
   position: sticky;
   top: 0;
 }
 
-#root #root-main {}
+#root #root-main {
+  grid-row: 2 / 2;
+}
 
-#root #root-footer {}
+#root #root-footer {
+  grid-row: 3 / -1;
+}

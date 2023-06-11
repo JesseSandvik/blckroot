@@ -1,0 +1,10 @@
+main#root-main {
+    border: 1px solid aqua;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+}
+
+main#root-main > * {
+    border: 1px solid violet;
+}

@@ -7,7 +7,7 @@ nav#auth-options #auth-options-list {
 
 nav#auth-options #auth-options-list li a {
   color: inherit;
-  font-weight: 900;
+  font-weight: 600;
   padding: 0.25rem 0.5rem;
   text-decoration: none;
   text-transform: capitalize;

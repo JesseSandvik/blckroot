@@ -1,0 +1,8 @@
+form {
+    display: grid;
+}
+
+#user-credential-page #user-credential-form {
+    display: grid;
+    place-content: center;
+}

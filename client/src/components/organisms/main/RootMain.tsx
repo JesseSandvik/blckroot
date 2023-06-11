@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 
+import "./RootMain.css";
+
 type RootMainTypes = {
   children: ReactNode;
 };

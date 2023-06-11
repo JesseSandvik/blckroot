@@ -1,10 +1,19 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  /* COLORS */
+  --dark-color: #202020;
+  --light-color: #DDD8C4;
+  --muted-color: #C5C3C6;
+  --accent-color: #FF9000;
+  /* --accent-color: #FF9F1C; */
+  /* DEFAULTS */
+  --default-border-radius: 49px;
 }
 
 body {
-  /* font-family: "Exo 2", Verdana, Geneva, Tahoma, sans-serif; */
-  font-family: Jura, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  font-family: "Exo 2", Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1.2rem;
 }
