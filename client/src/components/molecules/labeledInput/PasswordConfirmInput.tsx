@@ -21,7 +21,7 @@ const PasswordConfirmInput = ({
   setConfirmPasswordIsFocus,
 }: ConfirmPasswordInputProps): JSX.Element => {
   return (
-    <div className="user-credential-input">
+    <div id="password-confirm-labeled-input">
       <LabeledInput
         aria-describedby="confirmpasswordnote"
         aria-invalid={confirmPasswordIsValid ? "false" : "true"}

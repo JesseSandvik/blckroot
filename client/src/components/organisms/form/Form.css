@@ -4,5 +4,6 @@ form {
 
 #user-credential-page #user-credential-form {
     display: grid;
+    gap: 1rem;
     place-content: center;
 }

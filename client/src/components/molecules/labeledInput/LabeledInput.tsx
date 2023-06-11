@@ -7,6 +7,8 @@ import {
 import Input from "../../atoms/input/Input";
 import Label from "../../atoms/label/Label";
 
+import "./LabeledInput.css";
+
 type LabeledInputProps = {
   ariaDescribedBy?: string;
   ariaInvalid?: "false" | "true" | "grammar" | "spelling";
@@ -41,7 +43,7 @@ const LabeledInput = ({
   value,
 }: LabeledInputProps): JSX.Element => {
   return (
-    <Label className={className} htmlFor={inputId}>
+    <Label className={className} htmlFor={inputId} id="labeled-input">
       {label}
       <Input
         ariaDescribedBy={ariaDescribedBy}

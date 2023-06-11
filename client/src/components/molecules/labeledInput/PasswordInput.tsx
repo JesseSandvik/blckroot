@@ -21,7 +21,7 @@ const PasswordInput = ({
   setPasswordIsFocus,
 }: PasswordInputProps): JSX.Element => {
   return (
-    <div className="user-credential-input">
+    <div id="password-labeled-input">
       <LabeledInput
         aria-describedby="passwordnote"
         aria-invalid={passwordIsValid ? "false" : "true"}

@@ -23,7 +23,7 @@ const EmailInput = ({
   setEmailIsFocus,
 }: EmailInputProps): JSX.Element => {
   return (
-    <div className="user-credential-input">
+    <div id="email-labeled-input">
       <LabeledInput
         aria-describedby="emailnote"
         aria-invalid={emailIsValid ? "false" : "true"}

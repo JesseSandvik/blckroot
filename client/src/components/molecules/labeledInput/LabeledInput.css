@@ -1,0 +1,10 @@
+#labeled-input {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+}
+
+#email-labeled-input,
+#password-labeled-input,
+#password-confirm-labeled-input {
+    border: 1px solid orange;
+}
