@@ -9,15 +9,10 @@
 }
 
 #root #root-header {
-  background-color: red;
   position: sticky;
   top: 0;
 }
 
-#root #root-main {
-  background-color: blue;
-}
+#root #root-main {}
 
-#root #root-footer {
-  background-color: yellowgreen;
-}
+#root #root-footer {}

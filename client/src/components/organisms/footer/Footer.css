@@ -1,0 +1,8 @@
+footer#root-footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+footer#root-footer #copyright {
+    grid-column: 2 / 2;
+}
